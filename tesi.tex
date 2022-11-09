@@ -1,0 +1,148 @@
+\documentclass{article}
+\usepackage{authblk}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage[pdfa]{hyperref}
+\usepackage{indentfirst}
+\usepackage{pdfpages}
+
+% stile per i blocchi di codice
+% non so se serviranno
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
+% fine stile
+
+\newcommand{\michele}[1]{{\color{red}Michele:~}{\itshape``{#1}''}}
+
+\begin{titlepage}
+    \title{Analisi di scalabilità dell'implementazione in Golang del calcolo AbU}
+    \author{Bruniera Alvise}
+    \affil{Università degli studi di Udine}
+    \date{\today}
+\end{titlepage}
+
+\begin{document}
+\maketitle
+
+\newpage
+\begin{abstract}
+    `GoAbU' è un'implementazione del calcolo `AbU' (Attribute-based memory Updates) per programmare sistemi distribuiti di piccoli dispositivi IoT. In questa tesi ci poniamo l'obbiettivo di studiarne il comportamento all'aumentare del numero di nodi, sotto diversi tipi di carico, utilizzando il simulatore `abusim'. Quindi stabilire un metodo ragionevole e realizzare degli strumenti, per analizzare il comportamento di `goabu'.\\
+    A questo scopo abbiamo realizzato alcuni programmi e script. In particolare `aeg' per generare parametricamente configurazioni per il simulatore, in modo da creare più facilmente configurazioni complesse con numero variabile di nodi, anche centinaia. Ed una serie di script per misurare il traffico di rete di ogni nodo (in termini di quantità di byte e pacchetti) ed il traffico riportato a livello di transazioni da uno dei nodi (quantità di byte e di transazioni), e per estrarre grafici e metriche utili da questi dati.\\
+    Abbiamo analizzato il traffico per 10, 50 e 100 nodi, sotto tre tipi di carico: nessun carico (idle), carico alto ma realistico (medio), carico molto alto (alto). In tutti i casi, con solo 10 nodi il carico è accettabile.\\
+    Il traffico è risultato molto alto sia sotto carico medio che alto, in particolare, sotto carico alto, diventava problematico già da 50 dispositivi. Tuttavia, confrontando i risultati con il traffico riportato a livello di libreria da `goabu', risulta che la compressione svolta dal middleware riesce a rendere il traffico molto minore di quanto potrebbe essere.
+
+    % mai buttare via niente ;)
+    %  In idle, il numero di dispositivi non sembra influire molto sul traffico della rete, sia il numero di pacchetti che di byte resta molto basso, anzi diminuisce la dimensione media dei pacchetti. Sotto carico medio, il numero di nodi influenza in modo quadratico il carico della rete, inoltre, 50 dispositivi sono sufficienti a generare circa 2 GB di traffico, mentre 100 si avvicinano ai 10 GB, posiamo aspettarci di vedere questo tipo di traffico in applicazioni reali. Sotto carico alto, anche se con 10 nodi il traffico è accettabile (300 MB), è comunque 5 volte più alto del carico medio. Con più nodi invece diventa insostenibile già a 50 nodi, paragonabile al traffico del carico medio con 100 nodi; quando si arriva a 100 nodi supera i 15 GB di traffico ed uno dei benchmark è arrivato fino a 25. \michele{Non andrei così in dettaglio nell'abstract, metterei solo un riassunto di cosa vogliamo testare (senza numeri)} \\
+    % , con rapporto di compressione tra il 2,2 ed il 2,6
+\end{abstract}
+
+\newpage
+\tableofcontents
+
+\newpage
+\section{Il calcolo AbU}
+
+AbU~\cite{MP-ICTAC-2021} (Attribute-based memory Updates) è un paradigma di calcolo distribuito basato sull'utilizzo di regole ECA (event-condition-action) per sincronizzare e scambiare informazioni tra grandi quantità di nodi.\\
+Le regole non sono molto diverse da delle normali ECA: ogni regola è legata ad una variabile del nodo, e quando questa variabile viene modificata (da una regola o da un dispositivo di input), se una condizione specificata è verificata, esegue l'azione.
+La caratteristica che distingue AbU è la possibilità di specificare regole ``esterne'', che agiscano sulle variabili degli altri nodi del sistema. Una regola esterna può specificare condizioni sia su variabili locali che esterne, mentre nelle azioni possono specificare solo variabili esterne. Un'azione avrà effetti su un nodo solo se possiede tutte le variabili esterne menzionate nella regola.
+Utilizzando queste regole, la memoria dei nodi viene aggiornata in base ad i suoi attributi (le variabili che possiede il nodo) da cui il nome.\\
+In questo modo, è possibile programmare un sistema distribuito completamente disaccoppiato nello spazio, poiché l'effetto di un'azione sugli altri nodi dipende da loro attributi e non richiede di conoscere la posizione delle variabili.
+
+\href{https://github.com/abu-lang/goabu}{GoAbU} è un'implementazione di questo modello di calcolo scritta in linguaggio go.
+È costruita utilizzando la libreria \href{https://github.com/hashicorp/memberlist}{memberlist} come middleware per la comunicazione in gruppo e la scoperta dei nodi, ed il framework \href{https://github.com/hybridgroup/gobot/}{gobot} per renderla utilizzabile in ambito IoT.\\
+Il focus principale della tesi sarà sia definire un metodo di test ragionevole e riproducibile per testare un'implementazione del calcolo AbU (e gli strumenti per eseguire test), che un'analisi di GoAbU stesso.
+
+\subsection{Setting sperimentale}
+
+I test sono stati eseguiti utilizzando il ``simulatore'' \href{https://github.com/abu-lang/abusim}{AbUsim}
+
+\michele{Farei poi un'ulteriore sezione, magari chiamata `Setting Sperimentale', dove spiegherei il simulatore ed i problemi riscontrati}
+\subsection{Strumenti}
+
+Spiegazione su goabu ed abusim. \michele{Toglierei GoAbU, che metterei nella sezione precedente} Cosa sono e a cosa servono
+
+\subsection{Problemi secondari}
+
+Qua parlerei brevemente di quelle problematiche che ho incontrato provando ad usare realmente il linguaggio e abusim. Ma che non sono l'obbiettivo dei test
+
+\begin{itemize}
+    \item Lost update: non si può fare un contatore affidabile
+    \item Non sono permesse variabili locali nelle regole remote anche quando non sono problematiche (non so se lo avete cambiato)
+    \item Limite alla dimensione della configurazione di goabu
+    \item Se un nodo muore, il logger occupa una cpu al 100\%
+    \item Altro se mi viene in mente
+\end{itemize}
+
+\section{ dei test}
+
+\michele{Forse chiamerei la sezione qualcosa del tipo `Generazione di Test', e come prima cosa spiegherei il tool che hai sviluppato}
+
+\subsection{Configurazioni parametriche}
+
+Qua parlo di come sono strutturati i test generati con aeg e che parametri si possono variare.
+
+\subsection{Scelta delle configurazioni}
+
+Qua parlo di cosa volevo ottenere dalle configurazioni e come ho scelto i parametri.
+
+\section{Raccolta dati}
+
+\subsection{Ispezione dei nodi}
+
+Qua parlo di come raccoglie i dati lo script, e quali informazioni ottengo dai log.
+
+\subsection{Metriche}
+
+Elenco delle metriche.
+
+Parlo più nel dettaglio solo delle metriche che ci interessano di più.
+
+\section{Risultati}
+
+Qua metto solo i grafici sulle metriche più importanti di cui ho parlato prima.
+
+\ref{appendix:grafici}
+
+\subsection{Osservazioni}
+
+Spiego le informazioni ottenute dai grafici, quindi espando un po' di quello che è già nell'abstract \\
+
+\michele{Gli altri grafici li metterei come appendice, da inserire dopo la bibliografia}
+
+
+
+\bibliographystyle{plain}
+\bibliography{biblio}
+
+\appendix
+
+\section{Altri grafici}\label{appendix:grafici}
+
+Il resto dei grafici
+
+\end{document}

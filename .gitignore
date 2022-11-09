@@ -1,0 +1,14 @@
+*
+
+!.gitignore
+
+!tesi.tex
+
+!biblio.bib
+
+!csv
+!csv/*
+!graphs
+!graphs/*
+!test_configs
+!test_configs/*
