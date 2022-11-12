@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[12pt]{article}
 \usepackage{authblk}
 \usepackage{listings}
 \usepackage{xcolor}
@@ -7,6 +7,7 @@
 \usepackage[pdfa]{hyperref}
 \usepackage{indentfirst}
 \usepackage{pdfpages}
+\usepackage{siunitx}
 
 % stile per i blocchi di codice
 % non so se serviranno
@@ -74,7 +75,7 @@ Utilizzando queste regole, la memoria dei nodi viene aggiornata in base ad i suo
 In questo modo, è possibile programmare un sistema distribuito completamente disaccoppiato nello spazio, poiché l'effetto di un'azione sugli altri nodi dipende da loro attributi e non richiede di conoscere la posizione delle variabili.
 
 \href{https://github.com/abu-lang/goabu}{GoAbU} è un'implementazione di questo modello di calcolo scritta in linguaggio go.
-È costruita utilizzando la libreria \href{https://github.com/hashicorp/memberlist}{memberlist} come middleware per la comunicazione in gruppo e la scoperta dei nodi, ed il framework \href{https://github.com/hybridgroup/gobot/}{gobot} per renderla utilizzabile in ambito IoT.\\
+È costruita utilizzando la libreria \href{https://github.com/hashicorp/memberlist}{memberlist} come middleware per la comunicazione in gruppo e la scoperta dei nodi, ``Grule'' \href{https://github.com/hyperjumptech/grule-rule-engine} come rule engine, ed il framework \href{https://github.com/hybridgroup/gobot/}{gobot} per renderla utilizzabile in ambito IoT.\\
 Il focus principale della tesi sarà sia definire un metodo di test ragionevole e riproducibile per testare un'implementazione del calcolo AbU (e gli strumenti per eseguire test), che un'analisi di GoAbU stesso.
 
 Durante lo sviluppo dei test abbiamo incontrato due limitazioni del linguaggio, una delle quali facilmente risolvibile una volta definita la semantica di una funzionalità aggiuntiva, l'altra invece potrebbe eventualmente essere mitigata ma non risolta del tutto.\\
@@ -95,19 +96,24 @@ Si possono configurare anche il tick time (il tempo che il dispositivo aspetter�
 
 Il parsing delle regole di ogni nodo viene fatto direttamente dal simulatore, che dopo aver costruito l'elenco di regole e variabili di ogni nodo, codificherà gli alberi di sintassi in \lstinline{json} e successivamente in \lstinline{base64} per passarli come argomenti al programma in esecuzione su ogni nodo, questa informazione sarà utile più avanti. È possibile collegare altri nodi esterni alla rete del simulatore che eseguano goAbU, ma non è necessario per questa tesi.\\
 Viene avviato anche un coordinatore, che gestisce la comunicazione con l'esterno sia per inviare comandi che per ricevere log. Questo è strettamente parte del simulatore e non un elemento che ci si aspetta tri trovare in una reale applicazione di AbU, che invece è pensato per essere decentralizzato. Va notato, allo scopo del progetto, che la rete virtuale su cui viaggiano i messaggi di goAbU è separata da quella su cui viaggiano i messaggi di gestione ed i log.\\
-Opzionalmente si può avviare un container che offre un'interfaccia web per controllare i nodi, verificandone lo stato ed inviando comandi. Tutto ciò può essere fatto anche programmaticamente tramite una libreria python.
-
-\michele{Farei poi un'ulteriore sezione, magari chiamata `Setting Sperimentale', dove spiegherei il simulatore ed i problemi riscontrati}
+Opzionalmente si può avviare un container che offre un'interfaccia web per controllare i nodi, quindi permette di verificarne lo stato, inviare comandi, ed impostare il livello dei log. Tutto ciò può essere fatto anche programmaticamente tramite una libreria python.
 
 \subsection{Problemi secondari}
 
+Durante lo sviluppo del generatore di test abbiamo incontrato alcune limitazioni od errori del simulatore. Questi errori sono indipendenti da goAbU, e riguardano puramente il funzionamento del simulatore, quindi verranno trattati solo brevemente.
 
-\begin{itemize}
-    \item Limite alla dimensione della configurazione di goabu
-    \item Se un nodo muore, il logger occupa una cpu al 100\%
-    \item Tempo di compilazione delle regole
-    \item Altro se mi viene in mente
-\end{itemize}
+Come spiegato nella sezione precedente, la configurazione di un nodo (quindi l'elenco delle variabili e delle regole) viene codificato in un'unica lunga stringa, e questa viene passata al nodo come argomento del comando shell. Poiché la dimensione del vettore \lstinline{argv} è limitata (la dimensione effettiva dipende dal sistema operativo, ma solitamente si parla di $\qty{128}{\kibi\byte}$) anche la quantità e la lunghezza delle regole. $\qty{128}{\kibi\byte}$ potrebbero sembrare molti, ma anche se fossero passate in plaintext significherebbe che (supponendo le regole siano lunghe tendenzialmente $128$ carattere) si possono avere solo $1024$ regole, quando l'obbiettivo sarebbe quello di ammettere diverse migliaia di regole. In realtà la codifica attualmente utilizzata per la configurazione, è meno efficiente e limita ulteriormente la quantità di regole, in modo dipendente dalla complessità sintattica di ogni regola.
+Una soluzione proposta e testata in un fork del simulatore prevede di non passare la configurazione come argomento, ma attraverso il buffer di input, che invece non è limitato. Questa soluzione funziona e può essere implementata semplicemente, ma non è l'unica possibilità.
+
+Una delle difficoltà incontrate non dipende dal simulatore, ma ha permesso di scoprire un problema del coordinatore (che tra le altre cose si occupa di raccogliere i log dai nodi).
+La dimensione massima per le tabelle ARP impostata di default su molti sistemi operativi non è sufficiente a permettere a più di $\sim40$ nodi di comunicare, per poter testare più dispositivi bisogna impostare un limite più alto dal sistema operativo. Tuttavia, per come funziona il simulatore, quando un nodo non riesce a collegarsi agli altri si chiude dopo un certo tempo.
+Ed in questo modo abbiamo scoperto che se uno nodo smette di rispondere alla richiesta di nuovi log, un thread del coordinatore rimane bloccato in un loop, utilizzando al $\qty{100}{\percent}$ una delle cpu.
+Si tratta di un problema marginale poiché si verifica solo quando uno dei nodi termina inaspettatamente, cosa che non dovrebbe succedere se non per problemi della setting come questo limite alle tabelle ARP.
+
+L'ultimo problema, invece, riguarda una funzionalità mancante della libreria goAbU ma necessaria per l'applicazione nel mondo reale di AbU.
+Un rule engine è efficiente a trovare le regole da eseguire perché utilizza una struttura dati complessa, ma per costruirla deve prima eseguire una computazione complessa. E Grule non fa eccezione, costruire la struttura dati dal set di regole è costoso, sembra richiedere costo $\Theta(x^2)$, quindi avviando il simulatore su una grande quantità di regole (non necessario per questa tesi) potrebbe passare molto tempo prima che i nodi siano completamente avviati.
+Ovviamente per il simulatore non si può fare molto, ma per un dispositivo reale che viene programmato una volta sola con un migliaio di regole, non è accettabile aspettare diversi minuti ad ogni riavvio perché sta ricostruendo la struttura. Soprattutto considerato che un dispositivo del genere potrebbe essere molto più lento di un computer che esegue AbUsim, e quindi potrebbe diventare troppo lento ancora prima.
+Per risolvere questo problema bisognerebbe aggiungere una funzionalità per memorizzare la struttura precompilata in modo che successivamente il dispositivo debba solo leggerla per tornare operativo dopo un riavvio. Per il simulatore questo non vale poiché lo scopo di AbUsim è la prototipazione, ed è previsto che ad ogni avvio la configurazione cambi, rendendo meno utile conservare la struttura.
 
 \section{Generazione dei test}
 
