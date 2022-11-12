@@ -1,0 +1,5 @@
+\Title{Analisi di scalabilità dell'implementazione in Golang del calcolo AbU}
+\Author{Bruniera Alvise}
+\Language{ita}
+\Subject{Definizione di una modalità per analizzare le prestazioni di una libreria AbU ed un'analisi dell'implementazione goAbU in questa modalità}
+\Keywords{Calcolo AbU\sep Sistemi distribuiti\sep IoT}
