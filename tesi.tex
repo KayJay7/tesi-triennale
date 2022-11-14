@@ -159,7 +159,8 @@ Quindi il comportamento della configurazione è deciso dai (già elencati nella 
     \item $f$ (alt.: devices-length) Il numero di livelli attraversati prima di arrivare a \lstinline{0}
 \end{itemize}
 
-Oltre
+Oltre a questi 6 parametri di configurazione, se ne possono impostare anche alcuni riguardanti il setting dell'esperimento, come l'immagine da usare per i nodi ed il coordinatore, oppure il tick.
+Per questa tesi sono rilevanti solo i 6 parametri di configurazione, in quanto il setting sperimentale è rimasto lo stesso in ogni test.
 
 % Non sono sicuro che basti come dimostrazione, spero di sì perché non è stata facile da scrivere
 \subsection{Terminazione forte (?)}
@@ -209,11 +210,90 @@ Ovviamente AbU non prevede questo ordinamento, ma come spiegato nel paragrafo su
 
 \subsection{Scelta delle configurazioni}
 
-Qua parlo di cosa volevo ottenere dalle configurazioni e come ho scelto i parametri.
+Per l'analisi di goAbU sono stati scelti tre casi di test di base, e poi ogni caso è stato testato con $10$, $50$ e $100$, ciascuno dei tre vuole mettere in evidenza diversi aspetti di AbU.
+
+In tutti i casi, l'unico dato che ci importava raccogliere erano le informazioni sul traffico di rete. Nella prossima sezione ~\ref{raccolta:quali} spiegheremo perché questa scelta.
+
+\paragraph{Idle}
+
+\begin{itemize}
+    \item $a=10|50|100$
+    \item $b=1$
+    \item $c=1$
+    \item $d=1$
+    \item $e=1$
+    \item $f=1$
+\end{itemize}
+
+Il primo caso non prevede nessuna regola, il sistema è composto solo da nodi ``vuoti'' ed i test in questo caso (a contrario degli altri due) sono stati condotti senza avviare mai la computazione.
+L'obbiettivo è quello di osservare il comportamento dell'implementazione quando non succede nulla, verificare la presenza di overhead o di un ``rumore di fondo'' da poter rimuovere dai test successivi.
+
+In particolare ci interessava il traffico causato dal middleware memberlist per mantenere la comunicazione di gruppo attiva anche senza nessuno scambio di messaggi.
+
+Questo test serve per scoprire se un sistema con tanti nodi sia impraticabile a prescindere dal tipo di lavoro che svolgono. Se mantenere i nodi connessi causa già troppo traffico per poter utilizzare goAbU in una rete vera, bisognerebbe cambiare completamente l'implementazione.
+
+\paragraph{Medio}
+
+\begin{itemize}
+    \item $a=10|50|100$
+    \item $b=10$
+    \item $c=5$
+    \item $d=5$
+    \item $e=1$
+    \item $f=20$
+\end{itemize}
+
+Progettando questo test l'obbiettivo era quello di ricreare un test che anche se esigente, fosse in qualche modo realistico, un test in cui ogni nodo ha una certa quantità di regole, ed alcune (non tutte) di queste si attivano. Ed una frazione di queste causano degli effetti su un solo altro nodo (non troppi).
+
+L'obbiettivo era essere troppo pesante sulla rete, ma bilanciare il carico tra rete e nodo interno. In un certo tempo, ogni nodo avrà molte più regole locali di cui occuparsi, e dovrebbe utilizzare di meno la rete.
+
+Questo test, come anche il successivo, è stato progettato in modo che richieda $\qty{500}{\second}$ per terminare la computazione. Ed effettivamente con pochi dispositivi è così, ma in realtà l'overhead dell'esecuzione del rule engine, e soprattutto quello della rete, fanno sì che in realtà richieda più tempo.
+Il tempo reale e dipendente dal setting sperimentale, quindi dalla macchina che esegue il simulatore, e non direttamente da goAbU. Tuttavia, il fatto che con $100$ dispositivi la macchina sia in difficoltà, significa che potrebbero esserlo anche i dispositivi di rete.
+
+\begin{tabular}{| c || c | c |}
+    \hline
+    Regole eseguite & Interne & esterne \\
+    \hline\hline
+    $10$            & $5000$  & $1000$  \\
+    \hline
+    $50$            & $25000$ & $5000$  \\
+    \hline
+    $100$           & $50000$ & $10000$ \\
+    \hline
+\end{tabular}
+
+\paragraph{Alto}
+
+\begin{itemize}
+    \item $a=10|50|100$
+    \item $b=1$
+    \item $c=1$
+    \item $d=1$
+    \item $e=3$
+    \item $f=5$
+\end{itemize}
+
+L'ultimo test è stato progettato con l'obbiettivo esplicito di mettere in difficoltà la rete quanto più possibile in un tempo limitato. Come si vede dalla configurazione, non è presente nessuna regola interna se non quelle strettamente necessarie.
+Invece ogni dispositivo attiva direttamente altri $3$ dispositivi e si prosegue in $5$ livelli di profondità. In questo modo il numero di messaggi inviati nella rete cresce in modo quasi esponenzialmente nel tempo.
+
+Questo test è stato costruito in cercando una combinazione di $e$ ed $f$ tali che con pochi dispositivi la computazione termini in $\qty{500}{\second}$. Però il carico è molto alto e quando si arriva a 100 dispositivi, la computazione viene completata in $\qty{2000}{\second}$.
+Come detto in precedenza, questo tempo non è significativo poiché dipende principalmente dalla macchina su cui viene eseguito il simulatore. Però una differenza del genere suggerisce che anche il traffico di rete sarà particolarmente alto.
+
+\begin{tabular}{| c || c | c |}
+    \hline
+    Regole eseguite & Interne & esterne \\
+    \hline\hline
+    $10$            & $1210$  & $3630$  \\
+    \hline
+    $50$            & $6050$  & $18150$ \\
+    \hline
+    $100$           & $12100$ & $36300$ \\
+    \hline
+\end{tabular}
 
 \section{Raccolta dati}
 
-\subsection{Cosa }
+\subsection{Quali dati raccogliere}\label{raccolta:quali}
 
 \subsection{Ispezione dei nodi}
 
