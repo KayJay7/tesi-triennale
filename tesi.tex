@@ -113,7 +113,7 @@ Entrambi questi problemi non rientrano nell'obbiettivo della tesi, ma sono venut
 
 \section{Setting sperimentale}
 
-\subsection{Il simulatore AbUsim}
+\subsection{Il simulatore AbUsim}\label{setting:abusim}
 
 I test sono stati eseguiti utilizzando il ``simulatore'' \href{https://github.com/abu-lang/abusim}{AbUsim}. Quest'ultimo si basa sull'utilizzo di Docker ed è progettato sulla falsa riga di Docker Compose, ovvero preso in input un file \lstinline{yaml} che descrive una serie di container, li avvia e mette in comunicazione.
 I file di configurazione di AbUsim permettono di specificare un elenco di dispositivi che eseguiranno GoAbU. Ogni dispositivo ha un suo elenco di variabili (che possono essere inizializzate arbitrariamente) ed un elenco di regole in linguaggio AbU.
@@ -273,6 +273,8 @@ L'obbiettivo era non essere troppo pesante sulla rete, ma bilanciare il carico t
 Questo test, come anche il successivo, è stato progettato in modo che richieda $\qty{500}{\second}$ per terminare la computazione. Ed effettivamente con pochi dispositivi è così, ma in realtà l'overhead dell'esecuzione del rule engine, e soprattutto quello della rete, fanno sì che in realtà richieda più tempo.
 Il tempo reale e dipendente dal setting sperimentale, quindi dalla macchina che esegue il simulatore, e non direttamente da GoAbU. Tuttavia, il fatto che con $100$ dispositivi la macchina sia in difficoltà, significa che potrebbero esserlo anche i dispositivi di rete.
 
+In ogni caso, abbiamo osservato che il tempo di esecuzione è molto consistente tra le ripetizioni della computazione. Quindi dopo aver provato una volta ad eseguire una computazione con un certo numero di nodi, possiamo assumere che la prossima impieghi un tempo molto simile.
+
 \begin{itemize}
     \item $a=10|50|100$
     \item $b=10$
@@ -335,16 +337,28 @@ Prima di affrontare qualsiasi tipo di test bisogna stabilire quali sono i dati c
 In un sistema distribuito sono tanti gli aspetti che si potrebbero prendere in considerazione. Traffico di rete, latenza dell'esecuzione delle regole, throughput dei singoli nodi, throughput dell'intero sistema. Tutte queste opzioni sono state considerate prima di scegliere che test eseguire.
 
 Il throughput (sia dei nodi che della rete), sembra la scelta più ovvia. In un qualsiasi altro sistema. Tuttavia, AbU non è pensato per svolgere calcoli, ma per sincronizzare dispositivi.
-Quindi in un'applicazione reale non c'è un vero risultato in output, un qualcosa di cui misurare il throughput. Al massimo si possono misurare le regole eseguite, ma quelle sono legate al tick che è impostato manualmente.
+Quindi in un'applicazione reale non c'è un vero risultato in output, un qualcosa di cui misurare il throughput. Al massimo si possono misurare la quantità di regole eseguite, ma quelle sono legate al tick che è impostato manualmente.
 
 La latenza delle regole anzitutto dipende più dal numero totale di regole, e dalle prestazioni del dispositivo che esegue GoAbU, che da GoAbU stesso, quindi anche questa metrica non è molto indicativa delle prestazioni.
 In ogni caso, per migliorarla bisognerebbe passare ad un rule engine più ``aggressivo'', o trovare un modo di utilizzare meno regole.
 In ogni caso, il tempo speso per attendere il passare del tick è molto più lungo della latenza di una regola, a meno che la knowledge base non sia enorme.
-Quindi anche questo dato è stato considerato non
+Quindi anche questo dato è stato considerato non necessario, almeno per ora.
+
+Alla fine, abbiamo deciso di raccogliere solo i dati relativi al traffico di rete. Più precisamente abbiamo raccolto sia la dimensione totale dei messaggi inviati e ricevuti (come numero di byte totali), che la quantità di pacchetti (frame di livello 2) inviati e ricevuti. Entrambi questi dati sono reperibili direttamente dal sistema operativo.
+Inoltre, abbiamo deciso di raccogliere anche il numero di transazioni eseguite a livello di libreria, e la dimensione di queste transazioni. Per poterle confrontare con i dati del sistema operativo e scoprire quando overhead viene aggiunto dal middleware.
 
 \subsection{Ispezione dei nodi}
 
-Qua parlo di come raccoglie i dati lo script, e quali informazioni ottengo dai log.
+Le informazioni sul traffico di rete sono fornite direttamente dal sistema operativo, che offre degli pseudo-file per processo dove sono listate diverse metriche (in particolare byte e pacchetti, inviati e ricevuti) per ogni interfaccia di rete, utilizzate fino a quel momento dal processo.
+
+Come già visto in precedenza~\ref{setting:abusim} AbUsim utilizza due reti virtuali (quindi ogni nodo ha due interfacce di rete), una utilizzata per la comunicazione di GoAbU, ed una per il resto delle funzioni del simulatore, come l'invio dei log.
+Quindi è facile ottenere solo i dati riguardanti GoAbU senza che siano sporcati dal simulatore. È sufficiente identificare prima l'interfaccia di rete utilizzata per GoAbU, sempre usando gli pseudo-file, e poi raccogliere solo le metriche di quell'interfaccia.
+
+Per separare i dati riguardanti una computazione da quelli precedenti e da quelli della discovery, raccogliamo i dati prima e dopo la computazione, ed teniamo la differenza.
+
+I dati sulle transazioni, invece, sono raccolte tramite i log del simulatore, che sono stati modificati appositamente per includere questi dati.
+Purtroppo abbiamo raccolto i log di un solo nodo poiché le dimensioni erano troppo grandi. Raccogliendo i dati di un solo nodo sono stati prodotti $\qty{230}{\mebi\byte}$ di file di log, quindi raccoglierli per tutti i nodi sarebbe stato dispendioso.
+In futuro, si potrebbe trovare un modo per fornire questi dati in modo più snello, per poter analizzare più nodi.
 
 \subsection{Metriche}
 
