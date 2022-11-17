@@ -378,6 +378,7 @@ Quindi anche questo dato è stato considerato non necessario, almeno per ora.
 
 Alla fine, abbiamo deciso di raccogliere solo i dati relativi al traffico di rete. Più precisamente abbiamo raccolto sia la dimensione totale dei messaggi inviati e ricevuti (come numero di byte totali), che la quantità di pacchetti (frame di livello 2) inviati e ricevuti. Entrambi questi dati sono reperibili direttamente dal sistema operativo.
 Inoltre, abbiamo deciso di raccogliere anche il numero di transazioni eseguite a livello di libreria, e la dimensione di queste transazioni. Per poterle confrontare con i dati del sistema operativo e scoprire quando overhead viene aggiunto dal middleware.
+Queste ultime informazioni sono state raccolte solo per gli ultimi due casi, quello medio e quello alto, perché in idle la libreria non produce transazioni.
 
 \subsection{Ispezione dei nodi}
 
@@ -428,13 +429,22 @@ Dal rapporto possiamo ottenere il packet loss della rete, però questo non forni
 I dati sui pacchetti di livello 2 sono interessanti in quanto sono indicativi del lavoro che dovranno gestire i dispositivi di rete a cui AbU sarà connesso..
 
 Confrontare i dati del sistema con quelli dei log permette di osservare cosa il middleware è in grado di fare per ridurre il traffico. In particolare, i due rapporti \lstinline{logs_bytes ratio} e \lstinline{logs_packets ratio} facilitano questo confronto.
+Più precisamente, il primo 
 
 Oltre a questo, le metriche totali, quindi \lstinline{total bytes} e \lstinline{total packets}, forniscono una misura complessiva del traffico, quindi la quantità di byte e pacchetti, che attraversa la rete da parte di tutti i nodi.
 Questo è uno dei dati più importanti, perché potrebbe essere il fattore più limitante in una rete reale. Se il data-rate fosse una limitazione, sarebbe sufficiente allungare il tick dei nodi che generano più traffico, ma la quantità totale di dati resta la stessa.
 
 \section{Risultati}
 
-\include
+\includegraphics{graphs/total bytes.png}\label{graphs:tb}
+
+\includegraphics{graphs/total packets.png}\label{graphs:tp}
+
+\includegraphics{graphs/logs_bytes ratio.png}\label{graphs:lbr}
+
+\includegraphics{graphs/logs_packets ratio.png}\label{graphs:lpr}
+
+\includegraphics{graphs/bytes per packet.png}\label{graphs:bp}
 
 \ref{appendix:grafici}
 
@@ -449,6 +459,6 @@ Spiego le informazioni ottenute dai grafici, quindi espando un po' di quello che
 
 \section{Altri grafici}\label{appendix:grafici}
 
-Il resto dei grafici
+
 
 \end{document}
