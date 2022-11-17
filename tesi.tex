@@ -60,7 +60,7 @@
 \begin{abstract}
     GoAbU è un'implementazione del calcolo AbU (Attribute-based memory Updates) per programmare sistemi distribuiti di dispositivi IoT. In questa tesi ci poniamo l'obbiettivo di studiarne il comportamento all'aumentare del numero di nodi, sotto diversi tipi di carico, utilizzando il simulatore AbUsim. Quindi stabilire un metodo ragionevole e realizzare degli strumenti, per analizzare il comportamento di GoAbU.\\
     A questo scopo abbiamo realizzato alcuni programmi e script. In particolare `aeg' per generare parametricamente configurazioni per il simulatore, in modo da creare più facilmente configurazioni complesse con numero variabile di nodi, anche centinaia. Ed una serie di script per misurare il traffico di rete di ogni nodo (in termini di quantità di byte e pacchetti) ed il traffico riportato a livello di transazioni da uno dei nodi (quantità di byte e di transazioni), e per estrarre grafici e metriche utili da questi dati.\\
-    Abbiamo analizzato il traffico per 10, 50 e 100 nodi, sotto tre tipi di carico: nessun carico (idle), carico alto ma realistico (medio), carico molto alto (alto). In tutti i casi, con solo 10 nodi il carico è accettabile.\\
+    Abbiamo analizzato il traffico per $10$, $50$ e $100$ nodi, sotto tre tipi di carico: nessun carico (idle), carico alto ma realistico (medio), carico molto alto (alto). In tutti i casi, con solo 10 nodi il carico è accettabile.\\
     Il traffico è risultato molto alto sia sotto carico medio che alto, in particolare, sotto carico alto, diventava problematico già da 50 dispositivi. Tuttavia, confrontando i risultati con il traffico riportato a livello di libreria da GoAbU, risulta che la compressione svolta dal middleware riesce a rendere il traffico molto minore di quanto potrebbe essere.
 
     \michele{Quando ti riferici a GoAbU o AbU togli le virgolette, cerca inoltre di mantenere coerente il nome (con la giusta capitalizzazione), magari creati una macro. Per i comandi/programmi, tipo abusim o aeg, magari mettili in typewriter, senza virgolette}
@@ -74,7 +74,37 @@
 
 \newpage
 
-\michele{Manca un sezione introduttiva, non serve praticamente a molto ma formalmente ci dovrebbe essere, magari riduci un pò l'abstract e metti una sua versione estesa qui, a fine sezione poi metti una sinopsi in cui descrivi la struttura della tesi ed in due parole le varie sezioni cosa contengono}
+\section{Introduzione}
+
+In questa tesi studieremo il comportamento di GoAbU, un'implementazione in Golang del calcolo AbU. Si tratta di un paradigma (e un linguaggio) per la programmazione di sistemi distribuiti.
+In particolare per grandi quantità di dispositivi IoT, visto che è pensato per essere leggero, completamente disaccoppiato nello spazio, ed adatto alla sincronizzazione ed alla diffusione di informazioni.
+Non avendo a disposizione centinaia di dispositivi, e non avendo nemmeno un sistema per distribuire la configurazione su questi dispositivi, abbiamo utilizzato il simulatore AbUsim. Un software per avviare GoAbU in dei container Docker, seguendo una configurazione, ed interagirci.\\
+Ovviamente per studiarne il comportamento bisogna prima decidere un metodo sistematico e possibilmente automatizzato per analizzare GoAbU in modo ragionevole, quindi raccogliendo dati rilevanti per produrre metriche utili. Ovviamente in modo che sia riapplicabile ad una futura implementazione di AbU.
+
+Per automatizzare l'analisi abbiamo prodotto alcuni script che si occupano di avviare dei test e raccogliere i dati dal sistema, da cui ricavare le metriche.
+Più precisamente, siamo interessati a metriche riguardanti il traffico di rete, come il numero di pacchetti o di byte scambiati tra i nodi.
+Per scoprire come un diverso numero di nodi od una diversa configurazione, impattano sulla rete a cui devono essere connessi. Alcune di queste sono ricavate dal sistema operativo, e altre sono ricavate direttamente dai log del simulatore.
+
+Avevamo bisogno di un modo per creare automaticamente delle configurazioni che testassero le parti del sistema di cui abbiamo bisogno, ed avere una struttura di test su cui basarci. Abbiamo scritto il programma generatore di configurazioni aeg. Che costruisce una configurazione parametrica seguendo sempre una stessa struttura.
+In questo modo per provare una configurazione completamente diversa, che stressi un comportamento diverso, è sufficiente variare pochi parametri del generatore.
+
+Abbiamo scelto di analizzare il comportamento di GoAbU nella gestione di tre tipi di carico diverso, uno nullo, uno medio ed uno molto alto. E verificato come il sistema scalava all'aumentare dei nodi, provandolo su $10$, $50$ e $100$ dispositivi.
+
+\paragraph{Sinossi}
+
+La tesi sarà organizzata in 5 sezioni.
+
+In una prima sezione forniremo una descrizione del calcolo AbU e le sue caratteristiche. Quindi il suo paradigma ed i suoi punti di forza. Oltre ad una breve analisi delle sue limitazioni.
+
+Segue una descrizione del setting sperimentale, in cui descriveremo AbUsim, il sistema hardware utilizzato per i test, ed infine alcune problematiche incontrate di questa impostazione.
+
+Spiegheremo nel dettaglio la struttura delle configurazioni di test prodotte automaticamente. Nonché la scelta delle configurazioni utilizzate nel benchmark e le caratteristiche di queste configurazioni.
+
+Descriveremo il metodo di raccolta dei dati dagli esperimenti. Ed anche le metriche prodotte con questi dati, analizzando più nel dettaglio quelle che abbiamo scoperto più rilevanti.
+
+Per finire, analizzeremo i risultati. Fornendo alcune nuove osservazioni riguardo l'implementazione GoAbU, ottenute grazie a questi test.
+
+Come appendice forniremo tutte le metriche prodotte.
 
 \section{Il calcolo AbU}
 
@@ -87,14 +117,16 @@ Una regola interna AbU è della forma:
 \begin{center}
     \lstinline{rule <name> on <variable> for <condition> do <action>}
 \end{center}
-Ad esempio \lstinline{rule turn_off on temperature for temperature > target do heating = false}, viene controllata al modificare della variabile \lstinline{temperature}, e se la temperatura supera un \lstinline{target}, spegne il riscaldamento impostando \lstinline{heating = false}.
-
+Ad esempio \lstinline{rule turn_off on temperature for temperature > target do heating = false}, viene controllata al modificare della variabile \lstinline{temperature}, e se la temperatura supera un \lstinline{target}, spegne il riscaldamento impostando \lstinline{heating = false}.\\
 Una regola esterna, invece, è della forma:
 \begin{center}
     \lstinline{rule <name> on <variable> for all <condition> do <action>}
 \end{center}
-
 (notare \lstinline{for all} al posto di \lstinline{for}) e può accedere a variabili remote (non per l'attivazione). Ad esempio \lstinline{rule set_target on target for all this.target < limit && ext.is_heater do ext.target = this.target}, viene attivata quando l'utente sposta la temperatura \lstinline{target}, e se questo non supera un limite massimo, viene impostato quel target su tutti i nodi con la variabile \lstinline{is_heater = true}.
+
+Prima di proseguire forniamo un breve elenco dei principali punti di forza del calcolo AbU. Il paradigma del AbU permette di programmare facilmente sistemi di dimensioni variabili, anche grandi, diffondendo informazioni tra i nodi senza bisogno di conoscenze sul loro funzionamento interno o la topologia della rete.
+L'approccio ad attributi fornisce un modello di comunicazione basato interamente sul ruolo del destinatario (quindi degli attributi che possiede), quindi più vicino alla semantica del sistema piuttosto che alla sua architettura.
+Ed infine, il design a regole permette di avere una knowledge base più semplice da leggere e da scrivere per il programmatore, quindi fornisce gli strumenti per produrre in breve tempo sistemi complessi.
 
 \href{https://github.com/abu-lang/goabu}{GoAbU} è un'implementazione di questo modello di calcolo scritta in linguaggio Go.
 È costruita utilizzando la libreria \href{https://github.com/hashicorp/memberlist}{memberlist} come middleware per la comunicazione in gruppo e la scoperta dei nodi,  \href{https://github.com/hyperjumptech/grule-rule-engine}{Grule} come rule engine, ed il framework \href{https://github.com/hybridgroup/gobot/}{gobot} per renderla utilizzabile in ambito IoT.\\
@@ -319,7 +351,7 @@ Come detto in precedenza, questo tempo non è significativo poiché dipende prin
     \hline
     \multirow{2}{*}{Nodi} & \multicolumn{2}{c |}{ Regole }           \\
     \cline{2-3}
-                          & Interne                        & Esterne \\
+                            & Interne                        & Esterne \\
     \hline\hline
     $10$                  & $1210$                         & $3630$  \\
     \hline
