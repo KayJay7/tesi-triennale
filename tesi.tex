@@ -65,7 +65,6 @@
     Abbiamo analizzato il traffico per $10$, $50$ e $100$ nodi, sotto tre tipi di carico: nessun carico (idle), carico alto ma realistico (medio), carico molto alto (alto). In tutti i casi, con solo 10 nodi il carico è accettabile.\\
     Il traffico è risultato molto alto sia sotto carico medio che alto, in particolare, sotto carico alto, diventava problematico già da 50 dispositivi. Tuttavia, confrontando i risultati con il traffico riportato a livello di libreria da GoAbU, risulta che la compressione svolta dal middleware riesce a rendere il traffico molto minore di quanto potrebbe essere.
 
-    \michele{Quando ti riferici a GoAbU o AbU togli le virgolette, cerca inoltre di mantenere coerente il nome (con la giusta capitalizzazione), magari creati una macro. Per i comandi/programmi, tipo abusim o \aeg, magari mettili in typewriter, senza virgolette}
     % mai buttare via niente ;)
     %  In idle, il numero di dispositivi non sembra influire molto sul traffico della rete, sia il numero di pacchetti che di byte resta molto basso, anzi diminuisce la dimensione media dei pacchetti. Sotto carico medio, il numero di nodi influenza in modo quadratico il carico della rete, inoltre, 50 dispositivi sono sufficienti a generare circa 2 GB di traffico, mentre 100 si avvicinano ai 10 GB, posiamo aspettarci di vedere questo tipo di traffico in applicazioni reali. Sotto carico alto, anche se con 10 nodi il traffico è accettabile (300 MB), è comunque 5 volte più alto del carico medio. Con più nodi invece diventa insostenibile già a 50 nodi, paragonabile al traffico del carico medio con 100 nodi; quando si arriva a 100 nodi supera i 15 GB di traffico ed uno dei benchmark è arrivato fino a 25. \michele{Non andrei così in dettaglio nell'abstract, metterei solo un riassunto di cosa vogliamo testare (senza numeri)} \\
     % , con rapporto di compressione tra il 2,2 ed il 2,6
@@ -420,7 +419,7 @@ Elenchiamo tutte le metriche ottenute, con una breve descrizione
     \item \lstinline{logs_expected packets}: Numero di transazioni riportata nei log
     \item \lstinline{logs_actual packets}: Pacchetti effettivamente inviati dal nodo loggato
     \item \lstinline{logs_bytes ratio}: Rapporto tra bytes effettivamente inviati e quelli riportati nel log
-    \item \lstinline{logs_packets ratio}: Rapporto tra pacchetti effettivamente inviati e transazioni riportate nel log
+    \item \lstinline{logs_packets ratio}: Rapporto tra pacchetti inviati e transazioni riportate nel log
 \end{itemize}
 
 Le metriche riguardanti il tempo sono state raccolte, ma non sono rilevanti, perché il tempo dipende principalmente dal tick, e nel nostro caso anche dalla macchina che esegue il simulatore. Quindi non verranno analizzati.
@@ -436,6 +435,9 @@ Il secondo invece mette in evidenza quanti pacchetti servono per una transazione
 
 Oltre a questo, le metriche totali, quindi \lstinline{total bytes} e \lstinline{total packets}, forniscono una misura complessiva del traffico, quindi la quantità di byte e pacchetti, che attraversa la rete da parte di tutti i nodi.
 Questo è uno dei dati più importanti, perché potrebbe essere il fattore più limitante in una rete reale. Se il data-rate fosse una limitazione, sarebbe sufficiente allungare il tick dei nodi che generano più traffico, ma la quantità totale di dati resta la stessa.
+
+Bisogna notare che i pacchetti sono di livello 2, quindi oltre a quelli causati da GoAbU sono inclusi anche altri protocolli ancillari IP e le richieste ARP, perché il sistema non li separa.
+Per quanto sarebbe interessante avere un dato più preciso, questi pacchetti ``non GoAbU'' non saranno molti se paragonati a quelli di GoAbU. Inoltre, si tratta di un dato più indicativo dello stress che viene messo sulla rete, in particolare sugli switch ed access point.
 
 \newpage
 
@@ -487,7 +489,14 @@ Per i test in idle, a contrario di quanto visto nel grafico precedente, anche se
     \label{fig:lbr}
 \end{figure}
 
-In questo grafico possiamo osservare il lavoro che svolge il middleware per ridurre la quantità di dati inviati nella rete. 
+In questo grafico possiamo osservare se l'utilizzo del middleware memberlist causa overhead o comprime i dati in modo osservabile.
+È calcolato confrontando la quantità byte dati inviati riportata dal sistema, con la somma della dimensione di tutte le transazioni eseguite a dalla libreria. Quindi un valore maggiore di $1$ indica un complessivo overhead, mentre un valore minore di $1$ indica una compressione migliore.
+
+Possiamo osservare dai rapporti con valori da $0.38$ a $0.46$, che la compressione riesce a rendere i dati da inviare meno della metà dei dati di partenza.
+Il rapporto di compressione è tra il $2.2$ ed il $2.6$, che è molto alto.
+
+Il corpo delle transazioni è una serializzazione \lstinline{json} che contiene, tra le altre cose, l'albero sintattico della regola che è stata attivata. Questo oggetto viene poi codificato in \lstinline{base64} prima di essere passato al middleware, similmente a come le configurazioni venivano passate ai nodi, come visto nella descrizione del simulatore~\ref{setting:abusim}.
+La stringa risultante è molto lunga, ma avendo poche informazioni (relativamente alla lunghezza) ci aspettiamo che abbia poca entropia, e che per questo possa essere compressa così tanto, così facilmente.
 
 \paragraph{\lstinline{logs_packets ratio}}
 
@@ -497,6 +506,14 @@ In questo grafico possiamo osservare il lavoro che svolge il middleware per ridu
     \label{fig:lpr}
 \end{figure}
 
+Questa metrica mette in evidenza quanti pacchetti sono \emph{inviati} (non scambiati in totale), approssimativamente, per ogni transazione.
+Se il rapporto fosse minore di $1$ probabilmente saremmo in presenza di un'errore nella raccolta dei dati, a meno che il middleware non faccia ottimizzazione del recapito utilizzando una rete overlay, ma nel nostro caso non è così.
+
+Istintivamente verrebbe da pensare che il numero di pacchetti sia sporcato dal nodi, che causano un aumento dei pacchetti per mantenere il gruppo.
+Però dal grafico osserviamo che il numero di nodi influenza solo marginalmente il numero di pacchetti inviati, anzi nel caso con carico alto, la quantità di pacchetti diminuisca all'aumentare dei nodi.
+
+Possiamo vedere che il numero di pacchetti per transazione è influenzato principalmente dal tipo di carico. Comunque, anche sotto carico alto, sono meno di $4$ pacchetti per transazione.
+
 \paragraph{\lstinline{bytes per packet}}
 
 \begin{figure}[H]
@@ -505,11 +522,19 @@ In questo grafico possiamo osservare il lavoro che svolge il middleware per ridu
     \label{fig:bp}
 \end{figure}
 
-\ref{appendix:grafici}
+In questo grafico è rappresentata la dimensione media dei pacchetti, ottenuta dividendo i byte per il numero di pacchetti inviati da ogni nodo per ogni computazione.
+
+Analizzando il grafico \lstinline{total packets}~\ref{fig:tp} abbiamo notato che il numero di pacchetti inviati in idle sembrava crescere più che linearmente rispetto al numero di nodi; quando invece la quantità di dati in \lstinline{total bytes}~\ref{fig:tb} sembrava quasi lineare.
+Osservando questo grafico, possiamo vedere che la dimensione dei pacchetti diminuisce all'aumentare dei nodi, come ci si aspetta dai due dati precedenti.
+
+Notiamo che come il numero di pacchetti per transizione, anche la dimensione dei pacchetti è influenzata principalmente dal tipo di carico.
+Notiamo anche che nessuno dei carichi fa raggiungere consistentemente la \lstinline{MTU} (che è di $\qty{1500}{\byte}$).
+
+Nonostante fosse così anche nelle altre metriche, in questa risulta molto evidente che all'aumentare dei nodi, i risultati diventano sempre più imprecisi.
+Alcuni nodi ricevono più o meno traffico. Anche se le transazioni sono in broadcast e dovrebbero essere distribuite tra tutti i nodi.
+Probabilmente si tratta di un'effetto del gossiping probabilistico in una rete molto grande.
 
 \subsection{Osservazioni}
-
-Spiego le informazioni ottenute dai grafici, quindi espando un po' di quello che è già nell'abstract \\
 
 \bibliographystyle{plain}
 \bibliography{biblio}
