@@ -6,13 +6,15 @@
 \usepackage{float}
 \usepackage[a-2b,mathxmp]{pdfx}[2018/12/22]
 \usepackage[pdfa]{hyperref}
-\usepackage{indentfirst}
 \usepackage{pdfpages}
 \usepackage{siunitx}
 \usepackage{colorprofiles}
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{multirow}
+\usepackage{tikz}
+
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns,external,shapes.callouts,graphs}
 
 %\sisetup{per-mode=symbol,per-symbol = p}
 
@@ -201,6 +203,34 @@ Per risolvere questo problema bisognerebbe aggiungere una funzionalità per memo
 
 Uno degli strumenti principali utilizzati per l'analisi è il generatore di test \href{https://github.com/KayJay7/abusim-example-generator}{\aeg} (AbUsim Example Generator). Volevamo un modo per poter generare configurazioni che stressassero una caratteristica a piacere di GoAbU. L'utilizzo di questo strumento ha permesso sia di provare agilmente grandi configurazioni, ad esempio quelle da migliaia di regole per dispositivo che hanno permesso di scoprire i lunghi tempi di compilazione (Sottosezione \ref{ricompilazione}); che di apportare rapidamente correzioni alle configurazioni selezionate come test cases, e di poter generare facilmente configurazioni uguali che variassero solo nel numero di nodi.
 
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \graph [clockwise=6,radius=5cm,nodes={circle, draw}] {
+            a0/agent0,
+            a1/agent1,
+            a2/agent2,
+            a3/agent3,
+            a4/agent4,
+            a5/agent5,
+        };
+
+        \graph {
+            (a0) -> [draw=black, edge label=$2$, very thick, near start] (a1),
+            (a0) -> [draw=black, edge label=$2$, very thick, near start] (a2),
+            (a0) -> [draw=black, edge label=$2$, very thick, near start] (a3),
+            (a1) -> [draw=gray, edge label=$1$, very thick, near start] (a2),
+            (a1) -> [draw=gray, edge label=$1$, very thick, near start] (a3),
+            (a1) -> [draw=gray, edge label=$1$, very thick, near start] (a4),
+            (a2) -> [draw=white, edge label=..., very thick, near start] (a3),
+            (a3) -> [draw=white, edge label=..., very thick, near start] (a4),
+            (a4) -> [draw=white, edge label=..., very thick, near start] (a5),
+        };
+    \end{tikzpicture}
+    \caption{Attivazione dei nodi successivi}
+    \label{fig:esterno}
+\end{figure}
+
 \paragraph{Descrizione}\label{aeg:descrizione}
 
 Le configurazioni generate con \aeg seguono tutte una stessa struttura, che permette di avviare una computazione che coinvolgerà tutti i nodi e terminerà sempre, i dettagli della configurazione sono controllati da $6$ parametri (interi maggiori di $1$), indicati con $a$, $b$, $c$, $d$, $e$, ed $f$.
@@ -210,25 +240,25 @@ Tutti gli $a$ nodi di una configurazione sono simili tra loro: anno le stesse va
 Ogni dispositivo ha 3 ``regole di avvio'', una si attiva quando \lstinline{start_all} viene impostato a \lstinline{true}, e non fa altro che impostare la variabile \lstinline{start} a \lstinline{true} su tutti i nodi. Una resetta \lstinline{start_all}. Ed infine quando \lstinline{start} viene impostato a \lstinline{true}, una ``variabile iniziale'' (la variabile \lstinline{ai_0}) delle prime $d\leq b$ catene viene impostata a $f$, e la variabile \lstinline{start} viene resettata.
 Dopodiché, alle prime $c-1$ variabili di ogni catena (quindi da $0$ $c-2$) corrisponde una regola che si attiva quando la sua variabile viene impostata ad un valore maggiore di $0$, e contemporaneamente copierà il valore della variabile in quella successiva nella catena (e.g.: da \lstinline{a1_2} ad \lstinline{a1_3}) e resetterà la sua variabile.
 Quando la $c$-esima variabile dell'$i$-esima catena viene impostata ad un valore $k>0$, non c'è una corrispondente regola ``normale''. Invece ce ne sono una locale che resetta il valore della variabile a $0$, ed una esterna che setterà a $k-1$ il valore della variabile iniziale dell'$i$-esima dei successivi $e$ dispositivi (il dispositivo \lstinline{id} attiva quelli da $((\text{\lstinline{id}}+1)\mod a)$ ad $((\text{\lstinline{id}}+e)\mod a)$). In questo modo la parte di computazione sul dispositivo corrente è completata, e continua sui dispositivi successivi.
-    Dopo $f$ livelli, il valore che viene passato sulle catene è arrivato ad $1$, e ai prossimi dispositivi viene passato il valore $0$, che le regole del $f+1$-esimo livello di dispositivi ignoreranno.
+Dopo $f$ livelli, il valore che viene passato sulle catene è arrivato ad $1$, e ai prossimi dispositivi viene passato il valore $0$, che le regole del $f+1$-esimo livello di dispositivi ignoreranno.
 
-    \paragraph{Parametri}
+\paragraph{Parametri}
 
-    Quindi il comportamento della configurazione è deciso dai (già elencati nella Descrizione \ref{aeg:descrizione}) parametri:
-    \begin{itemize}
-        \item $a$ (alt.: devices-number) Il numero di nodi nella configurazione
-        \item $b$ (alt.: chains-number) Il numero di catene in ogni nodo (non tutte saranno attivate automaticamente)
-        \item $c$ (alt.: chain-length) La lunghezza di ogni catena
-        \item $d$ (alt.: chain-width) Il numero di catene attivate automaticamente con \lstinline{start=true}
-        \item $e$ (alt.: devices-width) Il numero di dispositivi attivati al termine di una catena
-        \item $f$ (alt.: devices-length) Il numero di livelli attraversati prima di arrivare a $0$
-    \end{itemize}
+Quindi il comportamento della configurazione è deciso dai (già elencati nella Descrizione \ref{aeg:descrizione}) parametri:
+\begin{itemize}
+    \item $a$ (alt.: devices-number) Il numero di nodi nella configurazione
+    \item $b$ (alt.: chains-number) Il numero di catene in ogni nodo (non tutte saranno attivate automaticamente)
+    \item $c$ (alt.: chain-length) La lunghezza di ogni catena
+    \item $d$ (alt.: chain-width) Il numero di catene attivate automaticamente con \lstinline{start=true}
+    \item $e$ (alt.: devices-width) Il numero di dispositivi attivati al termine di una catena
+    \item $f$ (alt.: devices-length) Il numero di livelli attraversati prima di arrivare a $0$
+\end{itemize}
 
-    Oltre a questi 6 parametri di configurazione, se ne possono impostare anche alcuni riguardanti il setting dell'esperimento, come l'immagine Docker da usare per i nodi ed il coordinatore, oppure il tick.
-    Per questa tesi sono rilevanti solo i 6 parametri di configurazione, in quanto il setting sperimentale (tempo di tick, immagini Docker, etc.) è rimasto lo stesso in ogni test.
+Oltre a questi 6 parametri di configurazione, se ne possono impostare anche alcuni riguardanti il setting dell'esperimento, come l'immagine Docker da usare per i nodi ed il coordinatore, oppure il tick.
+Per questa tesi sono rilevanti solo i 6 parametri di configurazione, in quanto il setting sperimentale (tempo di tick, immagini Docker, etc.) è rimasto lo stesso in ogni test.
 
-    % Non sono sicuro che basti come dimostrazione, spero di sì perché non è stata facile da scrivere
 \subsection{Terminazione forte}
+% Non sono sicuro che basti come dimostrazione, spero di sì perché non è stata facile da scrivere
 
 Per semplicità affronteremo la terminazione in due parti. La prima parte riguarda solo la parte ``interna'' della computazione, quella che si occupa di trasportare i valori nelle catene di variabili, ignorando i valori che potrebbero essere aggiunti da una regola esterna avviata da un altro nodo\label{terminazione:premesse:interna}.
 E la seconda riguardante solo i dispositivi che vengono attivati dalle regole esterne, assumendo che la parte interna termini correttamente, attivando i nodi successivi\label{terminazione:premesse:esterna}.
