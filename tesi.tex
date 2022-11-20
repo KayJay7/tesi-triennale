@@ -228,139 +228,139 @@ Quando la $c$-esima variabile dell'$i$-esima catena viene impostata ad un valore
     Per questa tesi sono rilevanti solo i 6 parametri di configurazione, in quanto il setting sperimentale (tempo di tick, immagini Docker, etc.) è rimasto lo stesso in ogni test.
 
     % Non sono sicuro che basti come dimostrazione, spero di sì perché non è stata facile da scrivere
-    \subsection{Terminazione forte}
+\subsection{Terminazione forte}
 
-    Per semplicità affronteremo la terminazione in due parti. La prima parte riguarda solo la parte ``interna'' della computazione, quella che si occupa di trasportare i valori nelle catene di variabili, ignorando i valori che potrebbero essere aggiunti da una regola esterna avviata da un altro nodo\label{terminazione:premesse:interna}.
-    E la seconda riguardante solo i dispositivi che vengono attivati dalle regole esterne, assumendo che la parte interna termini correttamente, attivando i nodi successivi\label{terminazione:premesse:esterna}.
-    Sarebbe possibile fornire una dimostrazione unica che tratti direttamente entrambe le parti della computazione, ma è molto più difficile.
+Per semplicità affronteremo la terminazione in due parti. La prima parte riguarda solo la parte ``interna'' della computazione, quella che si occupa di trasportare i valori nelle catene di variabili, ignorando i valori che potrebbero essere aggiunti da una regola esterna avviata da un altro nodo\label{terminazione:premesse:interna}.
+E la seconda riguardante solo i dispositivi che vengono attivati dalle regole esterne, assumendo che la parte interna termini correttamente, attivando i nodi successivi\label{terminazione:premesse:esterna}.
+Sarebbe possibile fornire una dimostrazione unica che tratti direttamente entrambe le parti della computazione, ma è molto più difficile.
 
-    \paragraph{Stabilizzazione interna}\label{terminazione:interna}
+\paragraph{Stabilizzazione interna}\label{terminazione:interna}
 
-    La terminazione sarà dimostrata prima in maniera meno formale, considerando un sistema in cui la regola da eseguire viene scelta dando la precedenza quelle che scrivono le variabili più vicine alla fine di una catena, e dando la precedenza alle catene con indice più alto. Questo permette di fissare l'ordine di esecuzione delle regole in uno su cui è più comodo ragionare. E infine sarà accennato perché un ordine così stringente non è necessario.
-    Inoltre assumeremo, come annunciato ad inizio sezione~\ref{terminazione:premesse:interna}, che nessun nodo esterno imposti il valore di alcuna variabile, tuttavia in seguito spiegheremo perché non sia un problema nel paragrafo sulla convergenza totale~\ref{terminazione:totale}.
+La terminazione sarà dimostrata prima in maniera meno formale, considerando un sistema in cui la regola da eseguire viene scelta dando la precedenza quelle che scrivono le variabili più vicine alla fine di una catena, e dando la precedenza alle catene con indice più alto. Questo permette di fissare l'ordine di esecuzione delle regole in uno su cui è più comodo ragionare. E infine sarà accennato perché un ordine così stringente non è necessario.
+Inoltre assumeremo, come annunciato ad inizio sezione~\ref{terminazione:premesse:interna}, che nessun nodo esterno imposti il valore di alcuna variabile, tuttavia in seguito spiegheremo perché non sia un problema nel paragrafo sulla convergenza totale~\ref{terminazione:totale}.
 
-    Sia $(a_{0,0},...,a_{0,c-1},a_{1,0},...,a_{1,c-1},...,a_{b-1,c-1})\in \mathbb{N}^{bc}$ il vettore che rappresenta lo stato interno di un generico nodo della configurazione (ogni variabile $a_{i,j}$ rappresenta la variabile \lstinline{ai_j}~\ref{aeg:descrizione}). È facile verificare che ogni regola normale viene attivata da uno stato del tipo $(...,a_{i,j},a_{i,j+1},...)$ e causa uno stato del tipo $(...,0,a_{i,j},...)$ (notare che l'indice della catena è sempre $i$) e causerà l'inserimento di una nuova regola nella coda degli eventi.
-    Ricordiamo che con l'ordinamento stabilito ad inizio paragrafo, la regola attivata dallo stato $(...,a_{i,j},a_{i,j+1},...)$ verrà eseguita solo quando $a_{i,j+1}=0$, altrimenti ci sarebbe una regola con precedenza più alta.
-    Una regola finale, invece è causata da uno stato del tipo $(...,a_{i,j},a_{i+1,0},...)$ e ne causa uno del tipo $(...,0,a_{i+1,0},...)$ senza causare nessun inserimento.
+Sia $(a_{0,0},...,a_{0,c-1},a_{1,0},...,a_{1,c-1},...,a_{b-1,c-1})\in \mathbb{N}^{bc}$ il vettore che rappresenta lo stato interno di un generico nodo della configurazione (ogni variabile $a_{i,j}$ rappresenta la variabile \lstinline{ai_j}~\ref{aeg:descrizione}). È facile verificare che ogni regola normale viene attivata da uno stato del tipo $(...,a_{i,j},a_{i,j+1},...)$ e causa uno stato del tipo $(...,0,a_{i,j},...)$ (notare che l'indice della catena è sempre $i$) e causerà l'inserimento di una nuova regola nella coda degli eventi.
+Ricordiamo che con l'ordinamento stabilito ad inizio paragrafo, la regola attivata dallo stato $(...,a_{i,j},a_{i,j+1},...)$ verrà eseguita solo quando $a_{i,j+1}=0$, altrimenti ci sarebbe una regola con precedenza più alta.
+Una regola finale, invece è causata da uno stato del tipo $(...,a_{i,j},a_{i+1,0},...)$ e ne causa uno del tipo $(...,0,a_{i+1,0},...)$ senza causare nessun inserimento.
 
-    Sapendo che: la computazione termina se e solo se il vettore che rappresenta lo stato interno è $(0,...,0)$, altrimenti ci sarebbero ancora regole in coda, attivate quando sono state impostate le variabili diverse da $0$; e che ogni regola causa uno stato di ordine lessicografico minore rispetto a quello che lo ha attivato; possiamo concludere che la computazione deve terminare per forza altrimenti potrebbe scendere di ordine lessicografico all'infinito.
-    Ed al termine di questa computazione, saranno state eseguite le regole esterne per attivare i nodi successivi, perché le uniche regole che non aggiungono nuove regole sono attivate dallo stesso stato che causa l'attivazione delle regole esterne.
+Sapendo che: la computazione termina se e solo se il vettore che rappresenta lo stato interno è $(0,...,0)$, altrimenti ci sarebbero ancora regole in coda, attivate quando sono state impostate le variabili diverse da $0$; e che ogni regola causa uno stato di ordine lessicografico minore rispetto a quello che lo ha attivato; possiamo concludere che la computazione deve terminare per forza altrimenti potrebbe scendere di ordine lessicografico all'infinito.
+Ed al termine di questa computazione, saranno state eseguite le regole esterne per attivare i nodi successivi, perché le uniche regole che non aggiungono nuove regole sono attivate dallo stesso stato che causa l'attivazione delle regole esterne.
 
-    AbU, per sua natura, non fa garanzie sull'ordine di esecuzione delle regole causate dallo stesso stato, quindi per completare la dimostrazione formale dobbiamo mostrare che funzionerebbe anche senza questo ordinamento.
-    Possiamo vedere che non importa perché: esiste una corrispondenza diretta tra le variabili e le regole, e non ci sono ``interferenze'' tra le regole causate dallo stesso stato (non cercano di leggere la stessa variabile o di scrivere la stessa), ed è sufficiente entrare una volta in uno stato ed uscirne subito per attivare una regola.
-    Quindi l'ordine non importa, e quindi la computazione interna termina sempre.\label{terminazione:interna:ordinamento}
+AbU, per sua natura, non fa garanzie sull'ordine di esecuzione delle regole causate dallo stesso stato, quindi per completare la dimostrazione formale dobbiamo mostrare che funzionerebbe anche senza questo ordinamento.
+Possiamo vedere che non importa perché: esiste una corrispondenza diretta tra le variabili e le regole, e non ci sono ``interferenze'' tra le regole causate dallo stesso stato (non cercano di leggere la stessa variabile o di scrivere la stessa), ed è sufficiente entrare una volta in uno stato ed uscirne subito per attivare una regola.
+Quindi l'ordine non importa, e quindi la computazione interna termina sempre.\label{terminazione:interna:ordinamento}
 
-    \paragraph{Stabilizzazione esterna}
+\paragraph{Stabilizzazione esterna}
 
-    Come annunciato all'inizio della sezione~\ref{terminazione:premesse:esterna}, affronteremo la stabilizzazione esterna considerando corretta la parte interna della computazione. Ovvero assumendo che nodo che viene ``attivato'' da un valore $k$, eventualmente attiverà $e$ nodi con un valore $k-1$. Questo segue dalla dimostrazione precedente~\ref{terminazione:interna}.
+Come annunciato all'inizio della sezione~\ref{terminazione:premesse:esterna}, affronteremo la stabilizzazione esterna considerando corretta la parte interna della computazione. Ovvero assumendo che nodo che viene ``attivato'' da un valore $k$, eventualmente attiverà $e$ nodi con un valore $k-1$. Questo segue dalla dimostrazione precedente~\ref{terminazione:interna}.
 
-    Consideriamo l'attivazione di un nodo come il passaggio di un token, ogni token ha un'``intensità'' $k$, ovvero il numero di livelli che può attraversare. Quando un nodo elabora un token, questo viene spezzato in $e$ token di intensità $k-1$, e quando un token ha intensità $0$, il nodo che lo riceve lo scarta.
-    Nelle nostre computazioni, l'intensità del token corrisponde al valore $k$ con cui il nodo viene attivato, ovvero il valore che la regola finale esterna inserisce all'inizio della catena di variabili dei nodi successivi. Quando viene impostata \lstinline{start = true} su di un nodo, questo genera $b$ token di intensità $f$. Quando viene impostata \lstinline{start_all = true} su un qualsiasi nodo, tutti gli $a$ nodi generano $b$ token ciascuno di intensità $f$.
+Consideriamo l'attivazione di un nodo come il passaggio di un token, ogni token ha un'``intensità'' $k$, ovvero il numero di livelli che può attraversare. Quando un nodo elabora un token, questo viene spezzato in $e$ token di intensità $k-1$, e quando un token ha intensità $0$, il nodo che lo riceve lo scarta.
+Nelle nostre computazioni, l'intensità del token corrisponde al valore $k$ con cui il nodo viene attivato, ovvero il valore che la regola finale esterna inserisce all'inizio della catena di variabili dei nodi successivi. Quando viene impostata \lstinline{start = true} su di un nodo, questo genera $b$ token di intensità $f$. Quando viene impostata \lstinline{start_all = true} su un qualsiasi nodo, tutti gli $a$ nodi generano $b$ token ciascuno di intensità $f$.
 
-    Sia $(t_f,t_{f-1},...,t_1)\in\mathbb{N}^f$ il vettore dei token, dove ogni variabile $t_k$ rappresenta la quantità di token di intensità $k$ in circolazione sulla rete. Notiamo che i token di intensità $0$ non vengono contati, perché sono scartati subito.
-    Possiamo osservare che ogni volta che un token di intensità $k$ viene consumato, il vettore passa da $(...,t_k,t_{k-1},...)$ a $(...,t_k-1,t_{k-1}+e,...)$. Quindi ad ogni consumo, il nuovo vettore ha ordine lessicografico più basso di quello iniziale.
+Sia $(t_f,t_{f-1},...,t_1)\in\mathbb{N}^f$ il vettore dei token, dove ogni variabile $t_k$ rappresenta la quantità di token di intensità $k$ in circolazione sulla rete. Notiamo che i token di intensità $0$ non vengono contati, perché sono scartati subito.
+Possiamo osservare che ogni volta che un token di intensità $k$ viene consumato, il vettore passa da $(...,t_k,t_{k-1},...)$ a $(...,t_k-1,t_{k-1}+e,...)$. Quindi ad ogni consumo, il nuovo vettore ha ordine lessicografico più basso di quello iniziale.
 
-    Sapendo che la computazione esterna si ferma se e solo se non ci sono più token in circolazione, quindi il vettore ha valore $(0,...,0)$, e che ad ogni avanzamento della computazione l'ordine lessicografico scende, sappiamo che la computazione deve terminare per forza.
+Sapendo che la computazione esterna si ferma se e solo se non ci sono più token in circolazione, quindi il vettore ha valore $(0,...,0)$, e che ad ogni avanzamento della computazione l'ordine lessicografico scende, sappiamo che la computazione deve terminare per forza.
 
-    Ammettendo che più token vengano consumati contemporaneamente, il risultato non cambia, perché si passerebbe comunque ad uno vettore più in basso nell'ordine lessicografico.
+Ammettendo che più token vengano consumati contemporaneamente, il risultato non cambia, perché si passerebbe comunque ad uno vettore più in basso nell'ordine lessicografico.
 
-    \paragraph{Stabilizzazione totale}\label{terminazione:totale}
+\paragraph{Stabilizzazione totale}\label{terminazione:totale}
 
-    Per mettere insieme i due risultati manca solo dimostrare che ammettere attivazioni esterne non impedisce la stabilizzazione interna. Riuscendo a dimostrare questo, avremmo che internamente la computazione termina in ogni caso, ed esternamente termina se quella interna termina.
+Per mettere insieme i due risultati manca solo dimostrare che ammettere attivazioni esterne non impedisce la stabilizzazione interna. Riuscendo a dimostrare questo, avremmo che internamente la computazione termina in ogni caso, ed esternamente termina se quella interna termina.
 
-    Dimostrare questa non interferenza è facile utilizzando lo stesso ordine rigido che abbiamo usato per rendere più breve la dimostrazione della stabilizzazione interna. Con quell'ordine rigido, le regole esterne che attiverebbero il nodo catena non verrebbero mai selezionate per prime per l'esecuzione, perché scrivono sulle variabili più lontane dalla fine della catena.
-    In questo modo, il nodo comincerebbe ad eseguire le regole di attivazione solo dopo aver terminato la computazione interna già in corso. Quindi l'attivazione non interferirebbe con la stabilizzazione.
+Dimostrare questa non interferenza è facile utilizzando lo stesso ordine rigido che abbiamo usato per rendere più breve la dimostrazione della stabilizzazione interna. Con quell'ordine rigido, le regole esterne che attiverebbero il nodo catena non verrebbero mai selezionate per prime per l'esecuzione, perché scrivono sulle variabili più lontane dalla fine della catena.
+In questo modo, il nodo comincerebbe ad eseguire le regole di attivazione solo dopo aver terminato la computazione interna già in corso. Quindi l'attivazione non interferirebbe con la stabilizzazione.
 
-    Ovviamente AbU non prevede questo ordinamento, ma come spiegato nel paragrafo sulla stabilizzazione interna~\ref{terminazione:interna:ordinamento}, imporre questo ordinamento non influisce sul comportamento della nostra computazione.
+Ovviamente AbU non prevede questo ordinamento, ma come spiegato nel paragrafo sulla stabilizzazione interna~\ref{terminazione:interna:ordinamento}, imporre questo ordinamento non influisce sul comportamento della nostra computazione.
 
-    \subsection{Scelta delle configurazioni}
+\subsection{Scelta delle configurazioni}
 
-    Per l'analisi di GoAbU sono stati scelti tre casi di test di base, e poi ogni caso è stato testato con $10$, $50$ e $100$ nodi, ciascuno dei tre vuole mettere in evidenza diversi aspetti di AbU.
+Per l'analisi di GoAbU sono stati scelti tre casi di test di base, e poi ogni caso è stato testato con $10$, $50$ e $100$ nodi, ciascuno dei tre vuole mettere in evidenza diversi aspetti di AbU.
 
-    In tutti i casi, l'unico dato che ci importava raccogliere erano le informazioni sul traffico di rete. Nella prossima sezione ~\ref{raccolta:quali} spiegheremo perché questa scelta.
+In tutti i casi, l'unico dato che ci importava raccogliere erano le informazioni sul traffico di rete. Nella prossima sezione ~\ref{raccolta:quali} spiegheremo perché questa scelta.
 
-    \paragraph{Idle}
+\paragraph{Idle}
 
-    Il primo caso non prevede nessuna regola, il sistema è composto solo da nodi ``vuoti'' ed i test in questo caso (a contrario degli altri due) sono stati condotti senza avviare mai la computazione.
-    L'obbiettivo è quello di osservare il comportamento dell'implementazione quando non succede nulla, verificare la presenza di overhead o di un ``rumore di fondo'' da poter rimuovere dai test successivi.
+Il primo caso non prevede nessuna regola, il sistema è composto solo da nodi ``vuoti'' ed i test in questo caso (a contrario degli altri due) sono stati condotti senza avviare mai la computazione.
+L'obbiettivo è quello di osservare il comportamento dell'implementazione quando non succede nulla, verificare la presenza di overhead o di un ``rumore di fondo'' da poter rimuovere dai test successivi.
 
-    In particolare ci interessava il traffico causato dal middleware memberlist per mantenere la comunicazione di gruppo attiva anche senza nessuno scambio di messaggi.
+In particolare ci interessava il traffico causato dal middleware memberlist per mantenere la comunicazione di gruppo attiva anche senza nessuno scambio di messaggi.
 
-    Questo test serve per scoprire se un sistema con tanti nodi sia impraticabile a prescindere dal tipo di lavoro che svolgono. Se mantenere i nodi connessi causa già troppo traffico per poter utilizzare GoAbU in una rete vera, bisognerebbe cambiare completamente l'implementazione.
+Questo test serve per scoprire se un sistema con tanti nodi sia impraticabile a prescindere dal tipo di lavoro che svolgono. Se mantenere i nodi connessi causa già troppo traffico per poter utilizzare GoAbU in una rete vera, bisognerebbe cambiare completamente l'implementazione.
 
-    \begin{itemize}
-        \item $a=10|50|100$
-        \item $b=1$
-        \item $c=1$
-        \item $d=1$
-        \item $e=1$
-        \item $f=1$
-    \end{itemize}
+\begin{itemize}
+    \item $a=10|50|100$
+    \item $b=1$
+    \item $c=1$
+    \item $d=1$
+    \item $e=1$
+    \item $f=1$
+\end{itemize}
 
-    \paragraph{Medio}
+\paragraph{Medio}
 
-    Progettando questo test l'obbiettivo era quello di ricreare un test che anche se esigente, fosse in qualche modo realistico, un test in cui ogni nodo ha una certa quantità di regole, ed alcune (non tutte) di queste si attivano. Ed una frazione di queste causano degli effetti su un solo altro nodo (non troppi).
+Progettando questo test l'obbiettivo era quello di ricreare un test che anche se esigente, fosse in qualche modo realistico, un test in cui ogni nodo ha una certa quantità di regole, ed alcune (non tutte) di queste si attivano. Ed una frazione di queste causano degli effetti su un solo altro nodo (non troppi).
 
-    L'obbiettivo era non essere troppo pesante sulla rete, ma bilanciare il carico tra rete e nodo interno. In un certo tempo, ogni nodo avrà molte più regole locali di cui occuparsi, e dovrebbe utilizzare di meno la rete.
+L'obbiettivo era non essere troppo pesante sulla rete, ma bilanciare il carico tra rete e nodo interno. In un certo tempo, ogni nodo avrà molte più regole locali di cui occuparsi, e dovrebbe utilizzare di meno la rete.
 
-    Questo test, come anche il successivo, è stato progettato in modo che richieda $\qty{500}{\second}$ per terminare la computazione. Ed effettivamente con pochi dispositivi è così, ma in realtà l'overhead dell'esecuzione del rule engine, e soprattutto quello della rete, fanno sì che in realtà richieda più tempo.
-    Il tempo reale e dipendente dal setting sperimentale, quindi dalla macchina che esegue il simulatore, e non direttamente da GoAbU. Tuttavia, il fatto che con $100$ dispositivi la macchina sia in difficoltà, significa che potrebbero esserlo anche i dispositivi di rete.
+Questo test, come anche il successivo, è stato progettato in modo che richieda $\qty{500}{\second}$ per terminare la computazione. Ed effettivamente con pochi dispositivi è così, ma in realtà l'overhead dell'esecuzione del rule engine, e soprattutto quello della rete, fanno sì che in realtà richieda più tempo.
+Il tempo reale e dipendente dal setting sperimentale, quindi dalla macchina che esegue il simulatore, e non direttamente da GoAbU. Tuttavia, il fatto che con $100$ dispositivi la macchina sia in difficoltà, significa che potrebbero esserlo anche i dispositivi di rete.
 
-    In ogni caso, abbiamo osservato che il tempo di esecuzione è molto consistente tra le ripetizioni della computazione. Quindi dopo aver provato una volta ad eseguire una computazione con un certo numero di nodi, possiamo assumere che la prossima impieghi un tempo molto simile.
+In ogni caso, abbiamo osservato che il tempo di esecuzione è molto consistente tra le ripetizioni della computazione. Quindi dopo aver provato una volta ad eseguire una computazione con un certo numero di nodi, possiamo assumere che la prossima impieghi un tempo molto simile.
 
-    \begin{itemize}
-        \item $a=10|50|100$
-        \item $b=10$
-        \item $c=5$
-        \item $d=5$
-        \item $e=1$
-        \item $f=20$
-    \end{itemize}
+\begin{itemize}
+    \item $a=10|50|100$
+    \item $b=10$
+    \item $c=5$
+    \item $d=5$
+    \item $e=1$
+    \item $f=20$
+\end{itemize}
 
-    \begin{tabular}{| c | c | c |}
-        \hline
-        \multirow{2}{*}{Nodi} & \multicolumn{2}{c |}{ Regole }           \\
-        \cline{2-3}
-                              & Interne                        & Esterne \\
-        \hline\hline
-        $10$                  & $5000$                         & $1000$  \\
-        \hline
-        $50$                  & $25000$                        & $5000$  \\
-        \hline
-        $100$                 & $50000$                        & $10000$ \\
-        \hline
-    \end{tabular}
+\begin{tabular}{| c | c | c |}
+    \hline
+    \multirow{2}{*}{Nodi} & \multicolumn{2}{c |}{ Regole }           \\
+    \cline{2-3}
+                            & Interne                        & Esterne \\
+    \hline\hline
+    $10$                  & $5000$                         & $1000$  \\
+    \hline
+    $50$                  & $25000$                        & $5000$  \\
+    \hline
+    $100$                 & $50000$                        & $10000$ \\
+    \hline
+\end{tabular}\label{tab:medio}
 
-    \paragraph{Alto}
+\paragraph{Alto}
 
-    L'ultimo test è stato progettato con l'obbiettivo esplicito di mettere in difficoltà la rete quanto più possibile in un tempo limitato. Come si vede dalla configurazione, sono presenti molte meno regole interne rispetto a quelle esterne.
-    Invece ogni dispositivo attiva direttamente altri $3$ dispositivi e si prosegue in $5$ livelli di profondità. In questo modo il numero di messaggi inviati nella rete cresce in modo quasi esponenzialmente nel tempo.
+L'ultimo test è stato progettato con l'obbiettivo esplicito di mettere in difficoltà la rete quanto più possibile in un tempo limitato. Come si vede dalla configurazione, sono presenti molte meno regole interne rispetto a quelle esterne.
+Invece ogni dispositivo attiva direttamente altri $3$ dispositivi e si prosegue in $5$ livelli di profondità. In questo modo il numero di messaggi inviati nella rete cresce in modo quasi esponenzialmente nel tempo.
 
-    Questo test è stato costruito in cercando una combinazione di $e$ ed $f$ tali che con pochi dispositivi la computazione termini in $\qty{500}{\second}$. Però il carico è molto alto e quando si arriva a 100 dispositivi, la computazione viene completata in $\qty{2000}{\second}$.
-    Come detto in precedenza, questo tempo non è significativo poiché dipende principalmente dalla macchina su cui viene eseguito il simulatore. Però una differenza del genere suggerisce che anche il traffico di rete sarà particolarmente alto.
+Questo test è stato costruito in cercando una combinazione di $e$ ed $f$ tali che con pochi dispositivi la computazione termini in $\qty{500}{\second}$. Però il carico è molto alto e quando si arriva a 100 dispositivi, la computazione viene completata in $\qty{2000}{\second}$.
+Come detto in precedenza, questo tempo non è significativo poiché dipende principalmente dalla macchina su cui viene eseguito il simulatore. Però una differenza del genere suggerisce che anche il traffico di rete sarà particolarmente alto.
 
-    \begin{itemize}
-        \item $a=10|50|100$
-        \item $b=1$
-        \item $c=1$
-        \item $d=1$
-        \item $e=3$
-        \item $f=5$
-    \end{itemize}
+\begin{itemize}
+    \item $a=10|50|100$
+    \item $b=1$
+    \item $c=1$
+    \item $d=1$
+    \item $e=3$
+    \item $f=5$
+\end{itemize}
 
-    \begin{tabular}{| c | c | c |}
-        \hline
-        \multirow{2}{*}{Nodi} & \multicolumn{2}{c |}{ Regole }           \\
-        \cline{2-3}
-                              & Interne                        & Esterne \\
-        \hline\hline
-        $10$                  & $1210$                         & $3630$  \\
-        \hline
-        $50$                  & $6050$                         & $18150$ \\
-        \hline
-        $100$                 & $12100$                        & $36300$ \\
-        \hline
-    \end{tabular}
+\begin{tabular}{| c | c | c |}
+    \hline
+    \multirow{2}{*}{Nodi} & \multicolumn{2}{c |}{ Regole }           \\
+    \cline{2-3}
+                            & Interne                        & Esterne \\
+    \hline\hline
+    $10$                  & $1210$                         & $3630$  \\
+    \hline
+    $50$                  & $6050$                         & $18150$ \\
+    \hline
+    $100$                 & $12100$                        & $36300$ \\
+    \hline
+\end{tabular}\label{tab:alto}
 
 \section{Raccolta dati}
 
@@ -534,9 +534,25 @@ Nonostante fosse così anche nelle altre metriche, in questa risulta molto evide
 Alcuni nodi ricevono più o meno traffico. Anche se le transazioni sono in broadcast e dovrebbero essere distribuite tra tutti i nodi.
 Probabilmente si tratta di un'effetto del gossiping probabilistico in una rete molto grande.
 
-\subsection{Osservazioni}
+\subsection{Conclusioni e proposte}
 
+Dopo aver analizzato questi risultati, possiamo concludere che GoAbU non riesce a scalare come sperato. Genera un traffico troppo alto~\ref{fig:tb}~\ref{fig:tp} per eseguire troppe poche regole esterne~\ref{tab:medio}~\ref{tab:alto}.
 
+Il middleware riesce a ridurre marginalmente il traffico grazie ad un qualche meccanismo di compressione~\ref{fig:lbr}, questo permette a GoAbU di scalare leggermente di più. Comunque, una codifica più efficiente dei messaggi permetterebbe di ridurre l'affidamento che facciamo sulla compressione. Ma per permettere veramente a GoAbU di scalare su reti più grandi, la soluzione non è ridurre la dimensione dei messaggi.
+
+Possiamo imputare il problema al modello di broadcast implementato, in cui ogni nodo contatta ogni altro nodo in unicast, seguendo il modello ``reliable/atomic broadcast''~\cite{joseph1989reliable}.
+Potremmo migliorare le prestazioni utilizzando anche a più basso livello la comunicazione broadcast, invece che simularlo in una rete unicast. Però questo richiede di modificare la semantica del linguaggio per quanto riguarda la decisione della consegna delle regole.
+Inoltre, in questo modo, non solo tutti i segmenti della rete (inclusi quelli che non usano ) riceverebbero i messaggi di GoAbU, ma bisognerebbe gestire in modo speciale i nodi che non si trovano nella stessa LAN.
+
+Sfruttando le assunzioni già esistenti sulla rete, in particolare completezza della rete e fair loss, si potrebbe scegliere di limitare ad numero di nodi $k$ a cui viene inoltrato il messaggio di broadcast e fare maggiore affidamento sul gossiping.
+Ovviamente è necessario scegliere opportunamente questo $k$ in modo che il broadcast resti affidabile, e magari si può rendere configurabile per adattarsi alle necessità di sistemi specifici.\\
+In questo modo si eviterebbe di modificare troppo il modello, pur riducendo anche di molto la message complexity del sistema.
+
+Si può ottenere un risultato migliore utilizzando algoritmi di broadcast efficiente, basati magari sull'utilizzo di una rete overlay non completa e sull'inoltro dei messaggi.
+Un metodo del genere può ridurre di molto il traffico, ma ad un costo, sia di latenza, che soprattutto computazionale. E ricordiamo he per l'utilizzo in campo IoT è necessario trovare un algoritmo che possa essere utilizzato anche da dispositivi molto piccoli.
+
+Ad ogni modo, il paradigma del calcolo AbU ha delle grandi potenzialità, grazie alla sua semplicità di programmazione. Ed è particolarmente adatto alla coordinazione di grandi sistemi, fornendo un modo semplice di diffondere informazioni.
+Anche se GoAbU non è ancora adatto a scalare, è solo la prima implementazione, e ci sono ancora molte opzioni per migliorare.
 
 \bibliographystyle{plain}
 \bibliography{biblio}
