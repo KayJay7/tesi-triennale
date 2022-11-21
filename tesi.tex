@@ -70,9 +70,6 @@
     Abbiamo analizzato il traffico per $10$, $50$ e $100$ nodi, sotto tre tipi di carico: nessun carico (idle), carico alto ma realistico (medio), carico molto alto (alto). In tutti i casi, con solo 10 nodi il carico è accettabile.\\
     Il traffico è risultato molto alto sia sotto carico medio che alto, in particolare, sotto carico alto, diventava problematico già da 50 dispositivi. Tuttavia, confrontando i risultati con il traffico riportato a livello di libreria da GoAbU, risulta che la compressione svolta dal middleware riesce a rendere il traffico molto minore di quanto potrebbe essere.
 
-    % mai buttare via niente ;)
-    %  In idle, il numero di dispositivi non sembra influire molto sul traffico della rete, sia il numero di pacchetti che di byte resta molto basso, anzi diminuisce la dimensione media dei pacchetti. Sotto carico medio, il numero di nodi influenza in modo quadratico il carico della rete, inoltre, 50 dispositivi sono sufficienti a generare circa 2 GB di traffico, mentre 100 si avvicinano ai 10 GB, posiamo aspettarci di vedere questo tipo di traffico in applicazioni reali. Sotto carico alto, anche se con 10 nodi il traffico è accettabile (300 MB), è comunque 5 volte più alto del carico medio. Con più nodi invece diventa insostenibile già a 50 nodi, paragonabile al traffico del carico medio con 100 nodi; quando si arriva a 100 nodi supera i 15 GB di traffico ed uno dei benchmark è arrivato fino a 25. \michele{Non andrei così in dettaglio nell'abstract, metterei solo un riassunto di cosa vogliamo testare (senza numeri)} \\
-    % , con rapporto di compressione tra il 2,2 ed il 2,6
 \end{abstract}
 
 \newpage
@@ -661,9 +658,9 @@ Probabilmente si tratta di un'effetto del gossiping probabilistico in una rete m
 
 \subsection{Conclusioni e proposte di miglioramento}
 
-Dopo aver analizzato questi risultati, possiamo concludere che GoAbU non riesce a scalare come sperato. Genera un traffico troppo alto~\ref{fig:tb}~\ref{fig:tp} per eseguire troppe poche regole esterne~\ref{tab:medio}~\ref{tab:alto}. \michele{Non sono così sicuro, qui servirebbe calcolare quanti byte per regola esterna vengono trasmessi, secondo me non sono coì alti}
+Dopo aver analizzato questi risultati, possiamo concludere che GoAbU non riesce a scalare come sperato. La libreria riesce a mantenere un costo per regola non troppo alto quando si arriva a grandi quantità di regole esterne.Ma il traffico complessivo rimane troppo alto (vedi Figure~\ref{fig:tb} e Figure~\ref{fig:tp}).
 
-Il middleware riesce a ridurre marginalmente il traffico grazie ad un qualche meccanismo di compressione~\ref{fig:lbr}, questo permette a GoAbU di scalare leggermente di più. Comunque, una codifica più efficiente dei messaggi permetterebbe di ridurre l'affidamento che facciamo sulla compressione. Ma per permettere veramente a GoAbU di scalare su reti più grandi, la soluzione non è ridurre la dimensione dei messaggi.
+Il middleware riesce anche a ridurre marginalmente il traffico grazie ad un qualche meccanismo di compressione (vedi Figure~\ref{fig:lbr}), questo permette a GoAbU di scalare leggermente di più. Comunque, una codifica più efficiente dei messaggi permetterebbe di ridurre l'affidamento che facciamo sulla compressione. Ma per permettere veramente a GoAbU di scalare su reti più grandi, la soluzione non è ridurre la dimensione dei messaggi.
 
 Possiamo imputare il problema al modello di broadcast implementato, in cui ogni nodo contatta ogni altro nodo in unicast, seguendo il modello ``reliable/atomic broadcast''~\cite{joseph1989reliable}.
 Potremmo migliorare le prestazioni utilizzando anche a più basso livello la comunicazione broadcast, invece che simularlo in una rete unicast. Però questo richiede di modificare la semantica del linguaggio per quanto riguarda la decisione della consegna delle regole.
