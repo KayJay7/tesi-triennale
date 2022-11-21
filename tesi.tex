@@ -14,7 +14,7 @@
 \usepackage{multirow}
 \usepackage{tikz}
 
-\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns,external,shapes.callouts,graphs}
+\usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns,external,shapes.callouts,graphs,matrix}
 
 %\sisetup{per-mode=symbol,per-symbol = p}
 
@@ -197,11 +197,73 @@ Un rule engine è efficiente a trovare le regole da eseguire perché utilizza un
 Ovviamente per il simulatore non si può fare molto, ma per un dispositivo reale che viene programmato una volta sola con un migliaio di regole, non è accettabile aspettare diversi minuti ad ogni riavvio perché sta ricostruendo la struttura. Soprattutto considerato che un dispositivo del genere potrebbe essere molto più lento di un computer che esegue AbUsim, e quindi potrebbe diventare troppo lento ancora prima.
 Per risolvere questo problema bisognerebbe aggiungere una funzionalità per memorizzare la struttura precompilata in modo che successivamente il dispositivo debba solo leggerla per tornare operativo dopo un riavvio. Per il simulatore questo non vale poiché lo scopo di AbUsim è la prototipazione, ed è previsto che ad ogni avvio la configurazione cambi, rendendo meno utile conservare la struttura.
 
+\newpage
+
 \section{Generazione dei test}
 
 \subsection{Il generatore aeg}
 
 Uno degli strumenti principali utilizzati per l'analisi è il generatore di test \href{https://github.com/KayJay7/abusim-example-generator}{\aeg} (AbUsim Example Generator). Volevamo un modo per poter generare configurazioni che stressassero una caratteristica a piacere di GoAbU. L'utilizzo di questo strumento ha permesso sia di provare agilmente grandi configurazioni, ad esempio quelle da migliaia di regole per dispositivo che hanno permesso di scoprire i lunghi tempi di compilazione (Sottosezione \ref{ricompilazione}); che di apportare rapidamente correzioni alle configurazioni selezionate come test cases, e di poter generare facilmente configurazioni uguali che variassero solo nel numero di nodi.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \matrix [matrix,row sep=2.2em,column sep=2em] {
+            %\node[circle, draw](s){$\text{\lstinline{start}}$};           &
+            %\node[circle, draw](sa){$\text{\lstinline{start_all}}$};      &
+            %\node[circle, draw](ns){$\text{\lstinline{ext.start}}$};
+            %\\
+
+            \node[circle, draw](pa02){$\text{\lstinline{ext.a0_2}}$};     &
+            \node[circle, draw](pa12){$\text{\lstinline{ext.a1_2}}$};     &
+            \node[circle, draw](pa22){$\text{\lstinline{ext.a2_2}}$};     &
+            \node[circle, draw](pa32){$\text{\lstinline{ext.a3_2}}$};   
+            \\
+
+            \node[circle, draw](a00){$\text{\lstinline{a0_0}}$};          &
+            \node[circle, draw](a10){$\text{\lstinline{a1_0}}$};          &
+            \node[circle, draw](a20){$\text{\lstinline{a2_0}}$};          &
+            \node[circle, draw](a30){$\text{\lstinline{a3_0}}$};           \\
+
+            \node[circle, draw](a01){$\text{\lstinline{a0_1}}$};          &
+            \node[circle, draw](a11){$\text{\lstinline{a1_1}}$};          &
+            \node[circle, draw](a21){$\text{\lstinline{a2_1}}$};          &
+            \node[circle, draw](a31){$\text{\lstinline{a3_1}}$};           \\
+
+            \node[circle, draw](a02){$\text{\lstinline{a0_2}}$};          &
+            \node[circle, draw](a12){$\text{\lstinline{a1_2}}$};          &
+            \node[circle, draw](a22){$\text{\lstinline{a2_2}}$};          &
+            \node[circle, draw](a32){$\text{\lstinline{a3_2}}$};            \\
+            
+            \node[circle, draw](na00){$\text{\lstinline{ext.a0_0}}$};     &
+            \node[circle, draw](na10){$\text{\lstinline{ext.a1_0}}$};     &
+            \node[circle, draw](na20){$\text{\lstinline{ext.a2_0}}$};     &
+            \node[circle, draw](na30){$\text{\lstinline{ext.a3_0}}$};     
+            \\
+        };
+
+        \graph[nodes={circle, draw}]{
+            s/\lstinline{start} [left=4em of pa02],
+            sa/\lstinline{start_all} [below=0em of s],
+            ns/\lstinline{ext.start} [below=0em of sa],
+        };
+
+        \graph{
+            (pa02) -> [draw=red, very thick] (a00) -> [very thick] (a01) -> [very thick] (a02) -> [draw=red, very thick] (na00),
+            (pa12) -> [draw=red, very thick] (a10) -> [very thick] (a11) -> [very thick] (a12) -> [draw=red, very thick] (na10),
+            (pa22) -> [draw=red, very thick] (a20) -> [very thick] (a21) -> [very thick] (a22) -> [draw=red, very thick] (na20),
+            (pa32) -> [draw=red, very thick] (a30) -> [very thick] (a31) -> [very thick] (a32) -> [draw=red, very thick] (na30),
+            (s) -> [very thick] (a00),
+            (s) -> [very thick] (a10),
+            (s) -> [very thick] (a20),
+            (s) -> [very thick] (a30),
+            (sa) -> [very thick] (s),
+            (sa) -> [draw=red, very thick] (ns),
+        };
+    \end{tikzpicture}
+    \caption{catene di variabili interne (regole esterne in rosso)}
+    \label{fig:interno}
+\end{figure}
 
 \begin{figure}[H]
     \centering
