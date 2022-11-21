@@ -19,6 +19,7 @@
 
 %\sisetup{per-mode=symbol,per-symbol = p}
 
+
 % stile per i blocchi di codice
 % non so se serviranno
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -59,6 +60,7 @@
 \end{titlepage}
 
 \begin{document}
+
 \maketitle
 
 \newpage
@@ -264,7 +266,7 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
             (sa) -> [draw=red, very thick] (ns),
         };
     \end{tikzpicture}
-    \caption{catene di variabili interne (regole esterne in rosso)}\michele{Non capisco perchè la catena più a destra è ``scollegata''}
+    \caption{catene di variabili interne (regole esterne in rosso)}
     \label{fig:interno}
 \end{figure}
 
@@ -300,11 +302,12 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
 
 Le configurazioni generate con \aeg seguono tutte una stessa struttura, che permette di avviare una computazione che coinvolgerà tutti i nodi e terminerà sempre, i dettagli della configurazione sono controllati da $6$ parametri (interi maggiori di $1$), indicati con $a$, $b$, $c$, $d$, $e$, ed $f$.
 
-Tutti gli $a$ nodi di una configurazione sono simili tra loro: anno le stesse variabili ed eseguono regole uguali, che differiscono al massimo per alcuni valori hardcoded. Ogni nodo ha due variabili booleane \lstinline{start} e \lstinline{start_all} inizializzate a \lstinline{false} che sono usate per avviare una computazione, più $b\times c$ (altro su $b$ e $c$ più avanti) variabili intere con nome \lstinline{ai_j} con $i\in [0,b)$ e $j\in [0,c)$ (e.g.: \lstinline{a0_0}), tutte inizializzate a $0$. Queste variabili rappresentano $b$ ``catene'', ciascuna lunga $c$ variabili, come si rappresentato in Figure~\ref{fig:interno}. Ogni nodo ha anche una variabile intera \lstinline{id}, ciascuna inizializzata ad un valore diverso e mai modificata, sono utilizzate solo per indirizzare il singolo nodo.
+Tutti gli $a$ nodi di una configurazione sono simili tra loro: anno le stesse variabili ed eseguono regole uguali, che differiscono al massimo per alcuni valori hardcoded. Ogni nodo ha due variabili booleane \lstinline{start} e \lstinline{start_all} inizializzate a \lstinline{false} che sono usate per avviare una computazione, più $b\times c$ (altro su $b$ e $c$ più avanti) variabili intere con nome \lstinline{ai_j} con $i\in [0,b)$ e $j\in [0,c)$ (e.g.: \lstinline{a0_0}), tutte inizializzate a $0$. Queste variabili rappresentano $b$ ``catene'', ciascuna lunga $c$ variabili, come rappresentato in Figure~\ref{fig:interno}. Ogni nodo ha anche una variabile intera \lstinline{id}, ciascuna inizializzata ad un valore diverso e mai modificata, sono utilizzate solo per indirizzare il singolo nodo.
 
-Ogni dispositivo ha 3 ``regole di avvio'' (rappresentate alla sinistra in Figure~\ref{fig:interno}), una si attiva quando \lstinline{start_all} viene impostato a \lstinline{true}, e non fa altro che impostare la variabile \lstinline{start} a \lstinline{true} su tutti i nodi. Una resetta \lstinline{start_all}. Ed infine quando \lstinline{start} viene impostato a \lstinline{true}, una ``variabile iniziale'' (la variabile \lstinline{ai_0}) delle prime $d\leq b$ catene viene impostata a $f$, e la variabile \lstinline{start} viene resettata.
-Dopodiché, alle prime $c-1$ variabili di ogni catena (quindi da $0$ $c-2$) corrisponde una regola che si attiva quando la sua variabile viene impostata ad un valore maggiore di $0$, e contemporaneamente copierà il valore della variabile in quella successiva nella catena (e.g.: da \lstinline{a1_2} ad \lstinline{a1_3}) e resetterà la sua variabile.
-Quando la $c$-esima variabile dell'$i$-esima catena viene impostata ad un valore $k>0$, non c'è una corrispondente regola ``normale''. Invece ce ne sono una locale che resetta il valore della variabile a $0$, ed una esterna (rappresentata in basso in Figure~\ref{fig:interno}) che setterà a $k-1$ il valore della variabile iniziale dell'$i$-esima dei successivi $e$ dispositivi (il dispositivo \lstinline{id} attiva quelli da $((\text{\lstinline{id}}+1)\mod a)$ ad $((\text{\lstinline{id}}+e)\mod a)$). In questo modo la parte di computazione sul dispositivo corrente è completata, e continua sui dispositivi successivi, come visibile in Figure~\ref{fig:esterno}.
+Ogni dispositivo ha 3 ``regole di avvio'' (rappresentate alla sinistra in Figure~\ref{fig:interno}), una si attiva quando \lstinline{start_all} viene impostato a \lstinline{true}, e non fa altro che impostare la variabile \lstinline{start} a \lstinline{true} su tutti i nodi. Una resetta \lstinline{start_all}. Ed infine quando \lstinline{start} viene impostato a \lstinline{true}, una ``variabile iniziale'' (la variabile \lstinline{ai_0}) delle prime $d\leq b$ catene viene impostata a $f$, e la variabile \lstinline{start} viene resettata. Notare che \lstinline{start_all} non attiva \emph{tutte le catene} (infatti non attiva nessuna catena, ma setta \lstinline{start}), invece attiva le catene di \emph{tutti i nodi}.
+
+Alle prime $c-1$ variabili di ogni catena (quindi da $0$ $c-2$) corrisponde una regola (rappresentate in nero in Figure~\ref{fig:interno}) che si attiva quando la sua variabile viene impostata ad un valore maggiore di $0$, e contemporaneamente copierà il valore della variabile in quella successiva nella catena (e.g.: da \lstinline{a1_2} ad \lstinline{a1_3}) e resetterà la sua variabile.
+Quando la $c$-esima variabile dell'$i$-esima catena viene impostata ad un valore $k>0$, non c'è una corrispondente regola ``normale''. Invece ce ne sono una locale che resetta il valore della variabile a $0$, ed una esterna (rappresentate in rosso in fondo a Figure~\ref{fig:interno}) che setterà a $k-1$ il valore della variabile iniziale dell'$i$-esima dei successivi $e$ dispositivi (il dispositivo \lstinline{id} attiva quelli da $((\text{\lstinline{id}}+1)\mod a)$ ad $((\text{\lstinline{id}}+e)\mod a)$). In questo modo la parte di computazione sul dispositivo corrente è completata, e continua sui dispositivi successivi, come visibile in Figure~\ref{fig:esterno}.
 Dopo $f$ livelli, il valore che viene passato sulle catene è arrivato ad $1$, e ai prossimi dispositivi viene passato il valore $0$, che le regole del $f+1$-esimo livello di dispositivi ignoreranno.
 
 \paragraph{Parametri di configurazione}
@@ -555,14 +558,39 @@ All'aumentare dei nodi passa da $\sim\qty{2}{\mega\byte}$ a $\sim\qty{9}{\mega\b
 I test in idle sono gli unici dove ha senso guardare le metriche al secondo, e si tratta di pochi $\unit{\kilo\byte/\second}$ (grafico in appendice, Figure~\ref{fig:tbps}).
 
 I risultati per i test sotto carico medio sono molto meno promettenti. Già con $10$ nodi, i valori sono ben oltre il carico in idle per $100$ nodi, con $\sim\qty{62}{\mega\byte}$ di dati.\\
-Più preoccupante è il salto tra i $50$ ed i $100$ nodi, in cui il traffico passa da $\sim\qty{208}{\mega\byte}$ a $\sim\qty{7}{\giga\byte}$. L'aumento non sembra affatto lineare, ma non siamo sorpresi, perché implementando il broadcast come messaggi unicast ad ogni nodo, ci \emph{aspettiamo} una message complexity di $\Theta(a^2)$.
+Più preoccupante è il salto tra i $50$ ed i $100$ nodi, in cui il traffico passa da $\sim\qty{208}{\mega\byte}$ a $\sim\qty{7.4}{\giga\byte}$. L'aumento non sembra affatto lineare, ma non siamo sorpresi, perché implementando il broadcast come messaggi unicast ad ogni nodo, ci \emph{aspettiamo} una message complexity di $\Theta(a^2)$.
 
 I risultati per i test sotto carico alto sono pessimi. Ci aspettavamo di vedere un traffico molto alto, però un traffico di $\sim\qty{302}{\mega\byte}$ con soli $10$ nodi, rende AbU inadatto all'utilizzo in una rete realistica per problemi così pesanti sulla rete.
-Ovviamente si tratta di un benchmark con un carico estremo e poco realistico già per cominciare, ma AbU vuole essere utilizzabile anche in sistemi molto grandi.\\
-Inaspettatamente, all'aumentare dei nodi passa a $\sim\qty{7}{\giga\byte}$ e poi $\sim\qty{16}{\giga\byte}$, che \emph{sembra} molto più vicina ad una crescita lineare rispetto a quella del carico medio, ma a questi livelli è una magra consolazione.\\
-C'è un outlier del test con $100$ nodi che ha prodotto $\sim\qty{25}{\giga\byte}$ di traffico, significa che in determinate condizioni potrebbe causare molto più traffico del caso medio.
+Ovviamente si tratta di un benchmark con un carico estremo e poco realistico già per cominciare, ma AbU vuole essere utilizzabile anche in sistemi molto grandi.
 
-\michele{Queste considerazioni vanno bene, però qua sembra che consideri solo il numero di nodi, si può considerare anche il numero di regole esterne (alla fine quelle impattano molto la rete). Ad esempio, a parità di nodi, mi pare che il numero di byte aumenti linearmente con il numero di regole esterne}
+Inaspettatamente, all'aumentare dei nodi passa a $\sim\qty{7.3}{\giga\byte}$ e poi $\sim\qty{16}{\giga\byte}$, che \emph{sembra} molto più vicina ad una crescita lineare rispetto a quella del carico medio.
+Per indagare ulteriormente su questo risultato inaspettato. Considerando anche il traffico per regola esterna otteniamo:
+
+\begin{tabular}{| c | c |}
+    \hline
+    Test & $\unit{\kilo\byte/rule}$\\
+    \hline
+    $\text{\lstinline{low 10}}$   & $\sim62$ \\
+    \hline
+    $\text{\lstinline{low 50}}$   & $\sim104$ \\
+    \hline
+    $\text{\lstinline{low 100}}$  & $\sim736$ \\
+    \hline
+    $\text{\lstinline{high 10}}$  & $\sim83$ \\
+    \hline
+    $\text{\lstinline{high 50}}$  & $\sim401$ \\
+    \hline
+    $\text{\lstinline{high 100}}$ & $\sim467$ \\
+    \hline
+\end{tabular}\label{tab:bpr}
+
+Notiamo che, per $10$ e soprattutto $50$ nodi, il traffico per regola causato dal carico alto è molto maggiore di quello sotto carico medio.
+Con $100$ nodi, invece, il traffico per regola sotto carico alto è molto più vicino al caso con $50$ nodi e molto più basso ($\sim\qty{36.7}{\percent}$ in meno) del traffico per regola sotto carico medio.
+Sembra che ad un certo punto aumentare le regole cominci a ridurre i costi per la singola regola.
+
+Nonostante questo risultato promettente, c'è un outlier del test con $100$ nodi che ha prodotto $\sim\qty{25}{\giga\byte}$ di traffico, significa che in determinate condizioni potrebbe causare molto più traffico.
+Il traffico per regola in quel caso è di $\qty{689}{\percent}$, che è comunque più basso del test sotto carico medio.
+Ad ogni modo, anche se la singola regola è meno costosa, nel complesso i dati passati nella rete sono aumentati di molto.
 
 \paragraph{\lstinline{total packets}}
 
