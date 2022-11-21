@@ -13,6 +13,7 @@
 \usepackage{amsfonts}
 \usepackage{multirow}
 \usepackage{tikz}
+\usepackage{xspace}
 
 \usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns,external,shapes.callouts,graphs,matrix}
 
@@ -48,7 +49,7 @@
 % fine stile
 
 \newcommand{\michele}[1]{{\color{red}Michele:~}{\itshape``{#1}''}}
-\newcommand{\aeg}[0]{{\lstinline{aeg}}}
+\newcommand{\aeg}[0]{{\lstinline{aeg}}\xspace}
 
 \begin{titlepage}
     \title{Analisi di scalabilità dell'implementazione in Golang del calcolo AbU}
@@ -97,7 +98,7 @@ Abbiamo scelto di analizzare il comportamento di GoAbU nella gestione di tre tip
 
 La tesi sarà organizzata in 5 sezioni.
 
-In una prima sezione forniremo una descrizione del calcolo AbU e le sue caratteristiche. Quindi il suo paradigma ed i suoi punti di forza. Oltre ad una breve analisi delle sue limitazioni.
+In Sezione~\ref{sec:calculus} forniremo una descrizione del calcolo AbU e le sue caratteristiche. Quindi il suo paradigma ed i suoi punti di forza. Oltre ad una breve analisi delle sue limitazioni. \michele{Modifica la sinossi in modo da referenziare le varie sezioni, come ho fatto per la sezione sul calcolo}
 
 Segue una descrizione del setting sperimentale, in cui descriveremo AbUsim, il sistema hardware utilizzato per i test, ed infine alcune problematiche incontrate di questa impostazione.
 
@@ -109,7 +110,7 @@ Per finire, analizzeremo i risultati. Fornendo alcune nuove osservazioni riguard
 
 Come appendice forniremo tutte le metriche prodotte.
 
-\section{Il calcolo AbU}
+\section{Il calcolo AbU}\label{sec:calculus}
 
 AbU~\cite{MP-ICTAC-2021} (Attribute-based memory Updates) è un paradigma di calcolo distribuito basato sull'utilizzo di regole ECA (event-condition-action) per sincronizzare e scambiare informazioni tra grandi quantità di nodi.\\
 Le regole non sono molto diverse da delle normali ECA: ogni regola è legata ad una o più variabili del nodo, e quando una di queste variabili viene modificata (da una regola o da un dispositivo di input), se una condizione specificata è verificata, viene eseguita l'azione.
@@ -131,6 +132,7 @@ Prima di proseguire forniamo un breve elenco dei principali punti di forza del c
 L'approccio ad attributi fornisce un modello di comunicazione basato interamente sul ruolo del destinatario (quindi degli attributi che possiede), quindi più vicino alla semantica del sistema piuttosto che alla sua architettura.
 Ed infine, il design a regole permette di avere una knowledge base più semplice da leggere e da scrivere per il programmatore, quindi fornisce gli strumenti per produrre in breve tempo sistemi complessi.
 
+\michele{Il paragrafo seguente forse srarebbe meglio nella sezione setting sperimentale, magari proprio come incipt della sezione}
 \href{https://github.com/abu-lang/goabu}{GoAbU} è un'implementazione di questo modello di calcolo scritta in linguaggio Go.
 È costruita utilizzando la libreria \href{https://github.com/hashicorp/memberlist}{memberlist} come middleware per la comunicazione in gruppo e la scoperta dei nodi,  \href{https://github.com/hyperjumptech/grule-rule-engine}{Grule} come rule engine, ed il framework \href{https://github.com/hybridgroup/gobot/}{gobot} per renderla utilizzabile in ambito IoT.\\
 Il focus principale della tesi sarà sia definire un metodo di test ragionevole e riproducibile per testare un'implementazione del calcolo AbU (e gli strumenti per eseguire test), che un'analisi di GoAbU stesso.
@@ -161,7 +163,7 @@ Opzionalmente si può avviare un container che offre un'interfaccia web per cont
 
 \subsection{Macchina dei test}
 
-Tutti i test sono stati svolti sulla stessa macchina fornita dall'università con le seguenti specifiche:
+Tutti i test sono stati svolti sulla stessa macchina fornita dall'Università degli studi di Udine con le seguenti specifiche:
 
 \begin{itemize}
     \item Precessore: Intel Xeon Gold 6238R ($56$ core, $\qty{2.195}{\giga\hertz}$)
@@ -200,6 +202,8 @@ Per risolvere questo problema bisognerebbe aggiungere una funzionalità per memo
 \newpage
 
 \section{Generazione dei test}
+
+\michele{Le figure vanno bene, ma forse sono un pò grandi}
 
 \subsection{Il generatore aeg}
 
@@ -263,7 +267,7 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
             (sa) -> [draw=red, very thick] (ns),
         };
     \end{tikzpicture}
-    \caption{catene di variabili interne (regole esterne in rosso)}
+    \caption{catene di variabili interne (regole esterne in rosso)}\michele{Non capisco perchè la catena più a destra è ``scollegata''}
     \label{fig:interno}
 \end{figure}
 
@@ -295,19 +299,26 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
     \label{fig:esterno}
 \end{figure}
 
+\michele{Descrizione è un pò generico, metti qualcosa come struttura dei casi di test oppure funzionamento del generatore}
+
 \paragraph{Descrizione}\label{aeg:descrizione}
 
 Le configurazioni generate con \aeg seguono tutte una stessa struttura, che permette di avviare una computazione che coinvolgerà tutti i nodi e terminerà sempre, i dettagli della configurazione sono controllati da $6$ parametri (interi maggiori di $1$), indicati con $a$, $b$, $c$, $d$, $e$, ed $f$.
 
 Tutti gli $a$ nodi di una configurazione sono simili tra loro: anno le stesse variabili ed eseguono regole uguali, che differiscono al massimo per alcuni valori hardcoded. Ogni nodo ha due variabili booleane \lstinline{start} e \lstinline{start_all} inizializzate a \lstinline{false} che sono usate per avviare una computazione, più $b\times c$ (altro su $b$ e $c$ più avanti) variabili intere con nome \lstinline{ai_j} con $i\in [0,b)$ e $j\in [0,c)$ (e.g.: \lstinline{a0_0}), tutte inizializzate a $0$. Queste variabili rappresentano $b$ ``catene'', ciascuna lunga $c$ variabili. Ogni nodo ha anche una variabile intera \lstinline{id}, ciascuna inizializzata ad un valore diverso e mai modificata, sono utilizzate per indirizzare il singolo nodo.
 
+\michele{Fai riferimento alle figure \ref{fig:interno} e \ref{fig:esterno} nella descrizione}
+
 Ogni dispositivo ha 3 ``regole di avvio'', una si attiva quando \lstinline{start_all} viene impostato a \lstinline{true}, e non fa altro che impostare la variabile \lstinline{start} a \lstinline{true} su tutti i nodi. Una resetta \lstinline{start_all}. Ed infine quando \lstinline{start} viene impostato a \lstinline{true}, una ``variabile iniziale'' (la variabile \lstinline{ai_0}) delle prime $d\leq b$ catene viene impostata a $f$, e la variabile \lstinline{start} viene resettata.
 Dopodiché, alle prime $c-1$ variabili di ogni catena (quindi da $0$ $c-2$) corrisponde una regola che si attiva quando la sua variabile viene impostata ad un valore maggiore di $0$, e contemporaneamente copierà il valore della variabile in quella successiva nella catena (e.g.: da \lstinline{a1_2} ad \lstinline{a1_3}) e resetterà la sua variabile.
 Quando la $c$-esima variabile dell'$i$-esima catena viene impostata ad un valore $k>0$, non c'è una corrispondente regola ``normale''. Invece ce ne sono una locale che resetta il valore della variabile a $0$, ed una esterna che setterà a $k-1$ il valore della variabile iniziale dell'$i$-esima dei successivi $e$ dispositivi (il dispositivo \lstinline{id} attiva quelli da $((\text{\lstinline{id}}+1)\mod a)$ ad $((\text{\lstinline{id}}+e)\mod a)$). In questo modo la parte di computazione sul dispositivo corrente è completata, e continua sui dispositivi successivi.
 Dopo $f$ livelli, il valore che viene passato sulle catene è arrivato ad $1$, e ai prossimi dispositivi viene passato il valore $0$, che le regole del $f+1$-esimo livello di dispositivi ignoreranno.
 
+\michele{Anche qui è un pò generico, metti qualcosa come parametri del simulatore oppure parametri di configurazione}
+
 \paragraph{Parametri}
 
+\michele{Le sezioni non numerate non vengono referenziate}
 Quindi il comportamento della configurazione è deciso dai (già elencati nella Descrizione \ref{aeg:descrizione}) parametri:
 \begin{itemize}
     \item $a$ (alt.: devices-number) Il numero di nodi nella configurazione
@@ -323,6 +334,8 @@ Per questa tesi sono rilevanti solo i 6 parametri di configurazione, in quanto i
 
 \subsection{Terminazione forte}
 % Non sono sicuro che basti come dimostrazione, spero di sì perché non è stata facile da scrivere
+
+\michele{ANche qui, togli i riferimenti alle sezioni non numerate}
 
 Per semplicità affronteremo la terminazione in due parti. La prima parte riguarda solo la parte ``interna'' della computazione, quella che si occupa di trasportare i valori nelle catene di variabili, ignorando i valori che potrebbero essere aggiunti da una regola esterna avviata da un altro nodo\label{terminazione:premesse:interna}.
 E la seconda riguardante solo i dispositivi che vengono attivati dalle regole esterne, assumendo che la parte interna termini correttamente, attivando i nodi successivi\label{terminazione:premesse:esterna}.
@@ -463,7 +476,7 @@ Come detto in precedenza, questo tempo non è significativo poiché dipende prin
 Prima di affrontare qualsiasi tipo di test bisogna stabilire quali sono i dati che importano e come raccoglierli in modo efficace.
 In un sistema distribuito sono tanti gli aspetti che si potrebbero prendere in considerazione. Traffico di rete, latenza dell'esecuzione delle regole, throughput dei singoli nodi, throughput dell'intero sistema. Tutte queste opzioni sono state considerate prima di scegliere che test eseguire.
 
-Il throughput (sia dei nodi che della rete), sembra la scelta più ovvia. In un qualsiasi altro sistema. Tuttavia, AbU non è pensato per svolgere calcoli, ma per sincronizzare dispositivi.
+Il throughput (sia dei nodi che della rete), sembra la scelta più ovvia. In un qualsiasi altro sistema. \michele{Togliere la frase precedente?} Tuttavia, AbU non è pensato per svolgere calcoli, ma per sincronizzare dispositivi.
 Quindi in un'applicazione reale non c'è un vero risultato in output, un qualcosa di cui misurare il throughput. Al massimo si possono misurare la quantità di regole eseguite, ma quelle sono legate al tick che è impostato manualmente.
 
 La latenza delle regole anzitutto dipende più dal numero totale di regole, e dalle prestazioni del dispositivo che esegue GoAbU, che da GoAbU stesso, quindi anche questa metrica non è molto indicativa delle prestazioni.
@@ -472,7 +485,7 @@ In ogni caso, il tempo speso per attendere il passare del tick è molto più lun
 Quindi anche questo dato è stato considerato non necessario, almeno per ora.
 
 Alla fine, abbiamo deciso di raccogliere solo i dati relativi al traffico di rete. Più precisamente abbiamo raccolto sia la dimensione totale dei messaggi inviati e ricevuti (come numero di byte totali), che la quantità di pacchetti (frame di livello 2) inviati e ricevuti. Entrambi questi dati sono reperibili direttamente dal sistema operativo.
-Inoltre, abbiamo deciso di raccogliere anche il numero di transazioni eseguite a livello di libreria, e la dimensione di queste transazioni. Per poterle confrontare con i dati del sistema operativo e scoprire quando overhead viene aggiunto dal middleware.
+Inoltre, abbiamo deciso di raccogliere anche il numero di transazioni eseguite a livello di libreria, e la dimensione di queste transazioni. \michele{Dovresti dire cosa si intende per transazioni. Forse sarebbe da aggiungere una breve descrizione di GoAbU, magari a fine sezione \ref{sec:calculus}, concentrandosi sul protocollo di comunicazione e memberlist} Per poterle confrontare con i dati del sistema operativo e scoprire quando overhead viene aggiunto dal middleware.
 Queste ultime informazioni sono state raccolte solo per gli ultimi due casi, quello medio e quello alto, perché in idle la libreria non produce transazioni.
 
 \subsection{Ispezione dei nodi}
@@ -480,12 +493,12 @@ Queste ultime informazioni sono state raccolte solo per gli ultimi due casi, que
 Le informazioni sul traffico di rete sono fornite direttamente dal sistema operativo, che offre degli pseudo-file per processo dove sono listate diverse metriche (in particolare byte e pacchetti, inviati e ricevuti) per ogni interfaccia di rete, utilizzate fino a quel momento dal processo.
 
 Come già visto in precedenza~\ref{setting:abusim} AbUsim utilizza due reti virtuali (quindi ogni nodo ha due interfacce di rete), una utilizzata per la comunicazione di GoAbU, ed una per il resto delle funzioni del simulatore, come l'invio dei log.
-Quindi è facile ottenere solo i dati riguardanti GoAbU senza che siano sporcati dal simulatore. È sufficiente identificare prima l'interfaccia di rete utilizzata per GoAbU, sempre usando gli pseudo-file, e poi raccogliere solo le metriche di quell'interfaccia.
+Quindi è facile ottenere solo i dati riguardanti GoAbU senza che siano influenzati dal simulatore. È sufficiente identificare prima l'interfaccia di rete utilizzata per GoAbU, sempre usando gli pseudo-file, e poi raccogliere solo le metriche di quell'interfaccia.
 
-Per separare i dati riguardanti una computazione da quelli precedenti e da quelli della discovery, raccogliamo i dati prima e dopo la computazione, ed teniamo la differenza.
+Per separare i dati riguardanti una computazione da quelli precedente e da quelli della discovery, raccogliamo i dati prima e dopo la computazione, ed teniamo la differenza.
 
 I dati sulle transazioni, invece, sono raccolte tramite i log del simulatore, che sono stati modificati appositamente per includere questi dati.
-Purtroppo abbiamo raccolto i log di un solo nodo poiché le dimensioni erano troppo grandi. Raccogliendo i dati di un solo nodo sono stati prodotti $\qty{230}{\mebi\byte}$ di file di log, quindi raccoglierli per tutti i nodi sarebbe stato dispendioso.
+Purtroppo, per quanto riguarda le transazioni, abbiamo raccolto i log di un solo nodo poiché le dimensioni erano troppo grandi. Raccogliendo i dati di un solo nodo sono stati prodotti $\qty{230}{\mebi\byte}$ di file di log, quindi raccoglierli per tutti i nodi sarebbe stato dispendioso.
 In futuro, si potrebbe trovare un modo per fornire questi dati in modo più snello, per poter analizzare più nodi.
 
 \subsection{Metriche}
@@ -521,7 +534,7 @@ Le metriche riguardanti il tempo sono state raccolte, ma non sono rilevanti, per
 Le metriche riguardanti il traffico ricevuto, sono interessanti, ma non particolarmente utili. Ogni dato ricevuto è un nodo che era stato inviato da un altro nodo, quindi i dati inviati in totale e quelli ricevuti dovrebbero essere simili.
 Dal rapporto possiamo ottenere il packet loss della rete, però questo non fornisce nessuna informazione sul comportamento di GoAbU, ma sul comportamento delle reti Docker.
 
-I dati sui pacchetti di livello 2 sono interessanti in quanto sono indicativi del lavoro che dovranno gestire i dispositivi di rete a cui AbU sarà connesso..
+I dati sui pacchetti di livello 2 sono interessanti in quanto sono indicativi del lavoro che dovranno gestire i dispositivi di rete a cui AbU sarà connesso.
 
 Confrontare i dati del sistema con quelli dei log permette di osservare cosa il middleware è in grado di fare per ridurre il traffico. In particolare, i due rapporti \lstinline{logs_bytes ratio} e \lstinline{logs_packets ratio} facilitano questo confronto.
 Più precisamente, il primo mette in evidenza la capacità del middleware di comprimere ed ottimizzare i dati.
@@ -543,7 +556,7 @@ Per quanto sarebbe interessante avere un dato più preciso, questi pacchetti ``n
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth, keepaspectratio]{graphs/total bytes.png}
-    \caption{Byte inviati in totale nella rete}
+    \caption{Byte inviati in totale nella rete}\michele{Riesci a girare i label delle ascisse (ruotati di 90 gradi)? RIsulterebbe più leggibile il grafico}
     \label{fig:tb}
 \end{figure}
 
@@ -556,10 +569,12 @@ I test in idle sono gli unici dove ha senso guardare le metriche al secondo, e s
 I risultati per i test sotto carico medio sono molto meno promettenti. Già con $10$ nodi, i valori sono ben oltre il carico in idle per $100$ nodi, con $\sim\qty{62}{\mega\byte}$ di dati.\\
 Più preoccupante è il salto tra i $50$ ed i $100$ nodi, in cui il traffico passa da $\sim\qty{208}{\mega\byte}$ a $\sim\qty{7}{\giga\byte}$. L'aumento non sembra affatto lineare, ma non siamo sorpresi, perché implementando il broadcast come messaggi unicast ad ogni nodo, ci \emph{aspettiamo} una message complexity di $\Theta(a^2)$.
 
-I risultati per i test soto carico alto sono pessimi. Ci aspettavamo di vedere un traffico molto alto, però un traffico di $\sim\qty{302}{\mega\byte}$ con soli $10$ nodi, rende AbU inadatto all'utilizzo in una rete realistica per problemi così pesanti sulla rete.
+I risultati per i test sotto carico alto sono pessimi. Ci aspettavamo di vedere un traffico molto alto, però un traffico di $\sim\qty{302}{\mega\byte}$ con soli $10$ nodi, rende AbU inadatto all'utilizzo in una rete realistica per problemi così pesanti sulla rete.
 Ovviamente si tratta di un benchmark con un carico estremo e poco realistico già per cominciare, ma AbU vuole essere utilizzabile anche in sistemi molto grandi.\\
 Inaspettatamente, all'aumentare dei nodi passa a $\sim\qty{7}{\giga\byte}$ e poi $\sim\qty{16}{\giga\byte}$, che \emph{sembra} molto più vicina ad una crescita lineare rispetto a quella del carico medio, ma a questi livelli è una magra consolazione.\\
 C'è un outlier del test con $100$ nodi che ha prodotto $\sim\qty{25}{\giga\byte}$ di traffico, significa che in determinate condizioni potrebbe causare molto più traffico del caso medio.
+
+\michele{Queste considerazioni vanno bene, però qua sembra che consideri solo il numero di nodi, si può considerare anche il numero di regole esterne (alla fine quelle impattano molto la rete). Ad esempio, a parità di nodi, mi pare che il numero di byte aumenti linearmente con il numero di regole esterne}
 
 \paragraph{\lstinline{total packets}}
 
@@ -569,9 +584,10 @@ C'è un outlier del test con $100$ nodi che ha prodotto $\sim\qty{25}{\giga\byte
     \label{fig:tp}
 \end{figure}
 
-Questo grafico, per i test sotto carico medio ed alto, non fornisce particolari informazioni oltre a quelle messe in evidenza dal grafico \lstinline{total bytes}~\ref{fig:tb}.
+\michele{Nomina i riferimenti, ad esempio Figure~\ref{fig:tb} non \ref{fig:tb} (ho corretto la prima istanza qui di seguito)}
+Questo grafico, per i test sotto carico medio ed alto, non fornisce particolari informazioni oltre a quelle messe in evidenza dal grafico \lstinline{total bytes} Figure~\ref{fig:tb}.
 
-Dai messaggi risulta chiaro che la message complexity (stavolta come numero di messaggi e non dimensione) non sia lineare. Infatti, il numero di pacchetti nei test con $100$ nodi è anche $100$ volte più grande di quello nei test con $10$ nodi, mentre con $50$ nodi è $30$ volte più grande.
+Dai messaggi risulta chiaro che la message complexity (stavolta come numero di pacchetti e non dimensione) non sia lineare. Infatti, il numero di pacchetti nei test con $100$ nodi è anche $100$ volte più grande di quello nei test con $10$ nodi, mentre con $50$ nodi è $30$ volte più grande.
 
 Per i test in idle, a contrario di quanto visto nel grafico precedente, anche senza carico, il numero di messaggi cresce in modo non lineare, ma comunque meno di come cresce sotto carico. In seguito vedremo altri dati su questo argomento quando parleremo del grafico \lstinline{bytes per packets}~\ref{fig:bp}.
 
@@ -603,7 +619,7 @@ La stringa risultante è molto lunga, ma avendo poche informazioni (relativament
 Questa metrica mette in evidenza quanti pacchetti sono \emph{inviati} (non scambiati in totale), approssimativamente, per ogni transazione.
 Se il rapporto fosse minore di $1$ probabilmente saremmo in presenza di un'errore nella raccolta dei dati, a meno che il middleware non faccia ottimizzazione del recapito utilizzando una rete overlay, ma nel nostro caso non è così.
 
-Istintivamente verrebbe da pensare che il numero di pacchetti sia sporcato dal nodi, che causano un aumento dei pacchetti per mantenere il gruppo.
+Istintivamente verrebbe da pensare che il numero di pacchetti sia influenzato dai nodi, che causano un aumento dei pacchetti per mantenere il gruppo.
 Però dal grafico osserviamo che il numero di nodi influenza solo marginalmente il numero di pacchetti inviati, anzi nel caso con carico alto, la quantità di pacchetti diminuisca all'aumentare dei nodi.
 
 Possiamo vedere che il numero di pacchetti per transazione è influenzato principalmente dal tipo di carico. Comunque, anche sotto carico alto, sono meno di $4$ pacchetti per transazione.
@@ -629,21 +645,21 @@ Alcuni nodi ricevono più o meno traffico. Anche se le transazioni sono in broad
 Probabilmente si tratta di un'effetto del gossiping probabilistico in una rete molto grande.
 
 \subsection{Conclusioni e proposte}
-
-Dopo aver analizzato questi risultati, possiamo concludere che GoAbU non riesce a scalare come sperato. Genera un traffico troppo alto~\ref{fig:tb}~\ref{fig:tp} per eseguire troppe poche regole esterne~\ref{tab:medio}~\ref{tab:alto}.
+\michele{Conclusioni e proposte di miglioramento}
+Dopo aver analizzato questi risultati, possiamo concludere che GoAbU non riesce a scalare come sperato. Genera un traffico troppo alto~\ref{fig:tb}~\ref{fig:tp} per eseguire troppe poche regole esterne~\ref{tab:medio}~\ref{tab:alto}. \michele{Non sono così sicuro, qui servirebbe calcolare quanti byte per regola esterna vengono trasmessi, secondo me non sono coì alti}
 
 Il middleware riesce a ridurre marginalmente il traffico grazie ad un qualche meccanismo di compressione~\ref{fig:lbr}, questo permette a GoAbU di scalare leggermente di più. Comunque, una codifica più efficiente dei messaggi permetterebbe di ridurre l'affidamento che facciamo sulla compressione. Ma per permettere veramente a GoAbU di scalare su reti più grandi, la soluzione non è ridurre la dimensione dei messaggi.
 
 Possiamo imputare il problema al modello di broadcast implementato, in cui ogni nodo contatta ogni altro nodo in unicast, seguendo il modello ``reliable/atomic broadcast''~\cite{joseph1989reliable}.
 Potremmo migliorare le prestazioni utilizzando anche a più basso livello la comunicazione broadcast, invece che simularlo in una rete unicast. Però questo richiede di modificare la semantica del linguaggio per quanto riguarda la decisione della consegna delle regole.
-Inoltre, in questo modo, non solo tutti i segmenti della rete (inclusi quelli che non usano ) riceverebbero i messaggi di GoAbU, ma bisognerebbe gestire in modo speciale i nodi che non si trovano nella stessa LAN.
+Inoltre, in questo modo, non solo tutti i segmenti della rete (inclusi quelli che non usano \michele{Manca parola}) riceverebbero i messaggi di GoAbU, ma bisognerebbe gestire in modo speciale i nodi che non si trovano nella stessa LAN.
 
 Sfruttando le assunzioni già esistenti sulla rete, in particolare completezza della rete e fair loss, si potrebbe scegliere di limitare ad numero di nodi $k$ a cui viene inoltrato il messaggio di broadcast e fare maggiore affidamento sul gossiping.
 Ovviamente è necessario scegliere opportunamente questo $k$ in modo che il broadcast resti affidabile, e magari si può rendere configurabile per adattarsi alle necessità di sistemi specifici.\\
 In questo modo si eviterebbe di modificare troppo il modello, pur riducendo anche di molto la message complexity del sistema.
 
 Si può ottenere un risultato migliore utilizzando algoritmi di broadcast efficiente, basati magari sull'utilizzo di una rete overlay non completa e sull'inoltro dei messaggi.
-Un metodo del genere può ridurre di molto il traffico, ma ad un costo, sia di latenza, che soprattutto computazionale. E ricordiamo he per l'utilizzo in campo IoT è necessario trovare un algoritmo che possa essere utilizzato anche da dispositivi molto piccoli.
+Un metodo del genere può ridurre di molto il traffico, ma ad un costo, sia di latenza, che soprattutto computazionale. E ricordiamo che per l'utilizzo in campo IoT è necessario trovare un algoritmo che possa essere utilizzato anche da dispositivi molto piccoli.
 
 Ad ogni modo, il paradigma del calcolo AbU ha delle grandi potenzialità, grazie alla sua semplicità di programmazione. Ed è particolarmente adatto alla coordinazione di grandi sistemi, fornendo un modo semplice di diffondere informazioni.
 Anche se GoAbU non è ancora adatto a scalare, è solo la prima implementazione, e ci sono ancora molte opzioni per migliorare.
