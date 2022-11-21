@@ -98,17 +98,17 @@ Abbiamo scelto di analizzare il comportamento di GoAbU nella gestione di tre tip
 
 La tesi sarà organizzata in 5 sezioni.
 
-In Sezione~\ref{sec:calculus} forniremo una descrizione del calcolo AbU e le sue caratteristiche. Quindi il suo paradigma ed i suoi punti di forza. Oltre ad una breve analisi delle sue limitazioni. \michele{Modifica la sinossi in modo da referenziare le varie sezioni, come ho fatto per la sezione sul calcolo}
+In Sezione~\ref{sec:calculus} forniremo una descrizione del calcolo AbU e le sue caratteristiche. Quindi il suo paradigma ed i suoi punti di forza. Oltre ad una breve analisi delle sue limitazioni.
 
-Segue una descrizione del setting sperimentale, in cui descriveremo AbUsim, il sistema hardware utilizzato per i test, ed infine alcune problematiche incontrate di questa impostazione.
+Segue, in Sezione~\ref{setting} una descrizione del setting sperimentale, in cui descriveremo AbUsim, il sistema hardware utilizzato per i test, ed infine alcune problematiche incontrate di questa impostazione.
 
-Spiegheremo nel dettaglio la struttura delle configurazioni di test prodotte automaticamente. Nonché la scelta delle configurazioni utilizzate nel benchmark e le caratteristiche di queste configurazioni.
+Nella Sezione~\ref{aeg} piegheremo nel dettaglio la struttura delle configurazioni di test prodotte automaticamente. Nonché la scelta delle configurazioni utilizzate nel benchmark e le caratteristiche di queste configurazioni.
 
-Descriveremo il metodo di raccolta dei dati dagli esperimenti. Ed anche le metriche prodotte con questi dati, analizzando più nel dettaglio quelle che abbiamo scoperto più rilevanti.
+In Sezione~\ref{raccolta} descriveremo il metodo di raccolta dei dati dagli esperimenti. Ed anche le metriche prodotte con questi dati, analizzando più nel dettaglio quelle che abbiamo scoperto più rilevanti.
 
-Per finire, analizzeremo i risultati. Fornendo alcune nuove osservazioni riguardo l'implementazione GoAbU, ottenute grazie a questi test.
+Per finire, in Sezione~\ref{risultati} se analizzeremo i risultati. Fornendo alcune nuove osservazioni riguardo l'implementazione GoAbU, ottenute grazie a questi test.
 
-Come appendice forniremo tutte le metriche prodotte.
+Come appendice~\ref{appendix:grafici} forniremo tutte le metriche prodotte.
 
 \section{Il calcolo AbU}\label{sec:calculus}
 
@@ -132,11 +132,6 @@ Prima di proseguire forniamo un breve elenco dei principali punti di forza del c
 L'approccio ad attributi fornisce un modello di comunicazione basato interamente sul ruolo del destinatario (quindi degli attributi che possiede), quindi più vicino alla semantica del sistema piuttosto che alla sua architettura.
 Ed infine, il design a regole permette di avere una knowledge base più semplice da leggere e da scrivere per il programmatore, quindi fornisce gli strumenti per produrre in breve tempo sistemi complessi.
 
-\michele{Il paragrafo seguente forse srarebbe meglio nella sezione setting sperimentale, magari proprio come incipt della sezione}
-\href{https://github.com/abu-lang/goabu}{GoAbU} è un'implementazione di questo modello di calcolo scritta in linguaggio Go.
-È costruita utilizzando la libreria \href{https://github.com/hashicorp/memberlist}{memberlist} come middleware per la comunicazione in gruppo e la scoperta dei nodi,  \href{https://github.com/hyperjumptech/grule-rule-engine}{Grule} come rule engine, ed il framework \href{https://github.com/hybridgroup/gobot/}{gobot} per renderla utilizzabile in ambito IoT.\\
-Il focus principale della tesi sarà sia definire un metodo di test ragionevole e riproducibile per testare un'implementazione del calcolo AbU (e gli strumenti per eseguire test), che un'analisi di GoAbU stesso.
-
 \paragraph{Limitazioni del calcolo AbU}
 
 Durante lo sviluppo dei test abbiamo incontrato due limitazioni del linguaggio, una delle quali facilmente risolvibile una volta definita la semantica di una funzionalità aggiuntiva, l'altra invece potrebbe eventualmente essere mitigata ma non risolta del tutto.\\
@@ -148,7 +143,11 @@ Tuttavia è particolarmente suscettibile al problema dei lost update. Nello spec
 Come annunciato in precedenza non si può rendere AbU completamente consistente, quindi già a prescindere non è mai garantito che tutti gli update abbiano effetto. Tuttavia nella situazione attuale, anche quando la rete funziona correttamente, non è possibile implementare un contatore ``affidabile'' che venga incrementato da più nodi.\\
 Entrambi questi problemi non rientrano nell'obbiettivo della tesi, ma sono venuti alla luce perché per la prima volta il calcolo AbU è stato adottato in un contesto applicativo.%stato usato per qualcosa al di fuori di uno showcase. Quindi era il caso di esporli.
 
-\section{Setting sperimentale}
+\section{Setting sperimentale}\label{setting}
+
+\href{https://github.com/abu-lang/goabu}{GoAbU} è un'implementazione di questo modello di calcolo scritta in linguaggio Go.
+È costruita utilizzando la libreria \href{https://github.com/hashicorp/memberlist}{memberlist} come middleware per la comunicazione in gruppo e la scoperta dei nodi,  \href{https://github.com/hyperjumptech/grule-rule-engine}{Grule} come rule engine, ed il framework \href{https://github.com/hybridgroup/gobot/}{gobot} per renderla utilizzabile in ambito IoT.\\
+Il focus principale della tesi sarà sia definire un metodo di test ragionevole e riproducibile per testare un'implementazione del calcolo AbU (e gli strumenti per eseguire test), che un'analisi di GoAbU stesso.
 
 \subsection{Il simulatore AbUsim}\label{setting:abusim}
 
@@ -201,18 +200,16 @@ Per risolvere questo problema bisognerebbe aggiungere una funzionalità per memo
 
 \newpage
 
-\section{Generazione dei test}
+\section{Generazione dei test}\label{aeg}
 
-\michele{Le figure vanno bene, ma forse sono un pò grandi}
-
-\subsection{Il generatore aeg}
+\subsection{Il generatore aeg}\label{aeg:descrizione}
 
 Uno degli strumenti principali utilizzati per l'analisi è il generatore di test \href{https://github.com/KayJay7/abusim-example-generator}{\aeg} (AbUsim Example Generator). Volevamo un modo per poter generare configurazioni che stressassero una caratteristica a piacere di GoAbU. L'utilizzo di questo strumento ha permesso sia di provare agilmente grandi configurazioni, ad esempio quelle da migliaia di regole per dispositivo che hanno permesso di scoprire i lunghi tempi di compilazione (Sottosezione \ref{ricompilazione}); che di apportare rapidamente correzioni alle configurazioni selezionate come test cases, e di poter generare facilmente configurazioni uguali che variassero solo nel numero di nodi.
 
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \matrix [matrix,row sep=2.2em,column sep=2em] {
+        \matrix [matrix,row sep=1.5em,column sep=2em] {
             %\node[circle, draw](s){$\text{\lstinline{start}}$};           &
             %\node[circle, draw](sa){$\text{\lstinline{start_all}}$};      &
             %\node[circle, draw](ns){$\text{\lstinline{ext.start}}$};
@@ -252,7 +249,7 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
         };
 
         \graph[nodes={circle, draw, label={below:(tutti)}}]{
-            ns/\lstinline{ext.start} [below=2.2em of sa],
+            ns/\lstinline{ext.start} [below=1.5em of sa],
         };
 
         \graph{
@@ -274,7 +271,7 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \graph [clockwise=6,radius=5cm,nodes={circle, draw}] {
+        \graph [clockwise=6,radius=4.2cm,nodes={circle, draw}] {
             a0/agent0,
             a1/agent1,
             a2/agent2,
@@ -299,27 +296,20 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
     \label{fig:esterno}
 \end{figure}
 
-\michele{Descrizione è un pò generico, metti qualcosa come struttura dei casi di test oppure funzionamento del generatore}
-
-\paragraph{Descrizione}\label{aeg:descrizione}
+\paragraph{Struttura delle configurazioni}
 
 Le configurazioni generate con \aeg seguono tutte una stessa struttura, che permette di avviare una computazione che coinvolgerà tutti i nodi e terminerà sempre, i dettagli della configurazione sono controllati da $6$ parametri (interi maggiori di $1$), indicati con $a$, $b$, $c$, $d$, $e$, ed $f$.
 
-Tutti gli $a$ nodi di una configurazione sono simili tra loro: anno le stesse variabili ed eseguono regole uguali, che differiscono al massimo per alcuni valori hardcoded. Ogni nodo ha due variabili booleane \lstinline{start} e \lstinline{start_all} inizializzate a \lstinline{false} che sono usate per avviare una computazione, più $b\times c$ (altro su $b$ e $c$ più avanti) variabili intere con nome \lstinline{ai_j} con $i\in [0,b)$ e $j\in [0,c)$ (e.g.: \lstinline{a0_0}), tutte inizializzate a $0$. Queste variabili rappresentano $b$ ``catene'', ciascuna lunga $c$ variabili. Ogni nodo ha anche una variabile intera \lstinline{id}, ciascuna inizializzata ad un valore diverso e mai modificata, sono utilizzate per indirizzare il singolo nodo.
+Tutti gli $a$ nodi di una configurazione sono simili tra loro: anno le stesse variabili ed eseguono regole uguali, che differiscono al massimo per alcuni valori hardcoded. Ogni nodo ha due variabili booleane \lstinline{start} e \lstinline{start_all} inizializzate a \lstinline{false} che sono usate per avviare una computazione, più $b\times c$ (altro su $b$ e $c$ più avanti) variabili intere con nome \lstinline{ai_j} con $i\in [0,b)$ e $j\in [0,c)$ (e.g.: \lstinline{a0_0}), tutte inizializzate a $0$. Queste variabili rappresentano $b$ ``catene'', ciascuna lunga $c$ variabili, come si rappresentato in Figure~\ref{fig:interno}. Ogni nodo ha anche una variabile intera \lstinline{id}, ciascuna inizializzata ad un valore diverso e mai modificata, sono utilizzate solo per indirizzare il singolo nodo.
 
-\michele{Fai riferimento alle figure \ref{fig:interno} e \ref{fig:esterno} nella descrizione}
-
-Ogni dispositivo ha 3 ``regole di avvio'', una si attiva quando \lstinline{start_all} viene impostato a \lstinline{true}, e non fa altro che impostare la variabile \lstinline{start} a \lstinline{true} su tutti i nodi. Una resetta \lstinline{start_all}. Ed infine quando \lstinline{start} viene impostato a \lstinline{true}, una ``variabile iniziale'' (la variabile \lstinline{ai_0}) delle prime $d\leq b$ catene viene impostata a $f$, e la variabile \lstinline{start} viene resettata.
+Ogni dispositivo ha 3 ``regole di avvio'' (rappresentate alla sinistra in Figure~\ref{fig:interno}), una si attiva quando \lstinline{start_all} viene impostato a \lstinline{true}, e non fa altro che impostare la variabile \lstinline{start} a \lstinline{true} su tutti i nodi. Una resetta \lstinline{start_all}. Ed infine quando \lstinline{start} viene impostato a \lstinline{true}, una ``variabile iniziale'' (la variabile \lstinline{ai_0}) delle prime $d\leq b$ catene viene impostata a $f$, e la variabile \lstinline{start} viene resettata.
 Dopodiché, alle prime $c-1$ variabili di ogni catena (quindi da $0$ $c-2$) corrisponde una regola che si attiva quando la sua variabile viene impostata ad un valore maggiore di $0$, e contemporaneamente copierà il valore della variabile in quella successiva nella catena (e.g.: da \lstinline{a1_2} ad \lstinline{a1_3}) e resetterà la sua variabile.
-Quando la $c$-esima variabile dell'$i$-esima catena viene impostata ad un valore $k>0$, non c'è una corrispondente regola ``normale''. Invece ce ne sono una locale che resetta il valore della variabile a $0$, ed una esterna che setterà a $k-1$ il valore della variabile iniziale dell'$i$-esima dei successivi $e$ dispositivi (il dispositivo \lstinline{id} attiva quelli da $((\text{\lstinline{id}}+1)\mod a)$ ad $((\text{\lstinline{id}}+e)\mod a)$). In questo modo la parte di computazione sul dispositivo corrente è completata, e continua sui dispositivi successivi.
+Quando la $c$-esima variabile dell'$i$-esima catena viene impostata ad un valore $k>0$, non c'è una corrispondente regola ``normale''. Invece ce ne sono una locale che resetta il valore della variabile a $0$, ed una esterna (rappresentata in basso in Figure~\ref{fig:interno}) che setterà a $k-1$ il valore della variabile iniziale dell'$i$-esima dei successivi $e$ dispositivi (il dispositivo \lstinline{id} attiva quelli da $((\text{\lstinline{id}}+1)\mod a)$ ad $((\text{\lstinline{id}}+e)\mod a)$). In questo modo la parte di computazione sul dispositivo corrente è completata, e continua sui dispositivi successivi, come visibile in Figure~\ref{fig:esterno}.
 Dopo $f$ livelli, il valore che viene passato sulle catene è arrivato ad $1$, e ai prossimi dispositivi viene passato il valore $0$, che le regole del $f+1$-esimo livello di dispositivi ignoreranno.
 
-\michele{Anche qui è un pò generico, metti qualcosa come parametri del simulatore oppure parametri di configurazione}
+\paragraph{Parametri di configurazione}
 
-\paragraph{Parametri}
-
-\michele{Le sezioni non numerate non vengono referenziate}
-Quindi il comportamento della configurazione è deciso dai (già elencati nella Descrizione \ref{aeg:descrizione}) parametri:
+Quindi il comportamento della configurazione è deciso dai (già elencati nella descrizione) parametri:
 \begin{itemize}
     \item $a$ (alt.: devices-number) Il numero di nodi nella configurazione
     \item $b$ (alt.: chains-number) Il numero di catene in ogni nodo (non tutte saranno attivate automaticamente)
@@ -335,18 +325,16 @@ Per questa tesi sono rilevanti solo i 6 parametri di configurazione, in quanto i
 \subsection{Terminazione forte}
 % Non sono sicuro che basti come dimostrazione, spero di sì perché non è stata facile da scrivere
 
-\michele{ANche qui, togli i riferimenti alle sezioni non numerate}
-
-Per semplicità affronteremo la terminazione in due parti. La prima parte riguarda solo la parte ``interna'' della computazione, quella che si occupa di trasportare i valori nelle catene di variabili, ignorando i valori che potrebbero essere aggiunti da una regola esterna avviata da un altro nodo\label{terminazione:premesse:interna}.
-E la seconda riguardante solo i dispositivi che vengono attivati dalle regole esterne, assumendo che la parte interna termini correttamente, attivando i nodi successivi\label{terminazione:premesse:esterna}.
+Per semplicità affronteremo la terminazione in due parti. La prima parte riguarda solo la parte ``interna'' della computazione, quella che si occupa di trasportare i valori nelle catene di variabili, ignorando i valori che potrebbero essere aggiunti da una regola esterna avviata da un altro nodo.
+E la seconda riguardante solo i dispositivi che vengono attivati dalle regole esterne, assumendo che la parte interna termini correttamente, attivando i nodi successivi.
 Sarebbe possibile fornire una dimostrazione unica che tratti direttamente entrambe le parti della computazione, ma è molto più difficile.
 
-\paragraph{Stabilizzazione interna}\label{terminazione:interna}
+\paragraph{Stabilizzazione interna}
 
 La terminazione sarà dimostrata prima in maniera meno formale, considerando un sistema in cui la regola da eseguire viene scelta dando la precedenza quelle che scrivono le variabili più vicine alla fine di una catena, e dando la precedenza alle catene con indice più alto. Questo permette di fissare l'ordine di esecuzione delle regole in uno su cui è più comodo ragionare. E infine sarà accennato perché un ordine così stringente non è necessario.
-Inoltre assumeremo, come annunciato ad inizio sezione~\ref{terminazione:premesse:interna}, che nessun nodo esterno imposti il valore di alcuna variabile, tuttavia in seguito spiegheremo perché non sia un problema nel paragrafo sulla convergenza totale~\ref{terminazione:totale}.
+Inoltre assumeremo, come annunciato ad inizio sezione, che nessun nodo esterno imposti il valore di alcuna variabile, tuttavia in seguito spiegheremo perché non sia un problema nel paragrafo sulla convergenza totale.
 
-Sia $(a_{0,0},...,a_{0,c-1},a_{1,0},...,a_{1,c-1},...,a_{b-1,c-1})\in \mathbb{N}^{bc}$ il vettore che rappresenta lo stato interno di un generico nodo della configurazione (ogni variabile $a_{i,j}$ rappresenta la variabile \lstinline{ai_j}~\ref{aeg:descrizione}). È facile verificare che ogni regola normale viene attivata da uno stato del tipo $(...,a_{i,j},a_{i,j+1},...)$ e causa uno stato del tipo $(...,0,a_{i,j},...)$ (notare che l'indice della catena è sempre $i$) e causerà l'inserimento di una nuova regola nella coda degli eventi.
+Sia $(a_{0,0},...,a_{0,c-1},a_{1,0},...,a_{1,c-1},...,a_{b-1,c-1})\in \mathbb{N}^{bc}$ il vettore che rappresenta lo stato interno di un generico nodo della configurazione (ogni variabile $a_{i,j}$ rappresenta la variabile \lstinline{ai_j}). È facile verificare che ogni regola normale viene attivata da uno stato del tipo $(...,a_{i,j},a_{i,j+1},...)$ e causa uno stato del tipo $(...,0,a_{i,j},...)$ (notare che l'indice della catena è sempre $i$) e causerà l'inserimento di una nuova regola nella coda degli eventi.
 Ricordiamo che con l'ordinamento stabilito ad inizio paragrafo, la regola attivata dallo stato $(...,a_{i,j},a_{i,j+1},...)$ verrà eseguita solo quando $a_{i,j+1}=0$, altrimenti ci sarebbe una regola con precedenza più alta.
 Una regola finale, invece è causata da uno stato del tipo $(...,a_{i,j},a_{i+1,0},...)$ e ne causa uno del tipo $(...,0,a_{i+1,0},...)$ senza causare nessun inserimento.
 
@@ -355,11 +343,11 @@ Ed al termine di questa computazione, saranno state eseguite le regole esterne p
 
 AbU, per sua natura, non fa garanzie sull'ordine di esecuzione delle regole causate dallo stesso stato, quindi per completare la dimostrazione formale dobbiamo mostrare che funzionerebbe anche senza questo ordinamento.
 Possiamo vedere che non importa perché: esiste una corrispondenza diretta tra le variabili e le regole, e non ci sono ``interferenze'' tra le regole causate dallo stesso stato (non cercano di leggere la stessa variabile o di scrivere la stessa), ed è sufficiente entrare una volta in uno stato ed uscirne subito per attivare una regola.
-Quindi l'ordine non importa, e quindi la computazione interna termina sempre.\label{terminazione:interna:ordinamento}
+Quindi l'ordine non importa, e quindi la computazione interna termina sempre.
 
 \paragraph{Stabilizzazione esterna}
 
-Come annunciato all'inizio della sezione~\ref{terminazione:premesse:esterna}, affronteremo la stabilizzazione esterna considerando corretta la parte interna della computazione. Ovvero assumendo che nodo che viene ``attivato'' da un valore $k$, eventualmente attiverà $e$ nodi con un valore $k-1$. Questo segue dalla dimostrazione precedente~\ref{terminazione:interna}.
+Come annunciato all'inizio della sezione, affronteremo la stabilizzazione esterna considerando corretta la parte interna della computazione. Ovvero assumendo che nodo che viene ``attivato'' da un valore $k$, eventualmente attiverà $e$ nodi con un valore $k-1$. Questo segue dalla dimostrazione precedente.
 
 Consideriamo l'attivazione di un nodo come il passaggio di un token, ogni token ha un'``intensità'' $k$, ovvero il numero di livelli che può attraversare. Quando un nodo elabora un token, questo viene spezzato in $e$ token di intensità $k-1$, e quando un token ha intensità $0$, il nodo che lo riceve lo scarta.
 Nelle nostre computazioni, l'intensità del token corrisponde al valore $k$ con cui il nodo viene attivato, ovvero il valore che la regola finale esterna inserisce all'inizio della catena di variabili dei nodi successivi. Quando viene impostata \lstinline{start = true} su di un nodo, questo genera $b$ token di intensità $f$. Quando viene impostata \lstinline{start_all = true} su un qualsiasi nodo, tutti gli $a$ nodi generano $b$ token ciascuno di intensità $f$.
@@ -371,14 +359,14 @@ Sapendo che la computazione esterna si ferma se e solo se non ci sono più token
 
 Ammettendo che più token vengano consumati contemporaneamente, il risultato non cambia, perché si passerebbe comunque ad uno vettore più in basso nell'ordine lessicografico.
 
-\paragraph{Stabilizzazione totale}\label{terminazione:totale}
+\paragraph{Stabilizzazione totale}
 
 Per mettere insieme i due risultati manca solo dimostrare che ammettere attivazioni esterne non impedisce la stabilizzazione interna. Riuscendo a dimostrare questo, avremmo che internamente la computazione termina in ogni caso, ed esternamente termina se quella interna termina.
 
 Dimostrare questa non interferenza è facile utilizzando lo stesso ordine rigido che abbiamo usato per rendere più breve la dimostrazione della stabilizzazione interna. Con quell'ordine rigido, le regole esterne che attiverebbero il nodo catena non verrebbero mai selezionate per prime per l'esecuzione, perché scrivono sulle variabili più lontane dalla fine della catena.
 In questo modo, il nodo comincerebbe ad eseguire le regole di attivazione solo dopo aver terminato la computazione interna già in corso. Quindi l'attivazione non interferirebbe con la stabilizzazione.
 
-Ovviamente AbU non prevede questo ordinamento, ma come spiegato nel paragrafo sulla stabilizzazione interna~\ref{terminazione:interna:ordinamento}, imporre questo ordinamento non influisce sul comportamento della nostra computazione.
+Ovviamente AbU non prevede questo ordinamento, ma come spiegato nel paragrafo sulla stabilizzazione interna, imporre questo ordinamento non influisce sul comportamento della nostra computazione.
 
 \subsection{Scelta delle configurazioni}
 
@@ -469,14 +457,14 @@ Come detto in precedenza, questo tempo non è significativo poiché dipende prin
     \hline
 \end{tabular}\label{tab:alto}
 
-\section{Raccolta dati}
+\section{Raccolta dati}\label{raccolta}
 
 \subsection{Quali dati raccogliere}\label{raccolta:quali}
 
 Prima di affrontare qualsiasi tipo di test bisogna stabilire quali sono i dati che importano e come raccoglierli in modo efficace.
 In un sistema distribuito sono tanti gli aspetti che si potrebbero prendere in considerazione. Traffico di rete, latenza dell'esecuzione delle regole, throughput dei singoli nodi, throughput dell'intero sistema. Tutte queste opzioni sono state considerate prima di scegliere che test eseguire.
 
-Il throughput (sia dei nodi che della rete), sembra la scelta più ovvia. In un qualsiasi altro sistema. \michele{Togliere la frase precedente?} Tuttavia, AbU non è pensato per svolgere calcoli, ma per sincronizzare dispositivi.
+AbU non è pensato per svolgere calcoli, ma per sincronizzare dispositivi.
 Quindi in un'applicazione reale non c'è un vero risultato in output, un qualcosa di cui misurare il throughput. Al massimo si possono misurare la quantità di regole eseguite, ma quelle sono legate al tick che è impostato manualmente.
 
 La latenza delle regole anzitutto dipende più dal numero totale di regole, e dalle prestazioni del dispositivo che esegue GoAbU, che da GoAbU stesso, quindi anche questa metrica non è molto indicativa delle prestazioni.
@@ -548,7 +536,7 @@ Per quanto sarebbe interessante avere un dato più preciso, questi pacchetti ``n
 
 \newpage
 
-\section{Risultati}
+\section{Risultati}\label{risultati}
 
 \subsection{Grafici}
 
@@ -564,7 +552,7 @@ In questo grafico possiamo osservare il traffico totale che attraversa la rete, 
 
 Notiamo anzitutto che in idle il traffico è molto basso, come ci si aspetta. Significa quindi che il middleware non ha bisogno di grandi scambi di dati per mantenere la comunicazione di gruppo ed il gossiping.
 All'aumentare dei nodi passa da $\sim\qty{2}{\mega\byte}$ a $\sim\qty{9}{\mega\byte}$, a $\sim\qty{20}{\mega\byte}$, di traffico, l'aumento sembra approssimativamente lineare rispetto al numero di nodi.
-I test in idle sono gli unici dove ha senso guardare le metriche al secondo, e si tratta di pochi $\unit{\kilo\byte/\second}$ (grafico in appendice~\ref{fig:tbps}).
+I test in idle sono gli unici dove ha senso guardare le metriche al secondo, e si tratta di pochi $\unit{\kilo\byte/\second}$ (grafico in appendice, Figure~\ref{fig:tbps}).
 
 I risultati per i test sotto carico medio sono molto meno promettenti. Già con $10$ nodi, i valori sono ben oltre il carico in idle per $100$ nodi, con $\sim\qty{62}{\mega\byte}$ di dati.\\
 Più preoccupante è il salto tra i $50$ ed i $100$ nodi, in cui il traffico passa da $\sim\qty{208}{\mega\byte}$ a $\sim\qty{7}{\giga\byte}$. L'aumento non sembra affatto lineare, ma non siamo sorpresi, perché implementando il broadcast come messaggi unicast ad ogni nodo, ci \emph{aspettiamo} una message complexity di $\Theta(a^2)$.
@@ -584,12 +572,11 @@ C'è un outlier del test con $100$ nodi che ha prodotto $\sim\qty{25}{\giga\byte
     \label{fig:tp}
 \end{figure}
 
-\michele{Nomina i riferimenti, ad esempio Figure~\ref{fig:tb} non \ref{fig:tb} (ho corretto la prima istanza qui di seguito)}
 Questo grafico, per i test sotto carico medio ed alto, non fornisce particolari informazioni oltre a quelle messe in evidenza dal grafico \lstinline{total bytes} Figure~\ref{fig:tb}.
 
 Dai messaggi risulta chiaro che la message complexity (stavolta come numero di pacchetti e non dimensione) non sia lineare. Infatti, il numero di pacchetti nei test con $100$ nodi è anche $100$ volte più grande di quello nei test con $10$ nodi, mentre con $50$ nodi è $30$ volte più grande.
 
-Per i test in idle, a contrario di quanto visto nel grafico precedente, anche senza carico, il numero di messaggi cresce in modo non lineare, ma comunque meno di come cresce sotto carico. In seguito vedremo altri dati su questo argomento quando parleremo del grafico \lstinline{bytes per packets}~\ref{fig:bp}.
+Per i test in idle, a contrario di quanto visto nel grafico precedente, anche senza carico, il numero di messaggi cresce in modo non lineare, ma comunque meno di come cresce sotto carico. In seguito vedremo altri dati su questo argomento quando parleremo del grafico \lstinline{bytes per packets} Figure~\ref{fig:bp}.
 
 \paragraph{\lstinline{logs_bytes ratio}}
 
@@ -634,7 +621,7 @@ Possiamo vedere che il numero di pacchetti per transazione è influenzato princi
 
 In questo grafico è rappresentata la dimensione media dei pacchetti, ottenuta dividendo i byte per il numero di pacchetti inviati da ogni nodo per ogni computazione.
 
-Analizzando il grafico \lstinline{total packets}~\ref{fig:tp} abbiamo notato che il numero di pacchetti inviati in idle sembrava crescere più che linearmente rispetto al numero di nodi; quando invece la quantità di dati in \lstinline{total bytes}~\ref{fig:tb} sembrava quasi lineare.
+Analizzando il grafico \lstinline{total packets}~\ref{fig:tp} abbiamo notato che il numero di pacchetti inviati in idle sembrava crescere più che linearmente rispetto al numero di nodi; quando invece la quantità di dati in \lstinline{total bytes} Figure~\ref{fig:tb} sembrava quasi lineare.
 Osservando questo grafico, possiamo vedere che la dimensione dei pacchetti diminuisce all'aumentare dei nodi, come ci si aspetta dai due dati precedenti.
 
 Notiamo che come il numero di pacchetti per transizione, anche la dimensione dei pacchetti è influenzata principalmente dal tipo di carico.
@@ -644,15 +631,15 @@ Nonostante fosse così anche nelle altre metriche, in questa risulta molto evide
 Alcuni nodi ricevono più o meno traffico. Anche se le transazioni sono in broadcast e dovrebbero essere distribuite tra tutti i nodi.
 Probabilmente si tratta di un'effetto del gossiping probabilistico in una rete molto grande.
 
-\subsection{Conclusioni e proposte}
-\michele{Conclusioni e proposte di miglioramento}
+\subsection{Conclusioni e proposte di miglioramento}
+
 Dopo aver analizzato questi risultati, possiamo concludere che GoAbU non riesce a scalare come sperato. Genera un traffico troppo alto~\ref{fig:tb}~\ref{fig:tp} per eseguire troppe poche regole esterne~\ref{tab:medio}~\ref{tab:alto}. \michele{Non sono così sicuro, qui servirebbe calcolare quanti byte per regola esterna vengono trasmessi, secondo me non sono coì alti}
 
 Il middleware riesce a ridurre marginalmente il traffico grazie ad un qualche meccanismo di compressione~\ref{fig:lbr}, questo permette a GoAbU di scalare leggermente di più. Comunque, una codifica più efficiente dei messaggi permetterebbe di ridurre l'affidamento che facciamo sulla compressione. Ma per permettere veramente a GoAbU di scalare su reti più grandi, la soluzione non è ridurre la dimensione dei messaggi.
 
 Possiamo imputare il problema al modello di broadcast implementato, in cui ogni nodo contatta ogni altro nodo in unicast, seguendo il modello ``reliable/atomic broadcast''~\cite{joseph1989reliable}.
 Potremmo migliorare le prestazioni utilizzando anche a più basso livello la comunicazione broadcast, invece che simularlo in una rete unicast. Però questo richiede di modificare la semantica del linguaggio per quanto riguarda la decisione della consegna delle regole.
-Inoltre, in questo modo, non solo tutti i segmenti della rete (inclusi quelli che non usano \michele{Manca parola}) riceverebbero i messaggi di GoAbU, ma bisognerebbe gestire in modo speciale i nodi che non si trovano nella stessa LAN.
+Inoltre, in questo modo, non solo tutti i segmenti della rete (inclusi quelli che non usano GoAbU) riceverebbero i messaggi di GoAbU, ma bisognerebbe gestire in modo speciale i nodi che non si trovano nella stessa LAN.
 
 Sfruttando le assunzioni già esistenti sulla rete, in particolare completezza della rete e fair loss, si potrebbe scegliere di limitare ad numero di nodi $k$ a cui viene inoltrato il messaggio di broadcast e fare maggiore affidamento sul gossiping.
 Ovviamente è necessario scegliere opportunamente questo $k$ in modo che il broadcast resti affidabile, e magari si può rendere configurabile per adattarsi alle necessità di sistemi specifici.\\
