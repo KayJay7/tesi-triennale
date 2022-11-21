@@ -214,10 +214,10 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
             %\node[circle, draw](ns){$\text{\lstinline{ext.start}}$};
             %\\
 
-            \node[circle, draw](pa02){$\text{\lstinline{ext.a0_2}}$};     &
-            \node[circle, draw](pa12){$\text{\lstinline{ext.a1_2}}$};     &
-            \node[circle, draw](pa22){$\text{\lstinline{ext.a2_2}}$};     &
-            \node[circle, draw](pa32){$\text{\lstinline{ext.a3_2}}$};   
+            \node[circle, draw, label={above:(prev.)}](pa02){$\text{\lstinline{ext.a0_2}}$};     &
+            \node[circle, draw, label={above:(prev.)}](pa12){$\text{\lstinline{ext.a1_2}}$};     &
+            \node[circle, draw, label={above:(prev.)}](pa22){$\text{\lstinline{ext.a2_2}}$};     &
+            \node[circle, draw, label={above:(prev.)}](pa32){$\text{\lstinline{ext.a3_2}}$};   
             \\
 
             \node[circle, draw](a00){$\text{\lstinline{a0_0}}$};          &
@@ -235,17 +235,20 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
             \node[circle, draw](a22){$\text{\lstinline{a2_2}}$};          &
             \node[circle, draw](a32){$\text{\lstinline{a3_2}}$};            \\
             
-            \node[circle, draw](na00){$\text{\lstinline{ext.a0_0}}$};     &
-            \node[circle, draw](na10){$\text{\lstinline{ext.a1_0}}$};     &
-            \node[circle, draw](na20){$\text{\lstinline{ext.a2_0}}$};     &
-            \node[circle, draw](na30){$\text{\lstinline{ext.a3_0}}$};     
+            \node[circle, draw, label={below:(succ.)}](na00){$\text{\lstinline{ext.a0_0}}$};     &
+            \node[circle, draw, label={below:(succ.)}](na10){$\text{\lstinline{ext.a1_0}}$};     &
+            \node[circle, draw, label={below:(succ.)}](na20){$\text{\lstinline{ext.a2_0}}$};     &
+            \node[circle, draw, label={below:(succ.)}](na30){$\text{\lstinline{ext.a3_0}}$};     
             \\
         };
 
         \graph[nodes={circle, draw}]{
             s/\lstinline{start} [left=4em of pa02],
             sa/\lstinline{start_all} [below=0em of s],
-            ns/\lstinline{ext.start} [below=0em of sa],
+        };
+
+        \graph[nodes={circle, draw, label={below:(tutti)}}]{
+            ns/\lstinline{ext.start} [below=2.2em of sa],
         };
 
         \graph{
@@ -256,7 +259,6 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
             (s) -> [very thick] (a00),
             (s) -> [very thick] (a10),
             (s) -> [very thick] (a20),
-            (s) -> [very thick] (a30),
             (sa) -> [very thick] (s),
             (sa) -> [draw=red, very thick] (ns),
         };
