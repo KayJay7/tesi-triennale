@@ -48,6 +48,26 @@
 \usepackage{tikz}
 \usepackage{xspace}
 
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=mystyle}
 
 \usetikzlibrary{positioning,chains,fit,shapes,calc,arrows,patterns,external,shapes.callouts,graphs,matrix}
 
@@ -57,10 +77,10 @@
 \maketitle
 
 \abstract
-    GoAbU è un'implementazione del calcolo AbU (Attribute-based memory Updates) per programmare sistemi distribuiti di dispositivi IoT. In questa tesi ci poniamo l'obbiettivo di studiarne il comportamento all'aumentare del numero di nodi, sotto diversi tipi di carico, utilizzando il simulatore AbUsim. Quindi stabilire un metodo ragionevole e realizzare degli strumenti, per analizzare il comportamento di GoAbU.\\
-    A questo scopo abbiamo realizzato alcuni programmi e script. In particolare \aeg per generare parametricamente configurazioni per il simulatore, in modo da creare più facilmente configurazioni complesse con numero variabile di nodi, anche centinaia. Ed una serie di script per misurare il traffico di rete di ogni nodo (in termini di quantità di byte e pacchetti) ed il traffico riportato a livello di messaggi da uno dei nodi (quantità di byte e di messaggi), e per estrarre grafici e metriche utili da questi dati.\\
-    Abbiamo analizzato il traffico per $10$, $50$ e $100$ nodi, sotto tre tipi di carico: nessun carico (idle), carico alto ma realistico (medio), carico molto alto (alto). In tutti i casi, con solo 10 nodi il carico è accettabile.\\
-    Il traffico è risultato molto alto sia sotto carico medio che alto, in particolare, sotto carico alto, diventava problematico già da 50 dispositivi. Tuttavia, confrontando i risultati con il traffico riportato a livello di libreria da GoAbU, risulta che la compressione svolta dal middleware riesce a rendere il traffico molto minore di quanto potrebbe essere.
+GoAbU è un'implementazione del calcolo AbU (Attribute-based memory Updates) per programmare sistemi distribuiti di dispositivi IoT. In questa tesi ci poniamo l'obbiettivo di studiarne il comportamento all'aumentare del numero di nodi, sotto diversi tipi di carico, utilizzando il simulatore AbUsim. Quindi stabilire un metodo ragionevole e realizzare degli strumenti, per analizzare il comportamento di GoAbU.\\
+A questo scopo abbiamo realizzato alcuni programmi e script. In particolare \aeg per generare parametricamente configurazioni per il simulatore, in modo da creare più facilmente configurazioni complesse con numero variabile di nodi, anche centinaia. Ed una serie di script per misurare il traffico di rete di ogni nodo (in termini di quantità di byte e pacchetti) ed il traffico riportato a livello di messaggi da uno dei nodi (quantità di byte e di messaggi), e per estrarre grafici e metriche utili da questi dati.\\
+Abbiamo analizzato il traffico per $10$, $50$ e $100$ nodi, sotto tre tipi di carico: nessun carico (idle), carico alto ma realistico (medio), carico molto alto (alto). In tutti i casi, con solo 10 nodi il carico è accettabile.\\
+Il traffico è risultato molto alto sia sotto carico medio che alto, in particolare, sotto carico alto, diventava problematico già da 50 dispositivi. Tuttavia, confrontando i risultati con il traffico riportato a livello di libreria da GoAbU, risulta che la compressione svolta dal middleware riesce a rendere il traffico molto minore di quanto potrebbe essere.
 %% Indice
 \tableofcontents
 
@@ -208,47 +228,53 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \matrix [matrix,row sep=1.5em,column sep=2em] {
+        \matrix [matrix,row sep=1em,column sep=1.5em,nodes={font=\footnotesize}] {
             %\node[circle, draw](s){$\text{\lstinline{start}}$};           &
             %\node[circle, draw](sa){$\text{\lstinline{start_all}}$};      &
             %\node[circle, draw](ns){$\text{\lstinline{ext.start}}$};
             %\\
 
-            \node[circle, draw, label={above:(prec.)}](pa02){$\text{\lstinline{ext.a0_2}}$};     &
-            \node[circle, draw, label={above:(prec.)}](pa12){$\text{\lstinline{ext.a1_2}}$};     &
-            \node[circle, draw, label={above:(prec.)}](pa22){$\text{\lstinline{ext.a2_2}}$};     &
-            \node[circle, draw, label={above:(prec.)}](pa32){$\text{\lstinline{ext.a3_2}}$};   
+            \node[circle, draw, label={above:(prec.)}](pa02){$\text{\lstinline{ext.a0_2}}$}; &
+            \node[circle, draw, label={above:(prec.)}](pa12){$\text{\lstinline{ext.a1_2}}$}; &
+            \node[circle, draw, label={above:(prec.)}](pa22){$\text{\lstinline{ext.a2_2}}$}; &
+            \node[circle, draw, label={above:(prec.)}](pa32){$\text{\lstinline{ext.a3_2}}$};
             \\
 
-            \node[circle, draw](a00){$\text{\lstinline{a0_0}}$};          &
-            \node[circle, draw](a10){$\text{\lstinline{a1_0}}$};          &
-            \node[circle, draw](a20){$\text{\lstinline{a2_0}}$};          &
-            \node[circle, draw](a30){$\text{\lstinline{a3_0}}$};           \\
+            \node[circle, draw](a00){$\text{\lstinline{a0_0}}$};   &
+            \node[circle, draw](a10){$\text{\lstinline{a1_0}}$};   &
+            \node[circle, draw](a20){$\text{\lstinline{a2_0}}$};   &
+            \node[circle, draw](a30){$\text{\lstinline{a3_0}}$}; 
+            \\
 
-            \node[circle, draw](a01){$\text{\lstinline{a0_1}}$};          &
-            \node[circle, draw](a11){$\text{\lstinline{a1_1}}$};          &
-            \node[circle, draw](a21){$\text{\lstinline{a2_1}}$};          &
-            \node[circle, draw](a31){$\text{\lstinline{a3_1}}$};           \\
+            \node[circle, draw](a01){$\text{\lstinline{a0_1}}$};   &
+            \node[circle, draw](a11){$\text{\lstinline{a1_1}}$};   &
+            \node[circle, draw](a21){$\text{\lstinline{a2_1}}$};   &
+            \node[circle, draw](a31){$\text{\lstinline{a3_1}}$};  
+            \\
 
-            \node[circle, draw](a02){$\text{\lstinline{a0_2}}$};          &
-            \node[circle, draw](a12){$\text{\lstinline{a1_2}}$};          &
-            \node[circle, draw](a22){$\text{\lstinline{a2_2}}$};          &
-            \node[circle, draw](a32){$\text{\lstinline{a3_2}}$};            \\
-            
-            \node[circle, draw, label={below:(succ.)}](na00){$\text{\lstinline{ext.a0_0}}$};     &
-            \node[circle, draw, label={below:(succ.)}](na10){$\text{\lstinline{ext.a1_0}}$};     &
-            \node[circle, draw, label={below:(succ.)}](na20){$\text{\lstinline{ext.a2_0}}$};     &
-            \node[circle, draw, label={below:(succ.)}](na30){$\text{\lstinline{ext.a3_0}}$};     
+            \node[circle, draw](a02){$\text{\lstinline{a0_2}}$};   &
+            \node[circle, draw](a12){$\text{\lstinline{a1_2}}$};   &
+            \node[circle, draw](a22){$\text{\lstinline{a2_2}}$};   &
+            \node[circle, draw](a32){$\text{\lstinline{a3_2}}$};  
+            \\
+
+            \node[circle, draw, label={below:(succ.)}](na00){$\text{\lstinline{ext.a0_0}}$}; &
+            \node[circle, draw, label={below:(succ.)}](na10){$\text{\lstinline{ext.a1_0}}$}; &
+            \node[circle, draw, label={below:(succ.)}](na20){$\text{\lstinline{ext.a2_0}}$}; &
+            \node[circle, draw, label={below:(succ.)}](na30){$\text{\lstinline{ext.a3_0}}$};
             \\
         };
 
-        \graph[nodes={circle, draw}]{
-            s/\lstinline{start} [left=4em of pa02],
-            sa/\lstinline{start_all} [below=0em of s],
+        \graph[nodes={font=\footnotesize, circle, draw}]{
+            s/\lstinline{start} [left=3em of pa02],
         };
 
-        \graph[nodes={circle, draw, label={below:(tutti)}}]{
-            ns/\lstinline{ext.start} [below=1.5em of sa],
+        \graph[nodes={font=\footnotesize, circle, draw}]{
+            sa/\lstinline{start_all} [below=1em of s],
+        };
+
+        \graph[nodes={font=\footnotesize, circle, draw, label={below:(tutti)}}]{
+            ns/\lstinline{ext.start} [below=1em of sa],
         };
 
         \graph{
@@ -270,7 +296,7 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}
-        \graph [clockwise=6,radius=4.2cm,nodes={circle, draw}] {
+        \graph [clockwise=6,radius=3.5cm,nodes={font=\footnotesize, circle, draw}] {
             a0/agent0,
             a1/agent1,
             a2/agent2,
@@ -280,15 +306,15 @@ Uno degli strumenti principali utilizzati per l'analisi è il generatore di test
         };
 
         \graph {
-            (a0) -> [draw=black, edge label=$2$, very thick, near start] (a1),
-            (a0) -> [draw=black, edge label=$2$, very thick, near start] (a2),
-            (a0) -> [draw=black, edge label=$2$, very thick, near start] (a3),
-            (a1) -> [draw=gray, edge label=$1$, very thick, near start] (a2),
-            (a1) -> [draw=gray, edge label=$1$, very thick, near start] (a3),
-            (a1) -> [draw=gray, edge label=$1$, very thick, near start] (a4),
-            (a2) -> [draw=white, edge label=..., very thick, near start] (a3),
-            (a3) -> [draw=white, edge label=..., very thick, near start] (a4),
-            (a4) -> [draw=white, edge label=..., very thick, near start] (a5),
+        (a0) -> [draw=black, edge label=$2$, very thick, near start] (a1),
+        (a0) -> [draw=black, edge label=$2$, very thick, near start] (a2),
+        (a0) -> [draw=black, edge label=$2$, very thick, near start] (a3),
+        (a1) -> [draw=gray, edge label=$1$, very thick, near start] (a2),
+        (a1) -> [draw=gray, edge label=$1$, very thick, near start] (a3),
+        (a1) -> [draw=gray, edge label=$1$, very thick, near start] (a4),
+        (a2) -> [draw=white, edge label=..., very thick, near start] (a3),
+        (a3) -> [draw=white, edge label=..., very thick, near start] (a4),
+        (a4) -> [draw=white, edge label=..., very thick, near start] (a5),
         };
     \end{tikzpicture}
     \caption{Attivazione dei nodi successivi}
@@ -541,7 +567,8 @@ Per quanto sarebbe interessante avere un dato più preciso, questi pacchetti ``n
 \paragraph{\lstinline{total bytes}}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth, keepaspectratio]{graphs/total bytes.png}
+    \centering
+    \includegraphics[width=0.7\linewidth, keepaspectratio]{graphs/total bytes.png}
     \caption{Byte inviati in totale nella rete}
     \label{fig:tb}
 \end{figure}
@@ -563,19 +590,19 @@ Per indagare ulteriormente su questo risultato inaspettato. Considerando anche i
 
 \begin{tabular}{| c | c |}
     \hline
-    Test & $\unit{\kilo\byte/rule}$\\
+    Test                          & $\unit{\kilo\byte/rule}$ \\
     \hline
-    $\text{\lstinline{low 10}}$   & $\sim62$ \\
+    $\text{\lstinline{low 10}}$   & $\sim62$                 \\
     \hline
-    $\text{\lstinline{low 50}}$   & $\sim104$ \\
+    $\text{\lstinline{low 50}}$   & $\sim104$                \\
     \hline
-    $\text{\lstinline{low 100}}$  & $\sim736$ \\
+    $\text{\lstinline{low 100}}$  & $\sim736$                \\
     \hline
-    $\text{\lstinline{high 10}}$  & $\sim83$ \\
+    $\text{\lstinline{high 10}}$  & $\sim83$                 \\
     \hline
-    $\text{\lstinline{high 50}}$  & $\sim401$ \\
+    $\text{\lstinline{high 50}}$  & $\sim401$                \\
     \hline
-    $\text{\lstinline{high 100}}$ & $\sim467$ \\
+    $\text{\lstinline{high 100}}$ & $\sim467$                \\
     \hline
 \end{tabular}\label{tab:bpr}
 
@@ -590,7 +617,8 @@ Ad ogni modo, anche se la singola regola è meno costosa, nel complesso i dati p
 \paragraph{\lstinline{total packets}}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth, keepaspectratio]{graphs/total packets.png}
+    \centering
+    \includegraphics[width=0.7\linewidth, keepaspectratio]{graphs/total packets.png}
     \caption{Pacchetti inviati in totale nella rete}
     \label{fig:tp}
 \end{figure}
@@ -604,7 +632,8 @@ Per i test in idle, a contrario di quanto visto nel grafico precedente, anche se
 \paragraph{\lstinline{logs_bytes ratio}}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth, keepaspectratio]{graphs/logs_bytes ratio.png}
+    \centering
+    \includegraphics[width=0.7\linewidth, keepaspectratio]{graphs/logs_bytes ratio.png}
     \caption{Rapporto tra bytes effettivamente inviati e quelli riportati nel log}
     \label{fig:lbr}
 \end{figure}
@@ -621,7 +650,8 @@ La stringa risultante, passata al middleware per l'invio è molto lunga, ma aven
 \paragraph{\lstinline{logs_packets ratio}}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth, keepaspectratio]{graphs/logs_packets ratio.png}
+    \centering
+    \includegraphics[width=0.7\linewidth, keepaspectratio]{graphs/logs_packets ratio.png}
     \caption{Rapporto tra pacchetti effettivamente inviati e messaggi riportati nel log}
     \label{fig:lpr}
 \end{figure}
@@ -637,7 +667,8 @@ Possiamo vedere che il numero di pacchetti per messaggio è influenzato principa
 \paragraph{\lstinline{bytes per packet}}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth, keepaspectratio]{graphs/bytes per packet.png}
+    \centering
+    \includegraphics[width=0.7\linewidth, keepaspectratio]{graphs/bytes per packet.png}
     \caption{Dimensione in byte dei pacchetti}
     \label{fig:bp}
 \end{figure}
@@ -685,13 +716,13 @@ Anche se GoAbU non è ancora adatto a scalare, è solo la prima implementazione,
 \chapter{Altri grafici}\label{appendix:grafici}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth, height=0.35\textheight, keepaspectratio]{graphs/received bytes.png}
+    \includegraphics[width=\linewidth, height=0.4\textheight, keepaspectratio]{graphs/received bytes.png}
     \caption{Indica il numero totale di byte ricevuti da un agente in un test}
     \label{fig:rb}
 \end{figure}
 
 \begin{figure}[H]
-    \includegraphics[width=\linewidth, height=0.35\textheight, keepaspectratio]{graphs/received packets.png}
+    \includegraphics[width=\linewidth, height=0.4\textheight, keepaspectratio]{graphs/received packets.png}
     \caption{Indica il numero totale di pacchetti ricevuti da un agente in un test}
     \label{fig:rp}
 \end{figure}

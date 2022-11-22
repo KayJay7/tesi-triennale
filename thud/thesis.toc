@@ -35,6 +35,6 @@
 \contentsline {paragraph}{\lstinline {logs_bytes ratio}}{24}{figure.6.3}%
 \contentsline {paragraph}{\lstinline {logs_packets ratio}}{25}{figure.6.4}%
 \contentsline {paragraph}{\lstinline {bytes per packet}}{26}{figure.6.5}%
-\contentsline {section}{\numberline {6.2}Conclusioni e proposte di miglioramento}{27}{section.6.2}%
+\contentsline {section}{\numberline {6.2}Conclusioni e proposte di miglioramento}{26}{section.6.2}%
 \contentsline {chapter}{\numberline {A}Altri grafici}{29}{appendix.Alph1}%
 \contentsline {chapter}{Bibliografia}{39}{appendix*.22}%
