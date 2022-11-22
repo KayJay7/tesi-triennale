@@ -58,7 +58,7 @@
 
 \abstract
     GoAbU è un'implementazione del calcolo AbU (Attribute-based memory Updates) per programmare sistemi distribuiti di dispositivi IoT. In questa tesi ci poniamo l'obbiettivo di studiarne il comportamento all'aumentare del numero di nodi, sotto diversi tipi di carico, utilizzando il simulatore AbUsim. Quindi stabilire un metodo ragionevole e realizzare degli strumenti, per analizzare il comportamento di GoAbU.\\
-    A questo scopo abbiamo realizzato alcuni programmi e script. In particolare \aeg per generare parametricamente configurazioni per il simulatore, in modo da creare più facilmente configurazioni complesse con numero variabile di nodi, anche centinaia. Ed una serie di script per misurare il traffico di rete di ogni nodo (in termini di quantità di byte e pacchetti) ed il traffico riportato a livello di azioni da uno dei nodi (quantità di byte e di azioni), e per estrarre grafici e metriche utili da questi dati.\\
+    A questo scopo abbiamo realizzato alcuni programmi e script. In particolare \aeg per generare parametricamente configurazioni per il simulatore, in modo da creare più facilmente configurazioni complesse con numero variabile di nodi, anche centinaia. Ed una serie di script per misurare il traffico di rete di ogni nodo (in termini di quantità di byte e pacchetti) ed il traffico riportato a livello di messaggi da uno dei nodi (quantità di byte e di messaggi), e per estrarre grafici e metriche utili da questi dati.\\
     Abbiamo analizzato il traffico per $10$, $50$ e $100$ nodi, sotto tre tipi di carico: nessun carico (idle), carico alto ma realistico (medio), carico molto alto (alto). In tutti i casi, con solo 10 nodi il carico è accettabile.\\
     Il traffico è risultato molto alto sia sotto carico medio che alto, in particolare, sotto carico alto, diventava problematico già da 50 dispositivi. Tuttavia, confrontando i risultati con il traffico riportato a livello di libreria da GoAbU, risulta che la compressione svolta dal middleware riesce a rendere il traffico molto minore di quanto potrebbe essere.
 %% Indice
@@ -130,7 +130,7 @@ Ed infine, il design a regole permette di avere una knowledge base più semplice
 \paragraph{Limitazioni del calcolo AbU}
 
 Durante lo sviluppo dei test abbiamo incontrato due limitazioni del linguaggio, una delle quali facilmente risolvibile una volta definita la semantica di una funzionalità aggiuntiva, l'altra invece potrebbe eventualmente essere mitigata ma non risolta del tutto.\\
-Il linguaggio non ammette che le regole esterne eseguano azioni sulle variabili locali. Questo è in parte perché se le regole impostassero una variabile locale al valore di una esterna, il valore finale della variabile locale non solo dipenderebbe dagli agenti esterni, ma anche dall'ordine in uci eseguono le azioni. Tuttavia, questo problema non sussiste se nel right-hand-side dell'assegnamento compaiono solo costanti e variabili locali. Tuttavia, permettere questa funzionalità (che aiuterebbe nella scrittura dei programmi) richiede di rivedere la semantica delle azioni esterne, per decidere in che momento va eseguita l'azione.\\
+Il linguaggio non ammette che le regole esterne eseguano azioni sulle variabili locali. Questo è in parte perché se le regole impostassero una variabile locale al valore di una esterna, il valore finale della variabile locale non solo dipenderebbe dagli agenti esterni, ma anche dall'ordine in cui eseguono le azioni. Tuttavia, questo problema non sussiste se nel right-hand-side dell'assegnamento compaiono solo costanti e variabili locali. Tuttavia, permettere questa funzionalità (che aiuterebbe nella scrittura dei programmi) richiede di rivedere la semantica delle azioni esterne, per decidere in che momento va eseguita l'azione.\\
 % supercazzola che probabilmente bisognerà ridurre
 L'altro problema invece riguarda la consistenza del sistema. Per il CAP theorem~\cite{brewer2000towards}, sappiamo che un sistema distribuito non può essere contemporaneamente ``consistente'', ``resistente alla partizione'' e ``disponibile''; AbU è sia resistente che disponibile, quindi non si può ottenere consistenza, ed anche la consistenza eventuale sarebbe fuori dagli obbiettivi del paradigma.
 % veramente il problema di cui voglio parlare
@@ -144,11 +144,11 @@ Entrambi questi problemi non rientrano nell'obbiettivo della tesi, ma sono venut
 È costruita utilizzando la libreria \href{https://github.com/hashicorp/memberlist}{memberlist} come middleware per la comunicazione in gruppo e la scoperta dei nodi,  \href{https://github.com/hyperjumptech/grule-rule-engine}{Grule} come rule engine, ed il framework \href{https://github.com/hybridgroup/gobot/}{gobot} per renderla utilizzabile in ambito IoT.\\
 Il focus principale della tesi sarà sia definire un metodo di test ragionevole e riproducibile per testare un'implementazione del calcolo AbU (e gli strumenti per eseguire test), che un'analisi di GoAbU stesso.
 
-\paragraph{Protocollo di GoAbU in breve} Ogni volta che viene attivata ua regola esterna, GoAbU inizia una ``transazione''. Una transazione è composta da una sequenza di ``azioni'', ovvero dei messaggi ad alto livello inviati \emph{in unicast} tramite memberlist.
-Queste azioni conterranno il mittente, il tipo di azione (ad esempio \lstinline{"do_commit"}, od \lstinline{"interested"}), ed il corpo dell'azione (ad esempio, l'albero sintattico di un'aggiornamento di una variabile). L'azione è serializzata in \lstinline{json} e successivamente in \lstinline{base64}.\\
-Una transazione si svolge in più fasi. Prima, il nodo che ha attivato la regola (l'iniziatore) esegue un'azione per tutti i nodi che conosce, per scoprire se sono interessati (anche la risposta è un'azione da parte del destinatario).
-Poi un nuovo scambio di azioni invierà il comando da eseguire sulle variabili a tutti i nodi interessati, che successivamente decideranno se abortire o eseguire il comando, ed informeranno l'iniziatore della decisione. Se un nodo abortisce viene comunicato anche agli altri, altrimenti viene comunicato di eseguirlo.
-Se un nodo non risponde entro un certo timeout, l'iniziatore ripete le azioni.
+\paragraph{Protocollo di GoAbU in breve} Ogni volta che viene attivata ua regola esterna, GoAbU inizia una ``transazione''. Una transazione è composta da una sequenza di messaggi ad alto livello inviati \emph{in unicast} tramite memberlist.
+Questi messaggi conterranno il mittente, il tipo di messaggio (ad esempio \lstinline{"do_commit"}, od \lstinline{"interested"}), e dei dati (ad esempio, l'albero sintattico di un'azione da eseguire). Il messaggio è serializzato in \lstinline{json} e successivamente in \lstinline{base64}.\\
+Una transazione si svolge in più fasi. Prima, il nodo che ha attivato la regola (l'iniziatore) invia un messaggio a tutti i nodi che conosce, per scoprire se sono interessati.
+Poi con un nuovo scambio di messaggi invierà il comando da eseguire sulle variabili a tutti i nodi interessati, che decideranno se abortire o eseguire il comando, ed informeranno l'iniziatore della decisione. Se un nodo abortisce viene comunicato anche agli altri, altrimenti viene comunicato di eseguirlo.
+Se un nodo non risponde entro un certo timeout, l'iniziatore ripete il messaggio.
 
 \section{Il simulatore AbUsim}\label{setting:abusim}
 
@@ -157,8 +157,8 @@ I file di configurazione di AbUsim permettono di specificare un elenco di dispos
 Per comodità è possibile specificare un prototipo in ogni dispositivo. I prototipi specificano anch'essi un elenco di regole e di variabili che i dispositivi erediteranno. In questo modo si possono raggruppare regole in comune tra tanti dispositivi.
 Si possono configurare anche il tick time (il tempo che il dispositivo aspetterà tra le esecuzioni delle regole) e l'immagine docker da usare per i nodi ed il coordinatore.
 
-Il parsing delle regole di ogni nodo viene fatto direttamente dal simulatore, che dopo aver costruito l'elenco di regole e variabili di ogni nodo, codificherà gli alberi di sintassi in \lstinline{json} e successivamente in \lstinline{base64} per passarli come argomenti al programma in esecuzione su ogni nodo, proprio come sono codificate le azioni. È possibile collegare altri nodi esterni alla rete del simulatore che eseguano GoAbU, ma non è necessario per questa tesi.\\
-Viene avviato anche un coordinatore, che gestisce la comunicazione con l'esterno sia per inviare comandi che per ricevere log. Questo è strettamente parte del simulatore e non un elemento che ci si aspetta di trovare in una reale applicazione di AbU, che invece è pensato per essere decentralizzato. Va notato, allo scopo del progetto, che la rete virtuale su cui viaggiano i messaggi di GoAbU è separata da quella su cui viaggiano i messaggi di gestione ed i log.\\
+Il parsing delle regole di ogni nodo viene fatto direttamente dal simulatore, che dopo aver costruito l'elenco di regole e variabili di ogni nodo, codificherà gli alberi di sintassi in \lstinline{json} e successivamente in \lstinline{base64} per passarli come argomenti al programma in esecuzione su ogni nodo, proprio come sono codificati i messaggi. È possibile collegare altri nodi esterni alla rete del simulatore che eseguano GoAbU, ma non è necessario per questa tesi.\\
+Viene avviato anche un coordinatore, che gestisce la comunicazione con l'esterno sia per inviare comandi che per ricevere log. Questo è strettamente parte del simulatore e non un elemento che ci si aspetta di trovare in una reale applicazione di AbU, che invece è pensato per essere decentralizzato. Va notato, allo scopo del progetto, che la rete virtuale su cui viaggiano i messaggi di GoAbU è separata da quella su cui viaggia la comunicazione di gestione del simulatore ed i log.\\
 Opzionalmente si può avviare un container che offre un'interfaccia web per controllare i nodi, quindi permette di verificarne lo stato, inviare comandi, ed impostare il livello dei log. Tutto ciò può essere fatto anche programmaticamente tramite una libreria python.
 
 \section{Macchina dei test}
@@ -381,7 +381,7 @@ In tutti i casi, l'unico dato che ci importava raccogliere erano le informazioni
 Il primo caso non prevede nessuna regola, il sistema è composto solo da nodi ``vuoti'' ed i test in questo caso (a contrario degli altri due) sono stati condotti senza avviare mai la computazione.
 L'obbiettivo è quello di osservare il comportamento dell'implementazione quando non succede nulla, verificare la presenza di overhead o di un ``rumore di fondo'' da poter rimuovere dai test successivi.
 
-In particolare ci interessava il traffico causato dal middleware memberlist per mantenere la comunicazione di gruppo attiva anche senza nessuno scambio di messaggi.
+In particolare ci interessava il traffico causato dal middleware memberlist per mantenere la comunicazione di gruppo attiva anche senza nessuna transazione.
 
 Questo test serve per scoprire se un sistema con tanti nodi sia impraticabile a prescindere dal tipo di lavoro che svolgono. Se mantenere i nodi connessi causa già troppo traffico per poter utilizzare GoAbU in una rete vera, bisognerebbe cambiare completamente l'implementazione.
 
@@ -475,7 +475,7 @@ In ogni caso, il tempo speso per attendere il passare del tick è molto più lun
 Quindi anche questo dato è stato considerato non necessario, almeno per ora.
 
 Alla fine, abbiamo deciso di raccogliere solo i dati relativi al traffico di rete. Più precisamente abbiamo raccolto sia la dimensione totale dei messaggi inviati e ricevuti (come numero di byte totali), che la quantità di pacchetti (frame di livello 2) inviati e ricevuti. Entrambi questi dati sono reperibili direttamente dal sistema operativo.
-Inoltre, abbiamo deciso di raccogliere anche il numero di azioni eseguite a livello di libreria, e la dimensione di queste azioni. Per poterle confrontare con i dati del sistema operativo e scoprire quando overhead viene aggiunto dal middleware.
+Inoltre, abbiamo deciso di raccogliere anche il numero di messaggi inviati a livello di libreria, e la dimensione di questi messaggi. Per poterle confrontare con i dati del sistema operativo e scoprire quando overhead viene aggiunto dal middleware.
 Queste ultime informazioni sono state raccolte solo per gli ultimi due casi, quello medio e quello alto, perché in idle la libreria non produce azioni.
 
 \section{Ispezione dei nodi}
@@ -487,8 +487,8 @@ Quindi è facile ottenere solo i dati riguardanti GoAbU senza che siano influenz
 
 Per separare i dati riguardanti una computazione da quelli precedente e da quelli della discovery, raccogliamo i dati prima e dopo la computazione, ed teniamo la differenza.
 
-I dati sulle azioni, invece, sono raccolte tramite i log del simulatore, che sono stati modificati appositamente per includere questi dati.
-Purtroppo, per quanto riguarda le azioni, abbiamo raccolto i log di un solo nodo poiché le dimensioni erano troppo grandi. Raccogliendo i dati di un solo nodo sono stati prodotti $\qty{230}{\mebi\byte}$ di file di log, quindi raccoglierli per tutti i nodi sarebbe stato dispendioso.
+I dati sui messaggi, invece, sono raccolte tramite i log del simulatore, che sono stati modificati appositamente per includere questi dati.
+Purtroppo, per quanto riguarda i messaggi, abbiamo raccolto i log di un solo nodo poiché le dimensioni erano troppo grandi. Raccogliendo i dati di un solo nodo sono stati prodotti $\qty{230}{\mebi\byte}$ di file di log, quindi raccoglierli per tutti i nodi sarebbe stato dispendioso.
 In futuro, si potrebbe trovare un modo per fornire questi dati in modo più snello, per poter analizzare più nodi.
 
 \section{Metriche}
@@ -511,12 +511,12 @@ Elenchiamo tutte le metriche ottenute, con una breve descrizione
     \item \lstinline{total packets}: Pacchetti inviati in totale nella rete
     \item \lstinline{total bytes per seconds}: Come sopra, ma diviso per la durata del test
     \item \lstinline{total packets per seconds}: Come sopra, ma diviso per la durata del test
-    \item \lstinline{logs_expected bytes}: Dimensione totale delle azioni riportata nei log
+    \item \lstinline{logs_expected bytes}: Dimensione totale dei messaggi riportata nei log
     \item \lstinline{logs_actual bytes}: Byte effettivamente inviati dal nodo loggato
-    \item \lstinline{logs_expected packets}: Numero di azioni riportata nei log
+    \item \lstinline{logs_expected packets}: Numero di messaggi riportati nei log
     \item \lstinline{logs_actual packets}: Pacchetti effettivamente inviati dal nodo loggato
     \item \lstinline{logs_bytes ratio}: Rapporto tra bytes effettivamente inviati e quelli riportati nel log
-    \item \lstinline{logs_packets ratio}: Rapporto tra pacchetti inviati e azioni riportate nel log
+    \item \lstinline{logs_packets ratio}: Rapporto tra pacchetti inviati e messaggi riportati nel log
 \end{itemize}
 
 Le metriche riguardanti il tempo sono state raccolte, ma non sono rilevanti, perché il tempo dipende principalmente dal tick, e nel nostro caso anche dalla macchina che esegue il simulatore. Quindi non verranno analizzati.
@@ -528,7 +528,7 @@ I dati sui pacchetti di livello 2 sono interessanti in quanto sono indicativi de
 
 Confrontare i dati del sistema con quelli dei log permette di osservare cosa il middleware è in grado di fare per ridurre il traffico. In particolare, i due rapporti \lstinline{logs_bytes ratio} e \lstinline{logs_packets ratio} facilitano questo confronto.
 Più precisamente, il primo mette in evidenza la capacità del middleware di comprimere ed ottimizzare i dati.
-Il secondo invece mette in evidenza quanti pacchetti servono per un'azione.
+Il secondo invece mette in evidenza quanti pacchetti servono per un messaggio.
 
 Oltre a questo, le metriche totali, quindi \lstinline{total bytes} e \lstinline{total packets}, forniscono una misura complessiva del traffico, quindi la quantità di byte e pacchetti, che attraversa la rete da parte di tutti i nodi.
 Questo è uno dei dati più importanti, perché potrebbe essere il fattore più limitante in una rete reale. Se il data-rate fosse una limitazione, sarebbe sufficiente allungare il tick dei nodi che generano più traffico, ma la quantità totale di dati resta la stessa.
@@ -601,9 +601,9 @@ Ad ogni modo, anche se la singola regola è meno costosa, nel complesso i dati p
 
 Questo grafico, per i test sotto carico medio ed alto, non fornisce particolari informazioni oltre a quelle messe in evidenza dal grafico \lstinline{total bytes} Figure~\ref{fig:tb}.
 
-Dai messaggi risulta chiaro che la message complexity (stavolta come numero di pacchetti e non dimensione) non sia lineare. Infatti, il numero di pacchetti nei test con $100$ nodi è anche $100$ volte più grande di quello nei test con $10$ nodi, mentre con $50$ nodi è $30$ volte più grande.
+Dai pacchetti risulta chiaro che la message complexity (stavolta come numero di pacchetti e non dimensione) non sia lineare. Infatti, il numero di pacchetti nei test con $100$ nodi è anche $100$ volte più grande di quello nei test con $10$ nodi, mentre con $50$ nodi è $30$ volte più grande.
 
-Per i test in idle, a contrario di quanto visto nel grafico precedente, anche senza carico, il numero di messaggi cresce in modo non lineare, ma comunque meno di come cresce sotto carico. In seguito vedremo altri dati su questo argomento quando parleremo del grafico \lstinline{bytes per packets} Figure~\ref{fig:bp}.
+Per i test in idle, a contrario di quanto visto nel grafico precedente, anche senza carico, il numero di pacchetti cresce in modo non lineare, ma comunque meno di come cresce sotto carico. In seguito vedremo altri dati su questo argomento quando parleremo del grafico \lstinline{bytes per packets} Figure~\ref{fig:bp}.
 
 \paragraph{\lstinline{logs_bytes ratio}}
 
@@ -614,29 +614,29 @@ Per i test in idle, a contrario di quanto visto nel grafico precedente, anche se
 \end{figure}
 
 In questo grafico possiamo osservare se l'utilizzo del middleware memberlist causa overhead o comprime i dati in modo osservabile.
-È calcolato confrontando la quantità byte dati inviati riportata dal sistema, con la somma della dimensione di tutte le azioni eseguite a dalla libreria. Quindi un valore maggiore di $1$ indica un complessivo overhead, mentre un valore minore di $1$ indica una compressione migliore.
+È calcolato confrontando la quantità byte dati inviati riportata dal sistema, con la somma della dimensione di tutti i messaggi eseguite a dalla libreria. Quindi un valore maggiore di $1$ indica un complessivo overhead, mentre un valore minore di $1$ indica una compressione migliore.
 
 Possiamo osservare dai rapporti con valori da $0.38$ a $0.46$, che la compressione riesce a rendere i dati da inviare meno della metà dei dati di partenza.
 Il rapporto di compressione è tra il $2.2$ ed il $2.6$, che è molto alto.
 
-Il corpo delle azioni è una serializzazione \lstinline{json} che contiene, tra le altre cose, l'albero sintattico della regola che è stata attivata. Questo oggetto viene poi codificato in \lstinline{base64} prima di essere passato al middleware, similmente a come le configurazioni venivano passate ai nodi, come visto nella descrizione del simulatore~\ref{setting:abusim}.
-La stringa risultante è molto lunga, ma avendo poche informazioni (relativamente alla lunghezza) ci aspettiamo che abbia poca entropia, e che per questo possa essere compressa così tanto, così facilmente.
+Come già visto nella Sezione~\ref{setting}, il corpo dei è una serializzazione \lstinline{json} che contiene l'albero sintattico della regola codificata in \lstinline{base64}.
+La stringa risultante, passata al middleware per l'invio è molto lunga, ma avendo poche informazioni (relativamente alla lunghezza) ci aspettiamo che abbia poca entropia, e che per questo possa essere compressa così tanto, così facilmente.
 
 \paragraph{\lstinline{logs_packets ratio}}
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth, keepaspectratio]{graphs/logs_packets ratio.png}
-    \caption{Rapporto tra pacchetti effettivamente inviati ed azioni riportate nel log}
+    \caption{Rapporto tra pacchetti effettivamente inviati e messaggi riportati nel log}
     \label{fig:lpr}
 \end{figure}
 
-Questa metrica mette in evidenza quanti pacchetti sono \emph{inviati} (non scambiati in totale), approssimativamente, per ogni azione.
+Questa metrica mette in evidenza quanti pacchetti sono \emph{inviati} (non scambiati in totale), approssimativamente, per ogni messaggio inviato.
 Se il rapporto fosse minore di $1$ probabilmente saremmo in presenza di un'errore nella raccolta dei dati, a meno che il middleware non faccia ottimizzazione del recapito utilizzando una rete overlay, ma nel nostro caso non è così.
 
 Istintivamente verrebbe da pensare che il numero di pacchetti sia influenzato dai nodi, che causano un aumento dei pacchetti per mantenere il gruppo.
 Però dal grafico osserviamo che il numero di nodi influenza solo marginalmente il numero di pacchetti inviati, anzi nel caso con carico alto, la quantità di pacchetti diminuisca all'aumentare dei nodi.
 
-Possiamo vedere che il numero di pacchetti per azione è influenzato principalmente dal tipo di carico. Comunque, anche sotto carico alto, sono meno di $4$ pacchetti per azione.
+Possiamo vedere che il numero di pacchetti per messaggio è influenzato principalmente dal tipo di carico. Comunque, anche sotto carico alto, sono meno di $4$ pacchetti per messaggio.
 
 \paragraph{\lstinline{bytes per packet}}
 
@@ -655,7 +655,7 @@ Notiamo che come il numero di pacchetti per transizione, anche la dimensione dei
 Notiamo anche che nessuno dei carichi fa raggiungere consistentemente la \lstinline{MTU} (che è di $\qty{1500}{\byte}$).
 
 Nonostante fosse così anche nelle altre metriche, in questa risulta molto evidente che all'aumentare dei nodi, i risultati diventano sempre più imprecisi.
-Alcuni nodi ricevono più o meno traffico. Anche se le azioni sono in broadcast e dovrebbero essere distribuite tra tutti i nodi.
+Alcuni nodi ricevono più o meno traffico. Anche se i messaggi sono in broadcast e dovrebbero essere distribuite tra tutti i nodi.
 Probabilmente si tratta di un'effetto del gossiping probabilistico in una rete molto grande.
 
 \section{Conclusioni e proposte di miglioramento}
@@ -666,7 +666,7 @@ Il middleware riesce ridurre ulteriormente il traffico grazie ad un qualche mecc
 
 Possiamo imputare il problema al modello di broadcast implementato, in cui ogni nodo contatta ogni altro nodo in unicast, seguendo il modello ``reliable/atomic broadcast''~\cite{joseph1989reliable}.
 Potremmo migliorare le prestazioni utilizzando anche a più basso livello la comunicazione broadcast, invece che simularlo in una rete unicast. Però questo richiede di modificare la semantica del linguaggio per quanto riguarda la decisione della consegna delle regole.
-Inoltre, in questo modo, non solo tutti i segmenti della rete (inclusi quelli che non usano GoAbU) riceverebbero i messaggi di GoAbU, ma bisognerebbe gestire in modo speciale i nodi che non si trovano nella stessa LAN.
+Inoltre, in questo modo, non solo tutti i segmenti della rete (inclusi quelli che non usano GoAbU) riceverebbero i pacchetti di GoAbU, ma bisognerebbe gestire in modo speciale i nodi che non si trovano nella stessa LAN.
 
 Sfruttando le assunzioni già esistenti sulla rete, in particolare completezza della rete e fair loss, si potrebbe scegliere di limitare ad numero di nodi $k$ a cui viene inoltrato il messaggio di broadcast e fare maggiore affidamento sul gossiping.
 Ovviamente è necessario scegliere opportunamente questo $k$ in modo che il broadcast resti affidabile, e magari si può rendere configurabile per adattarsi alle necessità di sistemi specifici.\\
@@ -762,7 +762,7 @@ Anche se GoAbU non è ancora adatto a scalare, è solo la prima implementazione,
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth, height=0.4\textheight, keepaspectratio]{graphs/logs_expected bytes.png}
-    \caption{Dimensione totale delle azioni riportata nei log}
+    \caption{Dimensione totale dei messaggi riportati nei log}
     \label{fig:leb}
 \end{figure}
 
@@ -774,7 +774,7 @@ Anche se GoAbU non è ancora adatto a scalare, è solo la prima implementazione,
 
 \begin{figure}[H]
     \includegraphics[width=\linewidth, height=0.4\textheight, keepaspectratio]{graphs/logs_expected packets.png}
-    \caption{Numero di azioni riportata nei log}
+    \caption{Numero di messaggi riportati nei log}
     \label{fig:lep}
 \end{figure}
 
