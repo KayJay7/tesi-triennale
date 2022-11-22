@@ -199,8 +199,6 @@ Un rule engine è efficiente a trovare le regole da eseguire perché utilizza un
 Ovviamente per il simulatore non si può fare molto, ma per un dispositivo reale che viene programmato una volta sola con un migliaio di regole, non è accettabile aspettare diversi minuti ad ogni riavvio perché sta ricostruendo la struttura. Soprattutto considerato che un dispositivo del genere potrebbe essere molto più lento di un computer che esegue AbUsim, e quindi potrebbe diventare troppo lento ancora prima.
 Per risolvere questo problema bisognerebbe aggiungere una funzionalità per memorizzare la struttura precompilata in modo che successivamente il dispositivo debba solo leggerla per tornare operativo dopo un riavvio. Per il simulatore questo non vale poiché lo scopo di AbUsim è la prototipazione, ed è previsto che ad ogni avvio la configurazione cambi, rendendo meno utile conservare la struttura.
 
-\newpage
-
 \chapter{Generazione dei test}\label{aeg}
 
 \section{Il generatore aeg}\label{aeg:descrizione}
@@ -535,8 +533,6 @@ Questo è uno dei dati più importanti, perché potrebbe essere il fattore più 
 
 Bisogna notare che i pacchetti sono di livello 2, quindi oltre a quelli causati da GoAbU sono inclusi anche altri protocolli ancillari IP e le richieste ARP, perché il sistema non li separa.
 Per quanto sarebbe interessante avere un dato più preciso, questi pacchetti ``non GoAbU'' non saranno molti se paragonati a quelli di GoAbU. Inoltre, si tratta di un dato più indicativo dello stress che viene messo sulla rete, in particolare sugli switch ed access point.
-
-\newpage
 
 \chapter{Risultati}\label{risultati}
 
