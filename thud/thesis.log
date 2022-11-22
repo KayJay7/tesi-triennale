@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.21)  22 NOV 2022 19:21
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.21)  22 NOV 2022 19:28
 entering extended mode
 **"c:/Users/alvis/OneDrive - Università degli Studi di Udine/tesi-triennale/thud/thesis.tex"
 (c:/Users/alvis/OneDrive - Università degli Studi di Udine/tesi-triennale/thud/thesis.tex
@@ -271,11 +271,7 @@ Using XMP template file: pdfa.xmp
 \xmpinclRead=\read3
 \openout3 = `pdfa.xmpi'.
 
-<<pdfa.xmpi>>) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/inputenx\inputenx.sty
-Package: inputenx 2019/11/29 v1.12 Enhanced input encoding handling (HO)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/tocbibind\tocbibind.sty
+<<pdfa.xmpi>>) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/tocbibind\tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has chapter divisions on input line 50.
 
@@ -828,7 +824,7 @@ LaTeX Font Info:    Trying to load font information for OT1+phv on input line 57
  (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
-<bannerdmif_italian.pdf, id=89, 541.13943pt x 52.48358pt>
+<bannerdmif_italian.pdf, id=85, 541.13943pt x 52.48358pt>
 File: bannerdmif_italian.pdf Graphic file (type pdf)
 <use bannerdmif_italian.pdf>
 Package pdftex.def Info: bannerdmif_italian.pdf  used on input line 57.
@@ -905,7 +901,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ] [18] [19] [20]
 Capitolo 6.
-<graphs/total bytes.png, id=316, 462.528pt x 346.896pt>
+<graphs/total bytes.png, id=312, 462.528pt x 346.896pt>
 File: graphs/total bytes.png Graphic file (type png)
 <use graphs/total bytes.png>
 Package pdftex.def Info: graphs/total bytes.png  used on input line 544.
@@ -920,7 +916,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) h
                                                   \__shipout_drop_firstpage_...
 l.554 
        <./graphs/total bytes.png>]
-<graphs/total packets.png, id=326, 462.528pt x 346.896pt>
+<graphs/total packets.png, id=322, 462.528pt x 346.896pt>
 File: graphs/total packets.png Graphic file (type png)
 <use graphs/total packets.png>
 Package pdftex.def Info: graphs/total packets.png  used on input line 593.
@@ -929,7 +925,7 @@ Package pdftex.def Info: graphs/total packets.png  used on input line 593.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [22]
-<graphs/logs_bytes ratio.png, id=334, 462.528pt x 346.896pt>
+<graphs/logs_bytes ratio.png, id=330, 462.528pt x 346.896pt>
 File: graphs/logs_bytes ratio.png Graphic file (type png)
 <use graphs/logs_bytes ratio.png>
 Package pdftex.def Info: graphs/logs_bytes ratio.png  used on input line 607.
@@ -942,7 +938,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
                                                   \__shipout_drop_firstpage_...
 l.611 
        <./graphs/total packets.png>]
-<graphs/logs_packets ratio.png, id=344, 462.528pt x 346.896pt>
+<graphs/logs_packets ratio.png, id=340, 462.528pt x 346.896pt>
 File: graphs/logs_packets ratio.png Graphic file (type png)
 <use graphs/logs_packets ratio.png>
 Package pdftex.def Info: graphs/logs_packets ratio.png  used on input line 624.
@@ -955,7 +951,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
                                                   \__shipout_drop_firstpage_...
 l.628 
        <./graphs/logs_bytes ratio.png>]
-<graphs/bytes per packet.png, id=352, 462.528pt x 346.896pt>
+<graphs/bytes per packet.png, id=348, 462.528pt x 346.896pt>
 File: graphs/bytes per packet.png Graphic file (type png)
 <use graphs/bytes per packet.png>
 Package pdftex.def Info: graphs/bytes per packet.png  used on input line 640.
@@ -976,12 +972,12 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 l.660 
        <./graphs/bytes per packet.png>] [27] [28]
 Appendice A.
-<graphs/received bytes.png, id=382, 462.528pt x 346.896pt>
+<graphs/received bytes.png, id=378, 462.528pt x 346.896pt>
 File: graphs/received bytes.png Graphic file (type png)
 <use graphs/received bytes.png>
 Package pdftex.def Info: graphs/received bytes.png  used on input line 688.
 (pdftex.def)             Requested size: 339.15295pt x 254.36472pt.
-<graphs/received packets.png, id=383, 462.528pt x 346.896pt>
+<graphs/received packets.png, id=379, 462.528pt x 346.896pt>
 File: graphs/received packets.png Graphic file (type png)
 <use graphs/received packets.png>
 Package pdftex.def Info: graphs/received packets.png  used on input line 694.
@@ -996,12 +992,12 @@ pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.1
                                                   \__shipout_drop_firstpage_...
 l.698 
        <./graphs/received bytes.png>]
-<graphs/sent bytes.png, id=390, 462.528pt x 346.896pt>
+<graphs/sent bytes.png, id=386, 462.528pt x 346.896pt>
 File: graphs/sent bytes.png Graphic file (type png)
 <use graphs/sent bytes.png>
 Package pdftex.def Info: graphs/sent bytes.png  used on input line 700.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/sent packets.png, id=391, 462.528pt x 346.896pt>
+<graphs/sent packets.png, id=387, 462.528pt x 346.896pt>
 File: graphs/sent packets.png Graphic file (type png)
 <use graphs/sent packets.png>
 Package pdftex.def Info: graphs/sent packets.png  used on input line 706.
@@ -1018,12 +1014,12 @@ l.710
                                                   \__shipout_drop_firstpage_...
 l.710 
        <./graphs/received packets.png> <./graphs/sent bytes.png>]
-<graphs/sent bytes per seconds.png, id=400, 462.528pt x 346.896pt>
+<graphs/sent bytes per seconds.png, id=396, 462.528pt x 346.896pt>
 File: graphs/sent bytes per seconds.png Graphic file (type png)
 <use graphs/sent bytes per seconds.png>
 Package pdftex.def Info: graphs/sent bytes per seconds.png  used on input line 712.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/sent packets per seconds.png, id=401, 462.528pt x 346.896pt>
+<graphs/sent packets per seconds.png, id=397, 462.528pt x 346.896pt>
 File: graphs/sent packets per seconds.png Graphic file (type png)
 <use graphs/sent packets per seconds.png>
 Package pdftex.def Info: graphs/sent packets per seconds.png  used on input line 718.
@@ -1040,12 +1036,12 @@ l.722
                                                   \__shipout_drop_firstpage_...
 l.722 
        <./graphs/sent packets.png> <./graphs/sent bytes per seconds.png>]
-<graphs/received bytes per seconds.png, id=411, 462.528pt x 346.896pt>
+<graphs/received bytes per seconds.png, id=407, 462.528pt x 346.896pt>
 File: graphs/received bytes per seconds.png Graphic file (type png)
 <use graphs/received bytes per seconds.png>
 Package pdftex.def Info: graphs/received bytes per seconds.png  used on input line 724.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/received packets per seconds.png, id=412, 462.528pt x 346.896pt>
+<graphs/received packets per seconds.png, id=408, 462.528pt x 346.896pt>
 File: graphs/received packets per seconds.png Graphic file (type png)
 <use graphs/received packets per seconds.png>
 Package pdftex.def Info: graphs/received packets per seconds.png  used on input line 730.
@@ -1062,12 +1058,12 @@ l.734
                                                   \__shipout_drop_firstpage_...
 l.734 
        <./graphs/sent packets per seconds.png> <./graphs/received bytes per seconds.png>]
-<graphs/bytes ratio.png, id=421, 462.528pt x 346.896pt>
+<graphs/bytes ratio.png, id=417, 462.528pt x 346.896pt>
 File: graphs/bytes ratio.png Graphic file (type png)
 <use graphs/bytes ratio.png>
 Package pdftex.def Info: graphs/bytes ratio.png  used on input line 736.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/packets ratio.png, id=422, 462.528pt x 346.896pt>
+<graphs/packets ratio.png, id=418, 462.528pt x 346.896pt>
 File: graphs/packets ratio.png Graphic file (type png)
 <use graphs/packets ratio.png>
 Package pdftex.def Info: graphs/packets ratio.png  used on input line 742.
@@ -1084,12 +1080,12 @@ l.746
                                                   \__shipout_drop_firstpage_...
 l.746 
        <./graphs/received packets per seconds.png> <./graphs/bytes ratio.png>]
-<graphs/total bytes per seconds.png, id=431, 462.528pt x 346.896pt>
+<graphs/total bytes per seconds.png, id=427, 462.528pt x 346.896pt>
 File: graphs/total bytes per seconds.png Graphic file (type png)
 <use graphs/total bytes per seconds.png>
 Package pdftex.def Info: graphs/total bytes per seconds.png  used on input line 748.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/total packets per seconds.png, id=432, 462.528pt x 346.896pt>
+<graphs/total packets per seconds.png, id=428, 462.528pt x 346.896pt>
 File: graphs/total packets per seconds.png Graphic file (type png)
 <use graphs/total packets per seconds.png>
 Package pdftex.def Info: graphs/total packets per seconds.png  used on input line 754.
@@ -1106,12 +1102,12 @@ l.758
                                                   \__shipout_drop_firstpage_...
 l.758 
        <./graphs/packets ratio.png> <./graphs/total bytes per seconds.png>]
-<graphs/logs_expected bytes.png, id=440, 462.528pt x 346.896pt>
+<graphs/logs_expected bytes.png, id=436, 462.528pt x 346.896pt>
 File: graphs/logs_expected bytes.png Graphic file (type png)
 <use graphs/logs_expected bytes.png>
 Package pdftex.def Info: graphs/logs_expected bytes.png  used on input line 760.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/logs_actual bytes.png, id=441, 462.528pt x 346.896pt>
+<graphs/logs_actual bytes.png, id=437, 462.528pt x 346.896pt>
 File: graphs/logs_actual bytes.png Graphic file (type png)
 <use graphs/logs_actual bytes.png>
 Package pdftex.def Info: graphs/logs_actual bytes.png  used on input line 766.
@@ -1128,12 +1124,12 @@ l.770
                                                   \__shipout_drop_firstpage_...
 l.770 
        <./graphs/total packets per seconds.png> <./graphs/logs_expected bytes.png>]
-<graphs/logs_expected packets.png, id=450, 462.528pt x 346.896pt>
+<graphs/logs_expected packets.png, id=446, 462.528pt x 346.896pt>
 File: graphs/logs_expected packets.png Graphic file (type png)
 <use graphs/logs_expected packets.png>
 Package pdftex.def Info: graphs/logs_expected packets.png  used on input line 772.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/logs_actual packets.png, id=451, 462.528pt x 346.896pt>
+<graphs/logs_actual packets.png, id=447, 462.528pt x 346.896pt>
 File: graphs/logs_actual packets.png Graphic file (type png)
 <use graphs/logs_actual packets.png>
 Package pdftex.def Info: graphs/logs_actual packets.png  used on input line 778.
@@ -1157,20 +1153,20 @@ l.784 \backmatter
 
 ] (thesis.aux)
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 884D321088D9F7EEFA933C821EDE486E;1246.
+(rerunfilecheck)             Checksum: 7BD349F5AE19C53B1B4754CEA7139218;1203.
  ) 
 Here is how much of TeX's memory you used:
- 35450 strings out of 478927
- 713710 string characters out of 2852534
- 1029503 words of memory out of 3000000
- 52543 multiletter control sequences out of 15000+600000
+ 35412 strings out of 478927
+ 712826 string characters out of 2852534
+ 1028862 words of memory out of 3000000
+ 52511 multiletter control sequences out of 15000+600000
  425209 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,24n,83p,988b,2367s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\alvis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk>{C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on thesis.pdf (45 pages, 1659051 bytes).
+Output written on thesis.pdf (45 pages, 1658627 bytes).
 PDF statistics:
- 571 PDF objects out of 1000 (max. 8388607)
+ 567 PDF objects out of 1000 (max. 8388607)
  112 named destinations out of 1000 (max. 500000)
- 295 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 287 words of extra memory for PDF output out of 10000 (max. 10000000)
 
