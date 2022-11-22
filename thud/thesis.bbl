@@ -1,0 +1,21 @@
+\begin{thebibliography}{1}
+
+\bibitem{brewer2000towards}
+Eric~A Brewer.
+\newblock Towards robust distributed systems.
+\newblock  In {\em PODC}, volume~7, pp. 343477--343502. Portland, OR, 2000.
+
+\bibitem{joseph1989reliable}
+Thomas~A Joseph e Kenneth~P Birman.
+\newblock Reliable broadcast protocols.
+\newblock Relazione tecnica, 1989.
+
+\bibitem{MP-ICTAC-2021}
+Marino Miculan e Michele Pasqua.
+\newblock A calculus for attribute-based memory updates In {\em Theoretical
+  Aspects of Computing - {ICTAC} 2021 - 18$^{th}$ International Colloquium,
+  Nur-Sultan, Kazakhstan, Sep. 6-10, 2021, Proceedings}.
+\newblock  A cura di Antonio Cerone e Peter \"{O}lveczky, Lecture Notes in
+  Computer Science. Springer, 2021.
+
+\end{thebibliography}

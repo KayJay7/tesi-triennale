@@ -1,0 +1,41 @@
+\babel@toc {italian}{}\relax 
+\babel@toc {italian}{}\relax 
+\contentsline {chapter}{Indice}{v}{chapter*.2}%
+\contentsline {chapter}{\numberline {1}Introduzione}{1}{chapter.1}%
+\contentsline {paragraph}{Sinossi}{1}{section*.3}%
+\contentsline {chapter}{\numberline {2}Il calcolo AbU}{3}{chapter.2}%
+\contentsline {paragraph}{Limitazioni del calcolo AbU}{4}{section*.4}%
+\contentsline {chapter}{\numberline {3}Setting sperimentale}{5}{chapter.3}%
+\contentsline {paragraph}{Protocollo di GoAbU in breve}{5}{section*.5}%
+\contentsline {section}{\numberline {3.1}Il simulatore AbUsim}{5}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Macchina dei test}{6}{section.3.2}%
+\contentsline {section}{\numberline {3.3}Problemi secondari}{6}{section.3.3}%
+\contentsline {paragraph}{Limite alla dimensione della configurazione}{6}{section*.6}%
+\contentsline {paragraph}{Loop nel logger}{7}{section*.7}%
+\contentsline {paragraph}{Ricompilazione delle regole}{7}{section*.8}%
+\contentsline {chapter}{\numberline {4}Generazione dei test}{9}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Il generatore aeg}{9}{section.4.1}%
+\contentsline {paragraph}{Struttura delle configurazioni}{10}{section*.9}%
+\contentsline {paragraph}{Parametri di configurazione}{11}{section*.10}%
+\contentsline {section}{\numberline {4.2}Terminazione forte}{11}{section.4.2}%
+\contentsline {paragraph}{Stabilizzazione interna}{11}{section*.11}%
+\contentsline {paragraph}{Stabilizzazione esterna}{12}{section*.12}%
+\contentsline {paragraph}{Stabilizzazione totale}{13}{section*.13}%
+\contentsline {section}{\numberline {4.3}Scelta delle configurazioni}{13}{section.4.3}%
+\contentsline {paragraph}{Idle}{13}{section*.14}%
+\contentsline {paragraph}{Medio}{14}{section*.15}%
+\contentsline {paragraph}{Alto}{14}{section*.16}%
+\contentsline {chapter}{\numberline {5}Raccolta dati}{17}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Quali dati raccogliere}{17}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Ispezione dei nodi}{18}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Metriche}{18}{section.5.3}%
+\contentsline {chapter}{\numberline {6}Risultati}{21}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Grafici}{21}{section.6.1}%
+\contentsline {paragraph}{\lstinline {total bytes}}{21}{figure.6.1}%
+\contentsline {paragraph}{\lstinline {total packets}}{23}{figure.6.2}%
+\contentsline {paragraph}{\lstinline {logs_bytes ratio}}{24}{figure.6.3}%
+\contentsline {paragraph}{\lstinline {logs_packets ratio}}{25}{figure.6.4}%
+\contentsline {paragraph}{\lstinline {bytes per packet}}{26}{figure.6.5}%
+\contentsline {section}{\numberline {6.2}Conclusioni e proposte di miglioramento}{27}{section.6.2}%
+\contentsline {chapter}{\numberline {A}Altri grafici}{29}{appendix.Alph1}%
+\contentsline {chapter}{Bibliografia}{39}{appendix*.22}%

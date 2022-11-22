@@ -1,0 +1,50 @@
+This is BibTeX, Version 0.99d
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: thesis.aux
+Reallocating 'name_of_file' (item size: 1) to 14 items.
+The style file: plain_italian.bst
+Reallocating 'name_of_file' (item size: 1) to 5 items.
+Database file #1: thud.bib
+Warning--empty institution in joseph1989reliable
+You've used 3 entries,
+            2133 wiz_defined-function locations,
+            525 strings with 4586 characters,
+and the built_in function-call counts, 1138 in all, are:
+= -- 118
+> -- 40
+< -- 2
++ -- 16
+- -- 12
+* -- 65
+:= -- 181
+add.period$ -- 11
+call.type$ -- 3
+change.case$ -- 15
+chr.to.int$ -- 0
+cite$ -- 4
+duplicate$ -- 51
+empty$ -- 95
+format.name$ -- 12
+if$ -- 253
+int.to.chr$ -- 0
+int.to.str$ -- 3
+missing$ -- 2
+newline$ -- 18
+num.names$ -- 7
+pop$ -- 17
+preamble$ -- 1
+purify$ -- 11
+quote$ -- 0
+skip$ -- 43
+stack$ -- 0
+substring$ -- 72
+swap$ -- 20
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 12
+warning$ -- 1
+while$ -- 10
+width$ -- 4
+write$ -- 37
+(There was 1 warning)
