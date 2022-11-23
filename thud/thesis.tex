@@ -100,15 +100,15 @@ Il traffico è risultato molto alto sia sotto carico medio che alto, in particol
 
 In questa tesi studieremo il comportamento di GoAbU, un'implementazione in Golang del calcolo AbU. Si tratta di un paradigma (e un linguaggio) per la programmazione di sistemi distribuiti.
 In particolare per grandi quantità di dispositivi IoT, visto che è pensato per essere leggero, completamente disaccoppiato nello spazio, ed adatto alla sincronizzazione ed alla diffusione di informazioni.
-Non avendo a disposizione centinaia di dispositivi, e non avendo nemmeno un sistema per distribuire la configurazione su questi dispositivi, abbiamo utilizzato il simulatore AbUsim. Un software per avviare GoAbU in dei container Docker, seguendo una configurazione, ed interagirci.
+Non avendo a disposizione centinaia di dispositivi, e non avendo nemmeno un sistema per distribuire la configurazione su questi dispositivi, abbiamo utilizzato il simulatore AbUsim, un software per avviare GoAbU in dei container Docker, seguendo una configurazione, ed interagirci.
 
-Ovviamente per studiarne il comportamento bisogna prima decidere un metodo sistematico e possibilmente automatizzato per analizzare GoAbU in modo ragionevole, quindi raccogliendo dati rilevanti per produrre metriche utili. Ovviamente in modo che sia riapplicabile ad una futura implementazione di AbU.
+Ovviamente per studiarne il comportamento bisogna prima decidere un metodo sistematico e possibilmente automatizzato per analizzare GoAbU in modo ragionevole, quindi raccogliendo dati rilevanti per produrre metriche utili, ovviamente in modo che sia riapplicabile ad una futura implementazione di AbU.
 
 Per automatizzare l'analisi abbiamo prodotto alcuni script che si occupano di avviare dei test e raccogliere i dati dal sistema, da cui ricavare le metriche.
 Più precisamente, siamo interessati a metriche riguardanti il traffico di rete, come il numero di pacchetti o di byte scambiati tra i nodi.
 Per scoprire come un diverso numero di nodi od una diversa configurazione, impattano sulla rete a cui devono essere connessi. Alcune di queste sono ricavate dal sistema operativo, e altre sono ricavate direttamente dai log del simulatore.
 
-Avevamo bisogno di un modo per creare automaticamente delle configurazioni che testassero le parti del sistema di cui abbiamo bisogno, ed avere una struttura di test su cui basarci. Abbiamo scritto il programma generatore di configurazioni \aeg. Che costruisce una configurazione parametrica seguendo sempre una stessa struttura.
+Avevamo bisogno di un modo per creare automaticamente delle configurazioni che testassero le parti del sistema di cui abbiamo bisogno, ed avere una struttura di test su cui basarci. Abbiamo scritto il programma generatore di configurazioni \aeg, che costruisce una configurazione parametrica seguendo sempre una stessa struttura.
 In questo modo per provare una configurazione completamente diversa, che stressi un comportamento diverso, è sufficiente variare pochi parametri del generatore.
 
 Abbiamo scelto di analizzare il comportamento di GoAbU nella gestione di tre tipi di carico diverso, uno nullo, uno medio ed uno molto alto. E verificato come il sistema scalava all'aumentare dei nodi, provandolo su $10$, $50$ e $100$ dispositivi.
@@ -117,13 +117,13 @@ Abbiamo scelto di analizzare il comportamento di GoAbU nella gestione di tre tip
 
 La tesi sarà organizzata in 5 sezioni.
 
-In Sezione~\ref{sec:calculus} forniremo una descrizione del calcolo AbU e le sue caratteristiche. Quindi il suo paradigma ed i suoi punti di forza. Oltre ad una breve analisi delle sue limitazioni.
+In Sezione~\ref{sec:calculus} forniremo una descrizione del calcolo AbU e le sue caratteristiche. Quindi il suo paradigma ed i suoi punti di forza, oltre ad una breve analisi delle sue limitazioni.
 
 Segue, in Sezione~\ref{setting} una descrizione del setting sperimentale, in cui descriveremo AbUsim, il sistema hardware utilizzato per i test, ed infine alcune problematiche incontrate di questa impostazione.
 
-Nella Sezione~\ref{aeg} piegheremo nel dettaglio la struttura delle configurazioni di test prodotte automaticamente. Nonché la scelta delle configurazioni utilizzate nel benchmark e le caratteristiche di queste configurazioni.
+Nella Sezione~\ref{aeg} piegheremo nel dettaglio la struttura delle configurazioni di test prodotte automaticamente, nonché la scelta delle configurazioni utilizzate nel benchmark e le caratteristiche di queste configurazioni.
 
-In Sezione~\ref{raccolta} descriveremo il metodo di raccolta dei dati dagli esperimenti. Ed anche le metriche prodotte con questi dati, analizzando più nel dettaglio quelle che abbiamo scoperto più rilevanti.
+In Sezione~\ref{raccolta} descriveremo il metodo di raccolta dei dati dagli esperimenti, ed anche le metriche prodotte con questi dati, analizzando più nel dettaglio quelle che abbiamo scoperto più rilevanti.
 
 Per finire, in Sezione~\ref{risultati} se analizzeremo i risultati. Fornendo alcune nuove osservazioni riguardo l'implementazione GoAbU, ottenute grazie a questi test.
 
@@ -161,10 +161,10 @@ Durante lo sviluppo dei test abbiamo incontrato due limitazioni del linguaggio, 
 Il linguaggio non ammette che le regole esterne eseguano azioni sulle variabili locali. Questo è in parte perché se le regole impostassero una variabile locale al valore di una esterna, il valore finale della variabile locale non solo dipenderebbe dagli agenti esterni, ma anche dall'ordine in cui eseguono le azioni. Tuttavia, questo problema non sussiste se nel right-hand-side dell'assegnamento compaiono solo costanti e variabili locali. Tuttavia, permettere questa funzionalità (che aiuterebbe nella scrittura dei programmi) richiede di rivedere la semantica delle azioni esterne, per decidere in che momento va eseguita l'azione.
 
 % supercazzola che probabilmente bisognerà ridurre
-L'altro problema invece riguarda la consistenza del sistema. Per il CAP theorem~\cite{brewer2000towards}, sappiamo che un sistema distribuito non può essere contemporaneamente ``consistente'', ``resistente alla partizione'' e ``disponibile''; AbU è sia resistente che disponibile, quindi non si può ottenere consistenza, ed anche la consistenza eventuale sarebbe fuori dagli obbiettivi del paradigma.
+L'altro problema invece riguarda la consistenza del sistema. Per il CAP theorem~\cite{brewer2000towards}, sappiamo che un sistema distribuito non può essere contemporaneamente ``consistente'', ``resistente alla partizione'' e ``disponibile''; AbU è sia resistente che disponibile, quindi non si può ottenere consistenza, ed anche la consistenza finale sarebbe fuori dagli obbiettivi del paradigma.
 % veramente il problema di cui voglio parlare
 Tuttavia è particolarmente suscettibile al problema dei lost update. Nello specifico, se ad esempio un nodo \lstinline{foo} possiede la variabile intera \lstinline{x = 0} (e nessun altro nodo la possiede) $n$ nodi causano (con successo) l'esecuzione di un'azione esterna del tipo \lstinline{ext.x = ext.x + 1;}, il valore di \lstinline{x} al termine dell'esecuzione delle azioni, sarà contenuto in $[0,n]$, ma l'effettivo valore dipenderà interamente dal momento in cui le $n$ azioni vengono inserite nella coda degli eventi di \lstinline{foo}.
-Come annunciato in precedenza non si può rendere AbU completamente consistente, quindi già a prescindere non è mai garantito che tutti gli update abbiano effetto. Tuttavia nella situazione attuale, anche quando la rete funziona correttamente, non è possibile implementare un contatore ``affidabile'' che venga incrementato da più nodi.
+Come annunciato in precedenza non si può rendere AbU completamente consistente, quindi già a prescindere non è mai garantito che tutti gli update abbiano effetto, tuttavia nella situazione attuale, anche quando la rete funziona correttamente, non è possibile implementare un contatore ``affidabile'' che venga incrementato da più nodi.
 
 Entrambi questi problemi non rientrano nell'obbiettivo della tesi, ma sono venuti alla luce perché per la prima volta il calcolo AbU è stato adottato in un contesto applicativo.%stato usato per qualcosa al di fuori di uno showcase. Quindi era il caso di esporli.
 
@@ -184,9 +184,9 @@ Se un nodo non risponde entro un certo timeout, l'iniziatore ripete il messaggio
 
 \section{Il simulatore AbUsim}\label{setting:abusim}
 
-I test sono stati eseguiti utilizzando il ``simulatore'' \href{https://github.com/abu-lang/abusim}{AbUsim}. Quest'ultimo si basa sull'utilizzo di Docker ed è progettato sulla falsa riga di Docker Compose, ovvero preso in input un file \lstinline{yaml} che descrive una serie di container, li avvia e mette in comunicazione.
+I test sono stati eseguiti utilizzando il simulatore \href{https://github.com/abu-lang/abusim}{AbUsim}, quest'ultimo si basa sull'utilizzo di Docker ed è progettato sulla falsa riga di Docker Compose, ovvero preso in input un file \lstinline{yaml} che descrive una serie di container, li avvia e mette in comunicazione.
 I file di configurazione di AbUsim permettono di specificare un elenco di dispositivi che eseguiranno GoAbU. Ogni dispositivo ha un suo elenco di variabili (che possono essere inizializzate arbitrariamente) ed un elenco di regole in linguaggio AbU.
-Per comodità è possibile specificare un prototipo in ogni dispositivo. I prototipi specificano anch'essi un elenco di regole e di variabili che i dispositivi erediteranno. In questo modo si possono raggruppare regole in comune tra tanti dispositivi.
+Per comodità è possibile specificare un prototipo in ogni dispositivo. I prototipi specificano anch'essi un elenco di regole e di variabili che i dispositivi erediteranno, in questo modo si possono raggruppare regole in comune tra tanti dispositivi.
 Si possono configurare anche il tick time (il tempo che il dispositivo aspetterà tra le esecuzioni delle regole) e l'immagine docker da usare per i nodi ed il coordinatore.
 
 Il parsing delle regole di ogni nodo viene fatto direttamente dal simulatore, che dopo aver costruito l'elenco di regole e variabili di ogni nodo, codificherà gli alberi di sintassi in \lstinline{json} e successivamente in \lstinline{base64} per passarli come argomenti al programma in esecuzione su ogni nodo, proprio come sono codificati i messaggi. È possibile collegare altri nodi esterni alla rete del simulatore che eseguano GoAbU, ma non è necessario per questa tesi.
@@ -224,12 +224,12 @@ Alla fine, per i test non è stato necessario nessun cambiamento, perché la qua
 Una delle difficoltà incontrate non dipende dal simulatore, ma ha permesso di scoprire un problema del coordinatore (che tra le altre cose si occupa di raccogliere i log dai nodi).
 La dimensione massima per le tabelle ARP impostata di default su molti sistemi operativi non è sufficiente a permettere a più di $\sim40$ nodi di comunicare, per poter testare più dispositivi bisogna impostare un limite più alto dal sistema operativo. Tuttavia, per come funziona il simulatore, quando un nodo non riesce a collegarsi agli altri si chiude dopo un certo tempo.
 Ed in questo modo abbiamo scoperto che se uno nodo smette di rispondere alla richiesta di nuovi log, un thread del coordinatore rimane bloccato in un loop, utilizzando al $\qty{100}{\percent}$ una delle cpu.
-Si tratta di un problema marginale poiché si verifica solo quando uno dei nodi termina inaspettatamente, cosa che non dovrebbe succedere se non per problemi della setting come questo limite alle tabelle ARP.
+Si tratta di un problema marginale poiché si verifica solo quando uno dei nodi termina inaspettatamente, cosa che non dovrebbe succedere se non per problemi del setting come questo limite alle tabelle ARP.
 
 \paragraph{Ricompilazione delle regole}\label{ricompilazione}
 
 L'ultimo problema, invece, riguarda una funzionalità mancante della libreria GoAbU ma necessaria per l'applicazione nel mondo reale di AbU.
-Un rule engine è efficiente a trovare le regole da eseguire perché utilizza una struttura dati complessa, ma per costruirla deve prima eseguire una computazione complessa. E Grule non fa eccezione, costruire la struttura dati dal set di regole è costoso, quindi avviando il simulatore su una grande quantità di regole (non necessario per questa tesi) potrebbe passare molto tempo prima che i nodi siano completamente avviati.
+Un rule engine è efficiente nel trovare le regole da eseguire perché utilizza una struttura dati complessa, ma per costruirla deve prima eseguire una computazione complessa. Grule non fa eccezione, costruire la struttura dati dal set di regole è costoso, quindi avviando il simulatore su una grande quantità di regole (non necessario per questa tesi) potrebbe passare molto tempo prima che i nodi siano completamente avviati.
 Ovviamente per il simulatore non si può fare molto, ma per un dispositivo reale che viene programmato una volta sola con un migliaio di regole, non è accettabile aspettare diversi minuti ad ogni riavvio perché sta ricostruendo la struttura. Soprattutto considerato che un dispositivo del genere potrebbe essere molto più lento di un computer che esegue AbUsim, e quindi potrebbe diventare troppo lento ancora prima.
 Per risolvere questo problema bisognerebbe aggiungere una funzionalità per memorizzare la struttura precompilata in modo che successivamente il dispositivo debba solo leggerla per tornare operativo dopo un riavvio. Per il simulatore questo non vale poiché lo scopo di AbUsim è la prototipazione, ed è previsto che ad ogni avvio la configurazione cambi, rendendo meno utile conservare la struttura.
 
@@ -344,7 +344,7 @@ Tutti gli $a$ nodi di una configurazione sono simili tra loro: anno le stesse va
 Ogni dispositivo ha 3 ``regole di avvio'' (rappresentate alla sinistra in Figure~\ref{fig:interno}), una si attiva quando \lstinline{start_all} viene impostato a \lstinline{true}, e non fa altro che impostare la variabile \lstinline{start} a \lstinline{true} su tutti i nodi. Una resetta \lstinline{start_all}. Ed infine quando \lstinline{start} viene impostato a \lstinline{true}, una ``variabile iniziale'' (la variabile \lstinline{ai_0}) delle prime $d\leq b$ catene viene impostata a $f$, e la variabile \lstinline{start} viene resettata. Notare che \lstinline{start_all} non attiva \emph{tutte le catene} (infatti non attiva nessuna catena, ma setta \lstinline{start}), invece attiva le catene di \emph{tutti i nodi}.
 
 Alle prime $c-1$ variabili di ogni catena (quindi da $0$ $c-2$) corrisponde una regola (rappresentate in nero in Figure~\ref{fig:interno}) che si attiva quando la sua variabile viene impostata ad un valore maggiore di $0$, e contemporaneamente copierà il valore della variabile in quella successiva nella catena (e.g.: da \lstinline{a1_2} ad \lstinline{a1_3}) e resetterà la sua variabile.
-Quando la $c$-esima variabile dell'$i$-esima catena viene impostata ad un valore $k>0$, non c'è una corrispondente regola ``normale''. Invece ce ne sono una locale che resetta il valore della variabile a $0$, ed una esterna (rappresentate in rosso in fondo a Figure~\ref{fig:interno}) che setterà a $k-1$ il valore della variabile iniziale dell'$i$-esima dei successivi $e$ dispositivi (il dispositivo \lstinline{id} attiva quelli da $((\text{\lstinline{id}}+1)\mod a)$ ad $((\text{\lstinline{id}}+e)\mod a)$). In questo modo la parte di computazione sul dispositivo corrente è completata, e continua sui dispositivi successivi, come visibile in Figure~\ref{fig:esterno}.
+Quando la $c$-esima variabile dell'$i$-esima catena viene impostata ad un valore $k>0$, non c'è una corrispondente regola ``normale'', invece ce ne sono una locale che resetta il valore della variabile a $0$, ed una esterna (rappresentate in rosso in fondo a Figure~\ref{fig:interno}) che setterà a $k-1$ il valore della variabile iniziale dell'$i$-esima dei successivi $e$ dispositivi (il dispositivo \lstinline{id} attiva quelli da $((\text{\lstinline{id}}+1)\mod a)$ ad $((\text{\lstinline{id}}+e)\mod a)$). In questo modo la parte di computazione sul dispositivo corrente è completata, e continua sui dispositivi successivi, come visibile in Figure~\ref{fig:esterno}.
 Dopo $f$ livelli, il valore che viene passato sulle catene è arrivato ad $1$, e ai prossimi dispositivi viene passato il valore $0$, che le regole del $f+1$-esimo livello di dispositivi ignoreranno.
 
 \paragraph{Parametri di configurazione}
@@ -366,20 +366,20 @@ Per questa tesi sono rilevanti solo i 6 parametri di configurazione, in quanto i
 % Non sono sicuro che basti come dimostrazione, spero di sì perché non è stata facile da scrivere
 
 Per semplicità affronteremo la terminazione in due parti. La prima parte riguarda solo la parte ``interna'' della computazione, quella che si occupa di trasportare i valori nelle catene di variabili, ignorando i valori che potrebbero essere aggiunti da una regola esterna avviata da un altro nodo.
-E la seconda riguardante solo i dispositivi che vengono attivati dalle regole esterne, assumendo che la parte interna termini correttamente, attivando i nodi successivi.
+La seconda riguarda solo i dispositivi che vengono attivati dalle regole esterne, assumendo che la parte interna termini correttamente, attivando i nodi successivi.
 Sarebbe possibile fornire una dimostrazione unica che tratti direttamente entrambe le parti della computazione, ma è molto più difficile.
 
 \paragraph{Stabilizzazione interna}
 
-La terminazione sarà dimostrata prima in maniera meno formale, considerando un sistema in cui la regola da eseguire viene scelta dando la precedenza quelle che scrivono le variabili più vicine alla fine di una catena, e dando la precedenza alle catene con indice più alto. Questo permette di fissare l'ordine di esecuzione delle regole in uno su cui è più comodo ragionare. E infine sarà accennato perché un ordine così stringente non è necessario.
+La terminazione sarà dimostrata prima in maniera meno formale, considerando un sistema in cui la regola da eseguire viene scelta dando la precedenza quelle che scrivono le variabili più vicine alla fine di una catena, e dando la precedenza alle catene con indice più alto. Questo permette di fissare l'ordine di esecuzione delle regole in uno su cui è più comodo ragionare. Alla fine sarà accennato perché un ordine così stringente non è necessario.
 Inoltre assumeremo, come annunciato ad inizio sezione, che nessun nodo esterno imposti il valore di alcuna variabile, tuttavia in seguito spiegheremo perché non sia un problema nel paragrafo sulla convergenza totale.
 
 Sia $(a_{0,0},...,a_{0,c-1},a_{1,0},...,a_{1,c-1},...,a_{b-1,c-1})\in \mathbb{N}^{bc}$ il vettore che rappresenta lo stato interno di un generico nodo della configurazione (ogni variabile $a_{i,j}$ rappresenta la variabile \lstinline{ai_j}). È facile verificare che ogni regola normale viene attivata da uno stato del tipo $(...,a_{i,j},a_{i,j+1},...)$ e causa uno stato del tipo $(...,0,a_{i,j},...)$ (notare che l'indice della catena è sempre $i$) e causerà l'inserimento di una nuova regola nella coda degli eventi.
 Ricordiamo che con l'ordinamento stabilito ad inizio paragrafo, la regola attivata dallo stato $(...,a_{i,j},a_{i,j+1},...)$ verrà eseguita solo quando $a_{i,j+1}=0$, altrimenti ci sarebbe una regola con precedenza più alta.
 Una regola finale, invece è causata da uno stato del tipo $(...,a_{i,j},a_{i+1,0},...)$ e ne causa uno del tipo $(...,0,a_{i+1,0},...)$ senza causare nessun inserimento.
 
-Sapendo che: la computazione termina se e solo se il vettore che rappresenta lo stato interno è $(0,...,0)$, altrimenti ci sarebbero ancora regole in coda, attivate quando sono state impostate le variabili diverse da $0$; e che ogni regola causa uno stato di ordine lessicografico minore rispetto a quello che lo ha attivato; possiamo concludere che la computazione deve terminare per forza altrimenti potrebbe scendere di ordine lessicografico all'infinito.
-Ed al termine di questa computazione, saranno state eseguite le regole esterne per attivare i nodi successivi, perché le uniche regole che non aggiungono nuove regole sono attivate dallo stesso stato che causa l'attivazione delle regole esterne.
+Sapendo che: la computazione termina se e solo se il vettore che rappresenta lo stato interno è $(0,...,0)$, altrimenti ci sarebbero ancora regole in coda, attivate quando sono state impostate le variabili diverse da $0$; e che ogni regola causa uno stato di ordine lessicografico minore rispetto a quello che la ha attivata; possiamo concludere che la computazione deve terminare per forza altrimenti potrebbe scendere di ordine lessicografico all'infinito.
+Al termine di questa computazione, saranno state eseguite le regole esterne per attivare i nodi successivi, perché le uniche regole che non aggiungono nuove regole sono attivate dallo stesso stato che causa l'attivazione delle regole esterne.
 
 AbU, per sua natura, non fa garanzie sull'ordine di esecuzione delle regole causate dallo stesso stato, quindi per completare la dimostrazione formale dobbiamo mostrare che funzionerebbe anche senza questo ordinamento.
 Possiamo vedere che non importa perché: esiste una corrispondenza diretta tra le variabili e le regole, e non ci sono ``interferenze'' tra le regole causate dallo stesso stato (non cercano di leggere la stessa variabile o di scrivere la stessa), ed è sufficiente entrare una volta in uno stato ed uscirne subito per attivare una regola.
@@ -390,7 +390,7 @@ Quindi l'ordine non importa, e quindi la computazione interna termina sempre.
 Come annunciato all'inizio della sezione, affronteremo la stabilizzazione esterna considerando corretta la parte interna della computazione. Ovvero assumendo che nodo che viene ``attivato'' da un valore $k$, eventualmente attiverà $e$ nodi con un valore $k-1$. Questo segue dalla dimostrazione precedente.
 
 Consideriamo l'attivazione di un nodo come il passaggio di un token, ogni token ha un'``intensità'' $k$, ovvero il numero di livelli che può attraversare. Quando un nodo elabora un token, questo viene spezzato in $e$ token di intensità $k-1$, e quando un token ha intensità $0$, il nodo che lo riceve lo scarta.
-Nelle nostre computazioni, l'intensità del token corrisponde al valore $k$ con cui il nodo viene attivato, ovvero il valore che la regola finale esterna inserisce all'inizio della catena di variabili dei nodi successivi. Quando viene impostata \lstinline{start = true} su di un nodo, questo genera $b$ token di intensità $f$. Quando viene impostata \lstinline{start_all = true} su un qualsiasi nodo, tutti gli $a$ nodi generano $b$ token ciascuno di intensità $f$.
+Nelle nostre computazioni, l'intensità del token corrisponde al valore $k$ con cui il nodo viene attivato, ovvero il valore che la regola finale esterna inserisce all'inizio della catena di variabili dei nodi successivi. Quando viene impostata \lstinline{start = true} su di un nodo, questo genera $b$ token di intensità $f$. Quando viene impostata \lstinline{start_all = true} su un qualsiasi nodo, tutti gli $a$ nodi generano $b$ token ciascuno, di intensità $f$.
 
 Sia $(t_f,t_{f-1},...,t_1)\in\mathbb{N}^f$ il vettore dei token, dove ogni variabile $t_k$ rappresenta la quantità di token di intensità $k$ in circolazione sulla rete. Notiamo che i token di intensità $0$ non vengono contati, perché sono scartati subito.
 Possiamo osservare che ogni volta che un token di intensità $k$ viene consumato, il vettore passa da $(...,t_k,t_{k-1},...)$ a $(...,t_k-1,t_{k-1}+e,...)$. Quindi ad ogni consumo, il nuovo vettore ha ordine lessicografico più basso di quello iniziale.
@@ -401,9 +401,9 @@ Ammettendo che più token vengano consumati contemporaneamente, il risultato non
 
 \paragraph{Stabilizzazione totale}
 
-Per mettere insieme i due risultati manca solo dimostrare che ammettere attivazioni esterne non impedisce la stabilizzazione interna. Riuscendo a dimostrare questo, avremmo che internamente la computazione termina in ogni caso, ed esternamente termina se quella interna termina.
+Per mettere insieme i due risultati manca solo dimostrare che ammettere attivazioni esterne non impedisce la stabilizzazione interna. Riuscendo a dimostrare questo, avremmo che internamente la computazione si stabilizza in ogni caso, ed esternamente si stabilizza se lo fa la computazione interna.
 
-Dimostrare questa non interferenza è facile utilizzando lo stesso ordine rigido che abbiamo usato per rendere più breve la dimostrazione della stabilizzazione interna. Con quell'ordine rigido, le regole esterne che attiverebbero il nodo catena non verrebbero mai selezionate per prime per l'esecuzione, perché scrivono sulle variabili più lontane dalla fine della catena.
+Dimostrare questa non interferenza è facile utilizzando lo stesso ordine rigido che abbiamo usato per rendere più breve la dimostrazione della stabilizzazione interna. Con quell'ordine rigido, le regole esterne che attiverebbero il primo nodo della catena non verrebbero mai selezionate per prime per l'esecuzione, perché scrivono sulle variabili più lontane dalla fine della catena.
 In questo modo, il nodo comincerebbe ad eseguire le regole di attivazione solo dopo aver terminato la computazione interna già in corso. Quindi l'attivazione non interferirebbe con la stabilizzazione.
 
 Ovviamente AbU non prevede questo ordinamento, ma come spiegato nel paragrafo sulla stabilizzazione interna, imporre questo ordinamento non influisce sul comportamento della nostra computazione.
@@ -434,14 +434,14 @@ Questo test serve per scoprire se un sistema con tanti nodi sia impraticabile a 
 
 \paragraph{Medio}
 
-Progettando questo test l'obbiettivo era quello di ricreare un test che anche se esigente, fosse in qualche modo realistico, un test in cui ogni nodo ha una certa quantità di regole, ed alcune (non tutte) di queste si attivano. Ed una frazione di queste causano degli effetti su un solo altro nodo (non troppi).
+Progettando questo test l'obbiettivo era quello di ricreare un test che anche se esigente, fosse in qualche modo realistico, un test in cui ogni nodo ha una certa quantità di regole, ed alcune (non tutte) di queste si attivano, ed una frazione di queste causano degli effetti su un solo altro nodo (non troppi).
 
-L'obbiettivo era non essere troppo pesante sulla rete, ma bilanciare il carico tra rete e nodo interno. In un certo tempo, ogni nodo avrà molte più regole locali di cui occuparsi, e dovrebbe utilizzare di meno la rete.
+L'obbiettivo era \emph{non} essere troppo pesante sulla rete, ma bilanciare il carico tra rete e nodo interno. In un certo tempo, ogni nodo avrà molte più regole locali di cui occuparsi, e dovrebbe utilizzare di meno la rete.
 
-Questo test, come anche il successivo, è stato progettato in modo che richieda $\qty{500}{\second}$ per terminare la computazione. Ed effettivamente con pochi dispositivi è così, ma in realtà l'overhead dell'esecuzione del rule engine, e soprattutto quello della rete, fanno sì che in realtà richieda più tempo.
-Il tempo reale e dipendente dal setting sperimentale, quindi dalla macchina che esegue il simulatore, e non direttamente da GoAbU. Tuttavia, il fatto che con $100$ dispositivi la macchina sia in difficoltà, significa che potrebbero esserlo anche i dispositivi di rete.
+Questo test, come anche il successivo, è stato progettato in modo che richieda $\qty{500}{\second}$ per stabilizzarsi, ed effettivamente con pochi dispositivi è così, ma l'overhead dell'esecuzione del rule engine, e soprattutto quello della rete, fanno sì che in realtà richieda più tempo.
+Il tempo reale è dipendente dal setting sperimentale, quindi dalla macchina che esegue il simulatore, e non direttamente da GoAbU, tuttavia, il fatto che con $100$ dispositivi la macchina sia in difficoltà, significa che potrebbero esserlo anche i dispositivi di rete.
 
-In ogni caso, abbiamo osservato che il tempo di esecuzione è molto consistente tra le ripetizioni della computazione. Quindi dopo aver provato una volta ad eseguire una computazione con un certo numero di nodi, possiamo assumere che la prossima impieghi un tempo molto simile.
+In ogni caso, abbiamo osservato che il tempo di esecuzione è molto consistente tra le ripetizioni della computazione, quindi dopo aver provato una volta ad eseguire una computazione con un certo numero di nodi, possiamo assumere che la prossima impieghi un tempo molto simile.
 
 \begin{itemize}
     \item $a=10|50|100$
@@ -468,10 +468,9 @@ In ogni caso, abbiamo osservato che il tempo di esecuzione è molto consistente 
 
 \paragraph{Alto}
 
-L'ultimo test è stato progettato con l'obbiettivo esplicito di mettere in difficoltà la rete quanto più possibile in un tempo limitato. Come si vede dalla configurazione, sono presenti molte meno regole interne rispetto a quelle esterne.
-Invece ogni dispositivo attiva direttamente altri $3$ dispositivi e si prosegue in $5$ livelli di profondità. In questo modo il numero di messaggi inviati nella rete cresce in modo quasi esponenzialmente nel tempo.
+L'ultimo test è stato progettato con l'obbiettivo esplicito di mettere in difficoltà la rete quanto più possibile in un tempo limitato. Come si vede dalla configurazione, sono presenti molte meno regole interne rispetto a quelle esterne, invece ogni dispositivo attiva direttamente altri $3$ dispositivi e si prosegue per $5$ livelli di profondità. In questo modo il numero di messaggi inviati nella rete cresce in modo quasi esponenzialmente nel tempo.
 
-Questo test è stato costruito in cercando una combinazione di $e$ ed $f$ tali che con pochi dispositivi la computazione termini in $\qty{500}{\second}$. Però il carico è molto alto e quando si arriva a 100 dispositivi, la computazione viene completata in $\qty{2000}{\second}$.
+Questo test è stato costruito cercando una combinazione di $e$ ed $f$ tali che con pochi dispositivi la computazione termini in $\qty{500}{\second}$. Però il carico è molto alto e quando si arriva a 100 dispositivi, la computazione viene completata in $\qty{2000}{\second}$.
 Come detto in precedenza, questo tempo non è significativo poiché dipende principalmente dalla macchina su cui viene eseguito il simulatore. Però una differenza del genere suggerisce che anche il traffico di rete sarà particolarmente alto.
 
 \begin{itemize}
@@ -502,30 +501,30 @@ Come detto in precedenza, questo tempo non è significativo poiché dipende prin
 \section{Quali dati raccogliere}\label{raccolta:quali}
 
 Prima di affrontare qualsiasi tipo di test bisogna stabilire quali sono i dati che importano e come raccoglierli in modo efficace.
-In un sistema distribuito sono tanti gli aspetti che si potrebbero prendere in considerazione. Traffico di rete, latenza dell'esecuzione delle regole, throughput dei singoli nodi, throughput dell'intero sistema. Tutte queste opzioni sono state considerate prima di scegliere che test eseguire.
+In un sistema distribuito sono tanti gli aspetti che si potrebbero prendere in considerazione, ad esempio traffico di rete, latenza dell'esecuzione delle regole, throughput dei singoli nodi, throughput dell'intero sistema. Tutte queste opzioni sono state considerate prima di scegliere che test eseguire.
 
 AbU non è pensato per svolgere calcoli, ma per sincronizzare dispositivi.
 Quindi in un'applicazione reale non c'è un vero risultato in output, un qualcosa di cui misurare il throughput. Al massimo si possono misurare la quantità di regole eseguite, ma quelle sono legate al tick che è impostato manualmente.
 
-La latenza delle regole anzitutto dipende più dal numero totale di regole, e dalle prestazioni del dispositivo che esegue GoAbU, che da GoAbU stesso, quindi anche questa metrica non è molto indicativa delle prestazioni.
+La latenza delle regole dipende più dal numero totale di regole, e dalle prestazioni del dispositivo che esegue GoAbU, che da GoAbU stesso, quindi anche questa metrica non è molto indicativa delle prestazioni.
 In ogni caso, per migliorarla bisognerebbe passare ad un rule engine più ``aggressivo'', o trovare un modo di utilizzare meno regole.
-In ogni caso, il tempo speso per attendere il passare del tick è molto più lungo della latenza di una regola, a meno che la knowledge base non sia enorme.
+Comunque, il tempo speso per attendere il passare del tick è molto più lungo della latenza di una regola, a meno che la knowledge base non sia enorme.
 Quindi anche questo dato è stato considerato non necessario, almeno per ora.
 
 Alla fine, abbiamo deciso di raccogliere solo i dati relativi al traffico di rete. Più precisamente abbiamo raccolto sia la dimensione totale dei messaggi inviati e ricevuti (come numero di byte totali), che la quantità di pacchetti (frame di livello 2) inviati e ricevuti. Entrambi questi dati sono reperibili direttamente dal sistema operativo.
 Inoltre, abbiamo deciso di raccogliere anche il numero di messaggi inviati a livello di libreria, e la dimensione di questi messaggi. Per poterle confrontare con i dati del sistema operativo e scoprire quando overhead viene aggiunto dal middleware.
-Queste ultime informazioni sono state raccolte solo per gli ultimi due casi, quello medio e quello alto, perché in idle la libreria non produce azioni.
+Queste ultime informazioni sono state raccolte solo per gli ultimi due casi di test, quello medio e quello alto, perché in idle GoAbU non produce transazioni e quindi nemmeno messaggi.
 
 \section{Ispezione dei nodi}
 
 Le informazioni sul traffico di rete sono fornite direttamente dal sistema operativo, che offre degli pseudo-file per processo dove sono listate diverse metriche (in particolare byte e pacchetti, inviati e ricevuti) per ogni interfaccia di rete, utilizzate fino a quel momento dal processo.
 
 Come già visto in precedenza~\ref{setting:abusim} AbUsim utilizza due reti virtuali (quindi ogni nodo ha due interfacce di rete), una utilizzata per la comunicazione di GoAbU, ed una per il resto delle funzioni del simulatore, come l'invio dei log.
-Quindi è facile ottenere solo i dati riguardanti GoAbU senza che siano influenzati dal simulatore. È sufficiente identificare prima l'interfaccia di rete utilizzata per GoAbU, sempre usando gli pseudo-file, e poi raccogliere solo le metriche di quell'interfaccia.
+Quindi è facile ottenere solo i dati riguardanti GoAbU senza che siano influenzati dal simulatore, è sufficiente identificare prima l'interfaccia di rete utilizzata per GoAbU, sempre usando gli pseudo-file, e poi raccogliere solo le metriche di quell'interfaccia.
 
-Per separare i dati riguardanti una computazione da quelli precedente e da quelli della discovery, raccogliamo i dati prima e dopo la computazione, ed teniamo la differenza.
+Per separare i dati riguardanti una computazione da quelli riguardanti la precedente, e quelli della discovery, leggiamo i file prima e dopo la computazione, ed teniamo la differenza.
 
-I dati sui messaggi, invece, sono raccolte tramite i log del simulatore, che sono stati modificati appositamente per includere questi dati.
+I dati sui messaggi, invece, sono raccolte tramite i log del simulatore, che sono stati modificati appositamente per includere queste informazioni.
 Purtroppo, per quanto riguarda i messaggi, abbiamo raccolto i log di un solo nodo poiché le dimensioni erano troppo grandi. Raccogliendo i dati di un solo nodo sono stati prodotti $\qty{230}{\mebi\byte}$ di file di log, quindi raccoglierli per tutti i nodi sarebbe stato dispendioso.
 In futuro, si potrebbe trovare un modo per fornire questi dati in modo più snello, per poter analizzare più nodi.
 
@@ -557,12 +556,12 @@ Elenchiamo tutte le metriche ottenute, con una breve descrizione
     \item \lstinline{logs_packets ratio}: Rapporto tra pacchetti inviati e messaggi riportati nel log
 \end{itemize}
 
-Le metriche riguardanti il tempo sono state raccolte, ma non sono rilevanti, perché il tempo dipende principalmente dal tick, e nel nostro caso anche dalla macchina che esegue il simulatore. Quindi non verranno analizzati.
+Le metriche riguardanti il tempo sono state raccolte, ma non sono rilevanti, perché il tempo dipende principalmente dal tick, e nel nostro caso anche dalla macchina che esegue il simulatore, quindi non verranno analizzati.
 
-Le metriche riguardanti il traffico ricevuto, sono interessanti, ma non particolarmente utili. Ogni dato ricevuto è un nodo che era stato inviato da un altro nodo, quindi i dati inviati in totale e quelli ricevuti dovrebbero essere simili.
+Le metriche riguardanti il traffico ricevuto, sono interessanti, ma non particolarmente utili. Ogni dato ricevuto è un dato che era stato inviato da un altro nodo, quindi i dati inviati in totale e quelli ricevuti dovrebbero essere simili.
 Dal rapporto possiamo ottenere il packet loss della rete, però questo non fornisce nessuna informazione sul comportamento di GoAbU, ma sul comportamento delle reti Docker.
 
-I dati sui pacchetti di livello 2 sono interessanti in quanto sono indicativi del lavoro che dovranno gestire i dispositivi di rete a cui AbU sarà connesso.
+I dati sui pacchetti di livello 2 sono interessanti in quanto sono indicativi del lavoro che dovranno gestire i dispositivi di rete a cui GoAbU sarà connesso.
 
 Confrontare i dati del sistema con quelli dei log permette di osservare cosa il middleware è in grado di fare per ridurre il traffico. In particolare, i due rapporti \lstinline{logs_bytes ratio} e \lstinline{logs_packets ratio} facilitano questo confronto.
 Più precisamente, il primo mette in evidenza la capacità del middleware di comprimere ed ottimizzare i dati.
@@ -593,7 +592,7 @@ Notiamo anzitutto che in idle il traffico è molto basso, come ci si aspetta. Si
 All'aumentare dei nodi passa da $\sim\qty{2}{\mega\byte}$ a $\sim\qty{9}{\mega\byte}$, a $\sim\qty{20}{\mega\byte}$, di traffico, l'aumento sembra approssimativamente lineare rispetto al numero di nodi.
 I test in idle sono gli unici dove ha senso guardare le metriche al secondo, e si tratta di pochi $\unit{\kilo\byte/\second}$ (grafico in appendice, Figure~\ref{fig:tbps}).
 
-I risultati per i test sotto carico medio sono molto meno promettenti. Già con $10$ nodi, i valori sono ben oltre il carico in idle per $100$ nodi, con $\sim\qty{62}{\mega\byte}$ di dati.
+I risultati per i test sotto carico medio sono molto meno promettenti, già con $10$ nodi, i valori sono ben oltre il carico in idle per $100$ nodi, con $\sim\qty{62}{\mega\byte}$ di dati.
 
 Più preoccupante è il salto tra i $50$ ed i $100$ nodi, in cui il traffico passa da $\sim\qty{208}{\mega\byte}$ a $\sim\qty{7.4}{\giga\byte}$. L'aumento non sembra affatto lineare, ma non siamo sorpresi, perché implementando il broadcast come messaggi unicast ad ogni nodo, ci \emph{aspettiamo} una message complexity di $\Theta(a^2)$.
 
@@ -626,8 +625,7 @@ Con $100$ nodi, invece, il traffico per regola sotto carico alto è molto più v
 Sembra che ad un certo punto aumentare le regole cominci a ridurre i costi per la singola regola.
 
 Nonostante questo risultato promettente, c'è un outlier del test con $100$ nodi che ha prodotto $\sim\qty{25}{\giga\byte}$ di traffico, significa che in determinate condizioni potrebbe causare molto più traffico.
-Il traffico per regola in quel caso è di $\qty{689}{\percent}$, che è comunque più basso del test sotto carico medio.
-Ad ogni modo, anche se la singola regola è meno costosa, nel complesso i dati passati nella rete sono aumentati di molto.
+Il traffico per regola in quel caso è di $\qty{689}{\kilo\byte/rule}$, che è comunque più basso del test sotto carico medio, ma anche se la singola regola è meno costosa, nel complesso i dati passati nella rete sono aumentati di molto.
 
 \paragraph{\lstinline{total packets}}
 
@@ -654,7 +652,7 @@ Per i test in idle, a contrario di quanto visto nel grafico precedente, anche se
 \end{figure}
 
 In Figure~\ref{fig:lbr} possiamo osservare se l'utilizzo del middleware memberlist causa overhead o comprime i dati in modo osservabile.
-È calcolato confrontando la quantità byte dati inviati riportata dal sistema, con la somma della dimensione di tutti i messaggi eseguite a dalla libreria. Quindi un valore maggiore di $1$ indica un complessivo overhead, mentre un valore minore di $1$ indica una compressione migliore.
+È calcolato confrontando la quantità byte dati inviati riportata dal sistema, con la somma della dimensione di tutti i messaggi eseguite a dalla libreria, quindi un valore maggiore di $1$ indica un complessivo overhead, mentre un valore minore di $1$ indica una compressione migliore.
 
 Possiamo osservare dai rapporti con valori da $0.38$ a $0.46$, che la compressione riesce a rendere i dati da inviare meno della metà dei dati di partenza.
 Il rapporto di compressione è tra il $2.2$ ed il $2.6$, che è molto alto.
@@ -716,9 +714,9 @@ Ovviamente è necessario scegliere opportunamente questo $k$ in modo che il broa
 In questo modo si eviterebbe di modificare troppo il modello, pur riducendo anche di molto la message complexity del sistema.
 
 Si può ottenere un risultato migliore utilizzando algoritmi di broadcast efficiente, basati magari sull'utilizzo di una rete overlay non completa e sull'inoltro dei messaggi.
-Un metodo del genere può ridurre di molto il traffico, ma ad un costo, sia di latenza, che soprattutto computazionale. E ricordiamo che per l'utilizzo in campo IoT è necessario trovare un algoritmo che possa essere utilizzato anche da dispositivi molto piccoli.
+Un metodo del genere può ridurre di molto il traffico, ma ad un costo, sia di latenza, che soprattutto computazionale, e ricordiamo che per l'utilizzo in campo IoT è necessario trovare un algoritmo che possa essere utilizzato anche da dispositivi molto piccoli.
 
-Ad ogni modo, il paradigma del calcolo AbU ha delle grandi potenzialità, grazie alla sua semplicità di programmazione. Ed è particolarmente adatto alla coordinazione di grandi sistemi, fornendo un modo semplice di diffondere informazioni.
+Ad ogni modo, il paradigma del calcolo AbU ha delle grandi potenzialità, grazie alla sua semplicità di programmazione, ed è particolarmente adatto alla coordinazione di grandi sistemi, fornendo un modo semplice di diffondere informazioni.
 Anche se GoAbU non è ancora adatto a scalare, è solo la prima implementazione, e ci sono ancora molte opzioni per migliorare.
 
 
