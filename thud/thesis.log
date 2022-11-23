@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.21)  23 NOV 2022 08:37
+This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.21)  23 NOV 2022 13:00
 entering extended mode
 **"c:/Users/alvis/OneDrive - Università degli Studi di Udine/tesi-triennale/thud/thesis.tex"
 (c:/Users/alvis/OneDrive - Università degli Studi di Udine/tesi-triennale/thud/thesis.tex
@@ -876,11 +876,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.323 
+l.337 
       ] [10pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.335 
+l.349 
       ] [11]
 Underfull \vbox (badness 1448) has occurred while \output is active []
 
@@ -896,267 +896,256 @@ Capitolo 6.
 <graphs/total bytes.png, id=314, 462.528pt x 346.896pt>
 File: graphs/total bytes.png Graphic file (type png)
 <use graphs/total bytes.png>
-Package pdftex.def Info: graphs/total bytes.png  used on input line 571.
+Package pdftex.def Info: graphs/total bytes.png  used on input line 585.
 (pdftex.def)             Requested size: 345.0644pt x 258.81099pt.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 576.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 590.
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
-(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 576.
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 590.
 [21
 
-pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.585 I
-        risultati per i test sotto carico alto sono pessimi. Ci aspettavamo ... <./graphs/total bytes.png>]
+]
 <graphs/total packets.png, id=325, 462.528pt x 346.896pt>
 File: graphs/total packets.png Graphic file (type png)
 <use graphs/total packets.png>
-Package pdftex.def Info: graphs/total packets.png  used on input line 621.
+Package pdftex.def Info: graphs/total packets.png  used on input line 636.
 (pdftex.def)             Requested size: 345.0644pt x 258.81099pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [22]
-<graphs/logs_bytes ratio.png, id=332, 462.528pt x 346.896pt>
+<graphs/logs_bytes ratio.png, id=329, 462.528pt x 346.896pt>
 File: graphs/logs_bytes ratio.png Graphic file (type png)
 <use graphs/logs_bytes ratio.png>
-Package pdftex.def Info: graphs/logs_bytes ratio.png  used on input line 636.
+Package pdftex.def Info: graphs/logs_bytes ratio.png  used on input line 651.
 (pdftex.def)             Requested size: 345.0644pt x 258.81099pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 1997) has occurred while \output is active []
 
- [23pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) has been already used, duplicate ignored
+ [22pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.640 
-       <./graphs/total packets.png>]
+l.662 C
+       ome già visto nella Sezione~\ref{setting}, il corpo dei è una seria... <./graphs/total bytes.png>]
 <graphs/logs_packets ratio.png, id=342, 462.528pt x 346.896pt>
 File: graphs/logs_packets ratio.png Graphic file (type png)
 <use graphs/logs_packets ratio.png>
-Package pdftex.def Info: graphs/logs_packets ratio.png  used on input line 654.
+Package pdftex.def Info: graphs/logs_packets ratio.png  used on input line 669.
 (pdftex.def)             Requested size: 345.0644pt x 258.81099pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [24pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3}) has been already used, duplicate ignored
-<argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
-l.658 
-       <./graphs/logs_bytes ratio.png>]
-<graphs/bytes per packet.png, id=350, 462.528pt x 346.896pt>
+<graphs/bytes per packet.png, id=344, 462.528pt x 346.896pt>
 File: graphs/bytes per packet.png Graphic file (type png)
 <use graphs/bytes per packet.png>
-Package pdftex.def Info: graphs/bytes per packet.png  used on input line 671.
+Package pdftex.def Info: graphs/bytes per packet.png  used on input line 686.
 (pdftex.def)             Requested size: 345.0644pt x 258.81099pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [25pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4}) has been already used, duplicate ignored
+ [23pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.675 
-       <./graphs/logs_packets ratio.png>] [26pdfTeX warning (ext4): destination with the same identifier (name{figure.6.5}) has been already used, duplicate ignored
+l.696 N
+       otiamo che come il numero di pacchetti per transizione, anche la dime... <./graphs/total packets.png>] [24pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.697 
-       <./graphs/bytes per packet.png>] [27] [28]
+l.712 
+       <./graphs/logs_bytes ratio.png>] [25pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.732 \chapter
+              {Altri grafici}\label{appendix:grafici} <./graphs/logs_packets ratio.png>] [26pdfTeX warning (ext4): destination with the same identifier (name{figure.6.5}) has been already used, duplicate ignored
+<argument> ...shipout:D \box_use:N \l_shipout_box 
+                                                  \__shipout_drop_firstpage_...
+l.732 \chapter
+              {Altri grafici}\label{appendix:grafici} <./graphs/bytes per packet.png>]
 Appendice A.
-<graphs/received bytes.png, id=380, 462.528pt x 346.896pt>
+<graphs/received bytes.png, id=377, 462.528pt x 346.896pt>
 File: graphs/received bytes.png Graphic file (type png)
 <use graphs/received bytes.png>
-Package pdftex.def Info: graphs/received bytes.png  used on input line 719.
+Package pdftex.def Info: graphs/received bytes.png  used on input line 735.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/received packets.png, id=381, 462.528pt x 346.896pt>
+<graphs/received packets.png, id=378, 462.528pt x 346.896pt>
 File: graphs/received packets.png Graphic file (type png)
 <use graphs/received packets.png>
-Package pdftex.def Info: graphs/received packets.png  used on input line 725.
+Package pdftex.def Info: graphs/received packets.png  used on input line 741.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [29
+ [27
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.729 
+l.745 
        <./graphs/received bytes.png>]
-<graphs/sent bytes.png, id=388, 462.528pt x 346.896pt>
+<graphs/sent bytes.png, id=385, 462.528pt x 346.896pt>
 File: graphs/sent bytes.png Graphic file (type png)
 <use graphs/sent bytes.png>
-Package pdftex.def Info: graphs/sent bytes.png  used on input line 731.
+Package pdftex.def Info: graphs/sent bytes.png  used on input line 747.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/sent packets.png, id=389, 462.528pt x 346.896pt>
+<graphs/sent packets.png, id=386, 462.528pt x 346.896pt>
 File: graphs/sent packets.png Graphic file (type png)
 <use graphs/sent packets.png>
-Package pdftex.def Info: graphs/sent packets.png  used on input line 737.
+Package pdftex.def Info: graphs/sent packets.png  used on input line 753.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [30pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.2}) has been already used, duplicate ignored
+ [28pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.741 
+l.757 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.741 
+l.757 
        <./graphs/received packets.png> <./graphs/sent bytes.png>]
-<graphs/sent bytes per seconds.png, id=398, 462.528pt x 346.896pt>
+<graphs/sent bytes per seconds.png, id=395, 462.528pt x 346.896pt>
 File: graphs/sent bytes per seconds.png Graphic file (type png)
 <use graphs/sent bytes per seconds.png>
-Package pdftex.def Info: graphs/sent bytes per seconds.png  used on input line 743.
+Package pdftex.def Info: graphs/sent bytes per seconds.png  used on input line 759.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/sent packets per seconds.png, id=399, 462.528pt x 346.896pt>
+<graphs/sent packets per seconds.png, id=396, 462.528pt x 346.896pt>
 File: graphs/sent packets per seconds.png Graphic file (type png)
 <use graphs/sent packets per seconds.png>
-Package pdftex.def Info: graphs/sent packets per seconds.png  used on input line 749.
+Package pdftex.def Info: graphs/sent packets per seconds.png  used on input line 765.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [31pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.4}) has been already used, duplicate ignored
+ [29pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.753 
+l.769 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.753 
+l.769 
        <./graphs/sent packets.png> <./graphs/sent bytes per seconds.png>]
-<graphs/received bytes per seconds.png, id=409, 462.528pt x 346.896pt>
+<graphs/received bytes per seconds.png, id=405, 462.528pt x 346.896pt>
 File: graphs/received bytes per seconds.png Graphic file (type png)
 <use graphs/received bytes per seconds.png>
-Package pdftex.def Info: graphs/received bytes per seconds.png  used on input line 755.
+Package pdftex.def Info: graphs/received bytes per seconds.png  used on input line 771.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/received packets per seconds.png, id=410, 462.528pt x 346.896pt>
+<graphs/received packets per seconds.png, id=406, 462.528pt x 346.896pt>
 File: graphs/received packets per seconds.png Graphic file (type png)
 <use graphs/received packets per seconds.png>
-Package pdftex.def Info: graphs/received packets per seconds.png  used on input line 761.
+Package pdftex.def Info: graphs/received packets per seconds.png  used on input line 777.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [32pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.6}) has been already used, duplicate ignored
+ [30pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.765 
+l.781 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.765 
+l.781 
        <./graphs/sent packets per seconds.png> <./graphs/received bytes per seconds.png>]
-<graphs/bytes ratio.png, id=419, 462.528pt x 346.896pt>
+<graphs/bytes ratio.png, id=415, 462.528pt x 346.896pt>
 File: graphs/bytes ratio.png Graphic file (type png)
 <use graphs/bytes ratio.png>
-Package pdftex.def Info: graphs/bytes ratio.png  used on input line 767.
+Package pdftex.def Info: graphs/bytes ratio.png  used on input line 783.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/packets ratio.png, id=420, 462.528pt x 346.896pt>
+<graphs/packets ratio.png, id=416, 462.528pt x 346.896pt>
 File: graphs/packets ratio.png Graphic file (type png)
 <use graphs/packets ratio.png>
-Package pdftex.def Info: graphs/packets ratio.png  used on input line 773.
+Package pdftex.def Info: graphs/packets ratio.png  used on input line 789.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [33pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.8}) has been already used, duplicate ignored
+ [31pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.8}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.777 
+l.793 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.777 
+l.793 
        <./graphs/received packets per seconds.png> <./graphs/bytes ratio.png>]
-<graphs/total bytes per seconds.png, id=429, 462.528pt x 346.896pt>
+<graphs/total bytes per seconds.png, id=426, 462.528pt x 346.896pt>
 File: graphs/total bytes per seconds.png Graphic file (type png)
 <use graphs/total bytes per seconds.png>
-Package pdftex.def Info: graphs/total bytes per seconds.png  used on input line 779.
+Package pdftex.def Info: graphs/total bytes per seconds.png  used on input line 795.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/total packets per seconds.png, id=430, 462.528pt x 346.896pt>
+<graphs/total packets per seconds.png, id=427, 462.528pt x 346.896pt>
 File: graphs/total packets per seconds.png Graphic file (type png)
 <use graphs/total packets per seconds.png>
-Package pdftex.def Info: graphs/total packets per seconds.png  used on input line 785.
+Package pdftex.def Info: graphs/total packets per seconds.png  used on input line 801.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [34pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.10}) has been already used, duplicate ignored
+ [32pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.10}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.789 
+l.805 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.789 
+l.805 
        <./graphs/packets ratio.png> <./graphs/total bytes per seconds.png>]
-<graphs/logs_expected bytes.png, id=438, 462.528pt x 346.896pt>
+<graphs/logs_expected bytes.png, id=435, 462.528pt x 346.896pt>
 File: graphs/logs_expected bytes.png Graphic file (type png)
 <use graphs/logs_expected bytes.png>
-Package pdftex.def Info: graphs/logs_expected bytes.png  used on input line 791.
+Package pdftex.def Info: graphs/logs_expected bytes.png  used on input line 807.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/logs_actual bytes.png, id=439, 462.528pt x 346.896pt>
+<graphs/logs_actual bytes.png, id=436, 462.528pt x 346.896pt>
 File: graphs/logs_actual bytes.png Graphic file (type png)
 <use graphs/logs_actual bytes.png>
-Package pdftex.def Info: graphs/logs_actual bytes.png  used on input line 797.
+Package pdftex.def Info: graphs/logs_actual bytes.png  used on input line 813.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [35pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.12}) has been already used, duplicate ignored
+ [33pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.12}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.801 
+l.817 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.13}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.801 
+l.817 
        <./graphs/total packets per seconds.png> <./graphs/logs_expected bytes.png>]
-<graphs/logs_expected packets.png, id=448, 462.528pt x 346.896pt>
+<graphs/logs_expected packets.png, id=445, 462.528pt x 346.896pt>
 File: graphs/logs_expected packets.png Graphic file (type png)
 <use graphs/logs_expected packets.png>
-Package pdftex.def Info: graphs/logs_expected packets.png  used on input line 803.
+Package pdftex.def Info: graphs/logs_expected packets.png  used on input line 819.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/logs_actual packets.png, id=449, 462.528pt x 346.896pt>
+<graphs/logs_actual packets.png, id=446, 462.528pt x 346.896pt>
 File: graphs/logs_actual packets.png Graphic file (type png)
 <use graphs/logs_actual packets.png>
-Package pdftex.def Info: graphs/logs_actual packets.png  used on input line 809.
+Package pdftex.def Info: graphs/logs_actual packets.png  used on input line 825.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [36pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.14}) has been already used, duplicate ignored
+ [34pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.14}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.813 
+l.829 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.15}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.813 
-       <./graphs/logs_actual bytes.png> <./graphs/logs_expected packets.png>] [37pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.16}) has been already used, duplicate ignored
+l.829 
+       <./graphs/logs_actual bytes.png> <./graphs/logs_expected packets.png>] [35pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.16}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
                                                   \__shipout_drop_firstpage_...
-l.815 \backmatter
-                  <./graphs/logs_actual packets.png>] [38] (thesis.bbl) [39
+l.831 \backmatter
+                  <./graphs/logs_actual packets.png>] [36] (thesis.bbl) [37
 
 ] (thesis.aux)
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 7BD349F5AE19C53B1B4754CEA7139218;1203.
  ) 
 Here is how much of TeX's memory you used:
- 35419 strings out of 478927
- 712859 string characters out of 2852534
- 1051711 words of memory out of 3000000
+ 35417 strings out of 478927
+ 712845 string characters out of 2852534
+ 1051715 words of memory out of 3000000
  52515 multiletter control sequences out of 15000+600000
  427425 words of font info for 84 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  84i,24n,83p,988b,2367s stack positions out of 5000i,500n,10000p,200000b,80000s
  <C:\Users\alvis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk>{C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on thesis.pdf (45 pages, 1685642 bytes).
+Output written on thesis.pdf (43 pages, 1685155 bytes).
 PDF statistics:
- 577 PDF objects out of 1000 (max. 8388607)
- 112 named destinations out of 1000 (max. 500000)
+ 574 PDF objects out of 1000 (max. 8388607)
+ 110 named destinations out of 1000 (max. 500000)
  287 words of extra memory for PDF output out of 10000 (max. 10000000)
 

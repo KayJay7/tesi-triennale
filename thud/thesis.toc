@@ -31,10 +31,10 @@
 \contentsline {chapter}{\numberline {6}Risultati}{21}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Grafici}{21}{section.6.1}%
 \contentsline {paragraph}{\lstinline {total bytes}}{21}{figure.6.1}%
-\contentsline {paragraph}{\lstinline {total packets}}{23}{figure.6.2}%
-\contentsline {paragraph}{\lstinline {logs_bytes ratio}}{24}{figure.6.3}%
-\contentsline {paragraph}{\lstinline {logs_packets ratio}}{25}{figure.6.4}%
-\contentsline {paragraph}{\lstinline {bytes per packet}}{26}{figure.6.5}%
-\contentsline {section}{\numberline {6.2}Conclusioni e proposte di miglioramento}{26}{section.6.2}%
-\contentsline {chapter}{\numberline {A}Altri grafici}{29}{appendix.Alph1}%
-\contentsline {chapter}{Bibliografia}{39}{appendix*.22}%
+\contentsline {paragraph}{\lstinline {total packets}}{22}{figure.6.2}%
+\contentsline {paragraph}{\lstinline {logs_bytes ratio}}{22}{figure.6.3}%
+\contentsline {paragraph}{\lstinline {logs_packets ratio}}{23}{figure.6.4}%
+\contentsline {paragraph}{\lstinline {bytes per packet}}{23}{figure.6.5}%
+\contentsline {section}{\numberline {6.2}Conclusioni e proposte di miglioramento}{24}{section.6.2}%
+\contentsline {chapter}{\numberline {A}Altri grafici}{27}{appendix.Alph1}%
+\contentsline {chapter}{Bibliografia}{37}{appendix*.22}%
