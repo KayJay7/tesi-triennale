@@ -113,7 +113,7 @@
 
 
 \gdef\thud@universityA{%
-	\includegraphics[width=\textwidth]{bannerdmif_\languagename.pdf}\\
+	\includegraphics[width=\textwidth]{bannerdmif_\languagename.PNG}\\
 }
 \gdef\thud@universityB{%
 	Dipartimento di Scienze Matematiche, Informatiche e Fisiche\\%
