@@ -1,97 +1,95 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.23 (MiKTeX 21.10) (preloaded format=pdflatex 2021.10.21)  24 NOV 2022 22:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.11.27)  1 DEC 2022 13:24
 entering extended mode
-**"c:/Users/alvis/OneDrive - Università degli Studi di Udine/tesi-triennale/thud/thesis.tex"
-(c:/Users/alvis/OneDrive - Università degli Studi di Udine/tesi-triennale/thud/thesis.tex
-LaTeX2e <2021-06-01> patch level 1
-L3 programming layer <2021-10-12> (thud.cls
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/home/alvise/Documents/tesi-triennale/thud/thesis.tex
+(/home/alvise/Documents/tesi-triennale/thud/thesis.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-05-07> (./thud.cls
 Document Class: thud 2020/01/21
-(C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks16
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+\KV@toks@=\toks15
+) (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
-Document Class: book 2021/02/12 v1.4n Standard LaTeX document class
-(C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/base\bk11.clo
-File: bk11.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
+) (/usr/share/texlive/texmf-dist/tex/generic/kvsetkeys/kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+)) (/usr/share/texlive/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/bk11.clo
+File: bk11.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
-\c@part=\count182
-\c@chapter=\count183
-\c@section=\count184
-\c@subsection=\count185
-\c@subsubsection=\count186
-\c@paragraph=\count187
-\c@subparagraph=\count188
-\c@figure=\count189
-\c@table=\count190
+\c@part=\count179
+\c@chapter=\count180
+\c@section=\count181
+\c@subsection=\count182
+\c@subsubsection=\count183
+\c@paragraph=\count184
+\c@subparagraph=\count185
+\c@figure=\count186
+\c@table=\count187
 \abovecaptionskip=\skip47
 \belowcaptionskip=\skip48
 \bibindent=\dimen138
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\helvet.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/psnfss/helvet.sty
 Package: helvet 2020/03/25 PSNFSS-v9.3 (WaS) 
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
-Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2020/09/09 v1.2b Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2020/08/30 v1.4c Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
-Package graphics Info: Driver file: pdftex.def on input line 107.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+Package graphics Info: Driver file: pdftex.def on input line 105.
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen139
 \Gin@req@width=\dimen140
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2021/10/13 3.64 The Babel package
-\babel@savecnt=\count191
+) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2021/04/26 3.58 The Babel package
+ (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2021/04/26 3.58 Babel common definitions
+\babel@savecnt=\count188
 \U@D=\dimen141
-\l@unhyphenated=\language79
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\l@unhyphenated=\language85
+ (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
-\bbl@dirlevel=\count192
-
-*************************************
-* Local config file bblopts.cfg used
-*
-(C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
-File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/babel-english\english.ldf
+)
+\bbl@dirlevel=\count189
+ (/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
 Language: english 2017/06/06 v3.3r English support from the babel system
 Package babel Info: Hyphen rules for 'canadian' set to \l@english
 (babel)             (\language0). Reported on input line 102.
 Package babel Info: Hyphen rules for 'australian' set to \l@ukenglish
-(babel)             (\language73). Reported on input line 105.
+(babel)             (\language26). Reported on input line 105.
 Package babel Info: Hyphen rules for 'newzealand' set to \l@ukenglish
-(babel)             (\language73). Reported on input line 108.
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/babel-italian\italian.ldf
-Language: italian 2022/03/27 v.1.4.07 Italian support for the babel system
-\it@lettering=\count193
-\it@doublequoteactive=\count194
-\it@ISOcompliance=\count195
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/babel-italian\italian.ldf
-Language: italian 2022/03/27 v.1.4.07 Italian support for the babel system
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty
+(babel)             (\language26). Reported on input line 108.
+) (/usr/share/texlive/texmf-dist/tex/generic/babel-italian/italian.ldf
+Language: italian 2020/05/21 v.1.4.04 Italian support for the babel system
+\it@lettering=\count190
+\it@doublequoteactive=\count191
+\it@ISOcompliance=\count192
+)) (/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count196
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/setspace\setspace.sty
+\etb@tempcnta=\count193
+) (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
-\Gm@cnth=\count197
-\Gm@cntv=\count198
-\c@Gm@tempcnt=\count199
+\Gm@cnth=\count194
+\Gm@cntv=\count195
+\c@Gm@tempcnt=\count196
 \Gm@bindingoffset=\dimen142
 \Gm@wd@mp=\dimen143
 \Gm@odd@mp=\dimen144
@@ -100,34 +98,35 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \Gm@layoutheight=\dimen147
 \Gm@layouthoffset=\dimen148
 \Gm@layoutvoffset=\dimen149
-\Gm@dimlist=\toks17
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
-\thud@tmpbox=\box50
- (book.thud.tex
-\c@thud@secnumdepth=\count266
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfx\pdfx.sty
+\Gm@dimlist=\toks16
+)
+\thud@tmpbox=\box47
+ (./book.thud.tex
+\c@thud@secnumdepth=\count197
+)) (/usr/share/texlive/texmf-dist/tex/latex/pdfx/pdfx.sty
 Package: pdfx 2019/02/27 v1.6.3 PDF/X and PDF/A support (CVR/HTH/RRM/PS)
-\pdfx@minorversion=\count267
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.sty
+\pdfx@minorversion=\count198
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty
 Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifxetex.sty
+) (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifxetex.sty
 Package: ifxetex 2019/10/25 v0.7 ifxetex legacy package. Use iftex instead.
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/everyshi\everyshi.sty
-Package: everyshi 2020/11/18 v4.00 EveryShipout Package
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifluatex.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/base/everyshi-ltx.sty
+Package: everyshi-ltx 2020/08/17 v1.0a Emulation of the original everyshi package
+with kernel methods
+) (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifluatex.sty
 Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
-){C:/Users/alvis/AppData/Local/MiKTeX/pdftex/config/pdftex.map} (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty
-Package: inputenc 2021/02/14 v1.3d Input encoding file
-\inpenc@prehook=\toks18
-\inpenc@posthook=\toks19
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfx\l8u-penc.def
+){/usr/share/texlive/texmf-var/fonts/map/pdftex/updmap/pdftex.map} (/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2020/08/01 v1.3d Input encoding file
+\inpenc@prehook=\toks17
+\inpenc@posthook=\toks18
+) (/usr/share/texlive/texmf-dist/tex/latex/pdfx/l8u-penc.def
 File: l8u-penc.def 2017/06/23 v0.8 Custom LaTeX file, for UTF8 encoded letters and symbols
 LaTeX Info: Composite with undeclared \b in encoding L8U on input line 278.
 )
-\pdfxsafeforxmp@toks=\toks20
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+\pdfxsafeforxmp@toks=\toks19
+ (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
 Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
 Package xcolor Info: Driver file: pdftex.def on input line 225.
@@ -141,43 +140,43 @@ Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
 Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
 Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 )
-\pdfx@tmptoks=\toks21
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
-Package: hyperref 2021-06-07 v7.00m Hypertext links for LaTeX
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+\pdfx@tmptoks=\toks20
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2021-02-27 v7.00k Hypertext links for LaTeX
+ (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
 Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 )
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+) (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+) (/usr/share/texlive/texmf-dist/tex/generic/pdfescape/pdfescape.sty
 Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/hycolor/hycolor.sty
 Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/letltxmacro/letltxmacro.sty
 Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/auxhook/auxhook.sty
 Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
 )
 \@linkdim=\dimen150
-\Hy@linkcounter=\count268
-\Hy@pagecounter=\count269
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
-File: pd1enc.def 2021-06-07 v7.00m Hyperref: PDFDocEncoding definition (HO)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref-langpatches.def
-File: hyperref-langpatches.def 2021-06-07 v7.00m Hyperref: patches for babel languages
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+\Hy@linkcounter=\count199
+\Hy@pagecounter=\count266
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2021-02-27 v7.00k Hyperref: PDFDocEncoding definition (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref-langpatches.def
+File: hyperref-langpatches.def 2021-02-27 v7.00k Hyperref: patches for babel languages
+) (/usr/share/texlive/texmf-dist/tex/generic/intcalc/intcalc.sty
 Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+) (/usr/share/texlive/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count270
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def
-File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
+\Hy@SavedSpaceFactor=\count267
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc.def
+File: puenc.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (HO)
 )
 Package hyperref Info: Option `pdfa' set `true' on input line 4073.
 Package hyperref Info: Hyper figures OFF on input line 4192.
@@ -187,83 +186,83 @@ Package hyperref Info: Plain pages OFF on input line 4207.
 Package hyperref Info: Backreferencing OFF on input line 4212.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count271
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\c@Hy@tempcnt=\count268
+ (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4804.
 \XeTeXLinkMargin=\dimen151
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count272
+\Fld@menulength=\count269
 \Field@Width=\dimen152
 \Fld@charsize=\dimen153
-Package hyperref Info: Hyper figures OFF on input line 6076.
-Package hyperref Info: Link nesting OFF on input line 6081.
-Package hyperref Info: Hyper index ON on input line 6084.
-Package hyperref Info: backreferencing OFF on input line 6091.
-Package hyperref Info: Link coloring OFF on input line 6096.
-Package hyperref Info: Link coloring with OCG OFF on input line 6101.
-Package hyperref Info: PDF/A mode ON on input line 6104.
-LaTeX Info: Redefining \ref on input line 6146.
-LaTeX Info: Redefining \pageref on input line 6150.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
-Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
-package with kernel methods
+Package hyperref Info: Hyper figures OFF on input line 6075.
+Package hyperref Info: Link nesting OFF on input line 6080.
+Package hyperref Info: Hyper index ON on input line 6083.
+Package hyperref Info: backreferencing OFF on input line 6090.
+Package hyperref Info: Link coloring OFF on input line 6095.
+Package hyperref Info: Link coloring with OCG OFF on input line 6100.
+Package hyperref Info: PDF/A mode ON on input line 6103.
+LaTeX Info: Redefining \ref on input line 6145.
+LaTeX Info: Redefining \pageref on input line 6149.
+ (/usr/share/texlive/texmf-dist/tex/latex/base/atbegshi-ltx.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi package
+with kernel methods
 )
-\Hy@abspage=\count273
-\c@Item=\count274
-\c@Hfootnote=\count275
+\Hy@abspage=\count270
+\c@Item=\count271
+\c@Hfootnote=\count272
 )
 Package hyperref Info: Driver: hpdftex.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
-File: hpdftex.def 2021-06-07 v7.00m Hyperref driver for pdfTeX
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2021-02-27 v7.00k Hyperref driver for pdfTeX
+ (/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty
 Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery package
 with kernel methods
 )
-\Fld@listcount=\count276
-\c@bookmark@seq@number=\count277
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
-Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+\Fld@listcount=\count273
+\c@bookmark@seq@number=\count274
+ (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+ (/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty
 Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
-Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
 \Hy@SectionHShift=\skip49
 )
 Package hyperref Info: Option `unicode' set `true' on input line 1463.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
 Package hyperref Info: Option `psdextra' set `true' on input line 1465.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc-greekbasic.def
-File: puenc-greekbasic.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (greek block) (HO)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\psdextra.def
-File: psdextra.def 2021-06-07 v7.00m Hyperref: Additions to PDF string support
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/colorprofiles\colorprofiles.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/hyperref/puenc-greekbasic.def
+File: puenc-greekbasic.def 2021-02-27 v7.00k Hyperref: PDF Unicode definition (greek block) (HO)
+) (/usr/share/texlive/texmf-dist/tex/latex/hyperref/psdextra.def
+File: psdextra.def 2021-02-27 v7.00k Hyperref: Additions to PDF string support
+) (/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.sty
 Package: colorprofiles 2018/11/01 v1.0.1 color profiles for PDF/X and PDF/A support
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/colorprofiles\colorprofiles.tex)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\se-pdfdoc.def
+ (/usr/share/texlive/texmf-dist/tex/generic/colorprofiles/colorprofiles.tex)) (/usr/share/texlive/texmf-dist/tex/generic/stringenc/se-pdfdoc.def
 File: se-pdfdoc.def 2019/11/29 v1.12 stringenc: PDFDocEncoding
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfx\AdobeColorProfiles.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfx\8bit.def
+) (/usr/share/texlive/texmf-dist/tex/latex/pdfx/AdobeColorProfiles.tex) (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def
 File: 8bit.def 2008/03/30 v1.1d Input encoding file
 )
 ** pdfx: No file thesis.xmpdata . Metadata will be incomplete!
-<<sRGB.icc>> (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfx\8bit.def
+<<sRGB.icc>> (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def
 File: 8bit.def 2008/03/30 v1.1d Input encoding file
 )
 Package hyperref Info: Option `unicode' set `true' on input line 2411.
 Package hyperref Info: Option `unicode' set `true' on input line 2412.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pdftex\glyphtounicode.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfx\glyphtounicode-cmr.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfx\glyphtounicode-ntx.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/base\ifthen.sty
-Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/xmpincl\xmpincl.sty
-Package: xmpincl 2021/09/22 v2.4 Include XMP data in pdflatex
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfx\8bit.def
+ (/usr/share/texlive/texmf-dist/tex/generic/pdftex/glyphtounicode.tex) (/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-cmr.tex) (/usr/share/texlive/texmf-dist/tex/latex/pdfx/glyphtounicode-ntx.tex) (/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/share/texlive/texmf-dist/tex/latex/xmpincl/xmpincl.sty
+Package: xmpincl 2008/05/10 v2.2 Include XMP data in pdflatex
+) (/usr/share/texlive/texmf-dist/tex/latex/pdfx/8bit.def
 File: 8bit.def 2008/03/30 v1.1d Input encoding file
 )
 Using XMP template file: pdfa.xmp
@@ -271,64 +270,64 @@ Using XMP template file: pdfa.xmp
 \xmpinclRead=\read3
 \openout3 = `pdfa.xmpi'.
 
-<<pdfa.xmpi>>) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/tocbibind\tocbibind.sty
+<<pdfa.xmpi>>) (/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has chapter divisions on input line 50.
 
 
 Package tocbibind Note: Using chapter style headings, unless overridden.
 
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/preprint\authblk.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/preprint/authblk.sty
 Package: authblk 2001/02/27 1.3 (PWD)
 \affilsep=\skip50
 \@affilsep=\skip51
-\c@Maxaffil=\count278
-\c@authors=\count279
-\c@affil=\count280
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.sty
-\lst@mode=\count281
-\lst@gtempboxa=\box51
-\lst@token=\toks22
-\lst@length=\count282
+\c@Maxaffil=\count275
+\c@authors=\count276
+\c@affil=\count277
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count278
+\lst@gtempboxa=\box48
+\lst@token=\toks21
+\lst@length=\count279
 \lst@currlwidth=\dimen154
-\lst@column=\count283
-\lst@pos=\count284
+\lst@column=\count280
+\lst@pos=\count281
 \lst@lostspace=\dimen155
 \lst@width=\dimen156
-\lst@newlines=\count285
-\lst@lineno=\count286
+\lst@newlines=\count282
+\lst@lineno=\count283
 \lst@maxwidth=\dimen157
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/listings\lstmisc.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
-\c@lstnumber=\count287
-\lst@skipnumbers=\count288
-\lst@framebox=\box52
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/listings\listings.cfg
+\c@lstnumber=\count284
+\lst@skipnumbers=\count285
+\lst@framebox=\box49
+) (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2020/03/24 1.8d listings configuration
 ))
 Package: listings 2020/03/24 1.8d (Carsten Heinz)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count289
-\float@exts=\toks23
-\float@box=\box53
-\@float@everytoks=\toks24
-\@floatcapt=\box54
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pdfpages.sty
-Package: pdfpages 2022/10/09 v0.5w Insert pages of external PDF documents (AM)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty
+\c@float@type=\count286
+\float@exts=\toks22
+\float@box=\box50
+\@float@everytoks=\toks23
+\@floatcapt=\box51
+) (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2021/03/06 v0.5t Insert pages of external PDF documents (AM)
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count290
-\calc@Bcount=\count291
+\calc@Acount=\count287
+\calc@Bcount=\count288
 \calc@Adimen=\dimen158
 \calc@Bdimen=\dimen159
 \calc@Askip=\skip52
 \calc@Bskip=\skip53
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count292
+\calc@Ccount=\count289
 \calc@Cskip=\skip54
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/eso-pic\eso-pic.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/eso-pic/eso-pic.sty
 Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
 \ESO@tempdima=\dimen160
 \ESO@tempdimb=\dimen161
@@ -336,146 +335,299 @@ Package: eso-pic 2020/10/14 v3.0a eso-pic (RN)
 \AM@pagewidth=\dimen162
 \AM@pageheight=\dimen163
 \AM@fboxrule=\dimen164
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdfpages\pppdftex.def
-File: pppdftex.def 2022/10/09 v0.5w Pdfpages driver for pdfTeX (AM)
+ (/usr/share/texlive/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2021/03/06 v0.5t Pdfpages driver for pdfTeX (AM)
 )
-\pdfpages@includegraphics@status=\count293
-\AM@pagebox=\box55
-\AM@global@opts=\toks25
-\AM@pagecnt=\count294
-\AM@toc@title=\toks26
-\c@AM@survey=\count295
-\AM@templatesizebox=\box56
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/siunitx\siunitx.sty
-Package: siunitx 2022-10-23 v3.1.9 A comprehensive (SI) units package
+\pdfpages@includegraphics@status=\count290
+\AM@pagebox=\box52
+\AM@global@opts=\toks24
+\AM@pagecnt=\count291
+\AM@toc@title=\toks25
+\c@AM@survey=\count292
+\AM@templatesizebox=\box53
+) (/home/alvise/texmf/tex/latex/siunitx/siunitx.sty
+Package: siunitx 2022-11-16 v3.1.10 A comprehensive (SI) units package
 \l__siunitx_angle_tmp_dim=\dimen165
-\l__siunitx_angle_marker_box=\box57
-\l__siunitx_angle_unit_box=\box58
-\l__siunitx_compound_count_int=\count296
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/translations\translations.sty
-Package: translations 2022/02/05 v1.12 internationalization of LaTeX2e packages (CN)
+\l__siunitx_angle_marker_box=\box54
+\l__siunitx_angle_unit_box=\box55
+\l__siunitx_compound_count_int=\count293
+ (/usr/share/texlive/texmf-dist/tex/latex/translations/translations.sty
+Package: translations 2021/01/17 v1.10a internationalization of LaTeX2e packages (CN)
 )
-\l__siunitx_number_exponent_fixed_int=\count297
-\l__siunitx_number_min_decimal_int=\count298
-\l__siunitx_number_min_integer_int=\count299
-\l__siunitx_number_round_precision_int=\count300
-\l__siunitx_number_group_first_int=\count301
-\l__siunitx_number_group_size_int=\count302
-\l__siunitx_number_group_minimum_int=\count303
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+\l__siunitx_number_exponent_fixed_int=\count294
+\l__siunitx_number_min_decimal_int=\count295
+\l__siunitx_number_min_integer_int=\count296
+\l__siunitx_number_round_precision_int=\count297
+\l__siunitx_number_group_first_int=\count298
+\l__siunitx_number_group_size_int=\count299
+\l__siunitx_number_group_minimum_int=\count300
+ (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
-\@emptytoks=\toks27
+\@emptytoks=\toks26
 \ex@=\dimen166
 ))
-\l__siunitx_table_tmp_box=\box59
+\l__siunitx_table_tmp_box=\box56
 \l__siunitx_table_tmp_dim=\dimen167
 \l__siunitx_table_column_width_dim=\dimen168
-\l__siunitx_table_integer_box=\box60
-\l__siunitx_table_decimal_box=\box61
-\l__siunitx_table_before_box=\box62
-\l__siunitx_table_after_box=\box63
+\l__siunitx_table_integer_box=\box57
+\l__siunitx_table_decimal_box=\box58
+\l__siunitx_table_before_box=\box59
+\l__siunitx_table_after_box=\box60
 \l__siunitx_table_before_dim=\dimen169
 \l__siunitx_table_carry_dim=\dimen170
-\l__siunitx_unit_tmp_int=\count304
-\l__siunitx_unit_position_int=\count305
-\l__siunitx_unit_total_int=\count306
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/l3packages/l3keys2e\l3keys2e.sty (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/l3kernel\expl3.sty
-Package: expl3 2021-10-12 L3 programming layer (loader) 
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
-File: l3backend-pdftex.def 2021-10-12 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count307
-\l__pdf_internal_box=\box64
+\l__siunitx_unit_tmp_int=\count301
+\l__siunitx_unit_position_int=\count302
+\l__siunitx_unit_total_int=\count303
+ (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty (/usr/share/texlive/texmf-dist/tex/latex/l3kernel/expl3.sty
+Package: expl3 2021-05-07 L3 programming layer (loader) 
+ (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2021-05-07 L3 backend support: PDF output (pdfTeX)
+\l__color_backend_stack_int=\count304
+\l__pdf_internal_box=\box61
 ))
-Package: l3keys2e 2021-08-27 LaTeX2e option processing using LaTeX3 keys
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty
-Package: array 2021/04/20 v2.5e Tabular extension package (FMi)
+Package: l3keys2e 2021-05-07 LaTeX2e option processing using LaTeX3 keys
+)
+
+LaTeX3 Info: Defining command \DeclareSIPower with sig. '+m+mm' on line 8190.
+
+
+LaTeX3 Info: Defining command \DeclareSIPrefix with sig. '+mmm' on line 8194.
+
+
+LaTeX3 Info: Defining command \DeclareSIQualifier with sig. '+mm' on line
+(LaTeX3)     8198.
+
+
+LaTeX3 Info: Defining command \DeclareSIUnit with sig. 'o+mm' on line 8204.
+
+
+LaTeX3 Info: Defining command \qty with sig. 'O{}m>{\TrimSpaces }m' on line
+(LaTeX3)     8242.
+
+
+LaTeX3 Info: Defining command \ang with sig. 'O{}>{\SplitArgument {2}{;}}m' on
+(LaTeX3)     line 8250.
+
+
+LaTeX3 Info: Defining command \num with sig. 'O{}m' on line 8259.
+
+
+LaTeX3 Info: Defining command \unit with sig. 'O{}>{\TrimSpaces }m' on line
+(LaTeX3)     8269.
+
+
+LaTeX3 Info: Defining command \qtylist with sig. 'O{}>{\SplitList
+(LaTeX3)     {;}}m>{\TrimSpaces }m' on line 8279.
+
+
+LaTeX3 Info: Defining command \numlist with sig. 'O{}>{\SplitList {;}}m' on
+(LaTeX3)     line 8287.
+
+
+LaTeX3 Info: Defining command \qtyproduct with sig. 'O{}>{\SplitList
+(LaTeX3)     {x}}m>{\TrimSpaces }m' on line 8297.
+
+
+LaTeX3 Info: Defining command \numproduct with sig. 'O{}>{\SplitList
+(LaTeX3)     {x}}>{\TrimSpaces }m' on line 8306.
+
+
+LaTeX3 Info: Defining command \qtyrange with sig. 'O{}mm>{\TrimSpaces }m' on
+(LaTeX3)     line 8315.
+
+
+LaTeX3 Info: Defining command \numrange with sig. 'O{}mm' on line 8323.
+
+
+LaTeX3 Info: Defining command \complexnum with sig. 'O{}>{\SplitArgument
+(LaTeX3)     {1}{:}}m' on line 8335.
+
+
+LaTeX3 Info: Defining command \complexqty with sig. 'O{}>{\SplitArgument
+(LaTeX3)     {1}{:}}mm' on line 8348.
+
+
+LaTeX3 Info: Defining command \tablenum with sig. 'O{}m' on line 8358.
+
+
+LaTeX3 Info: Defining command \sisetup with sig. 'm' on line 8360.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2020/10/01 v2.5c Tabular extension package (FMi)
 \col@sep=\dimen171
-\ar@mcellbox=\box65
+\ar@mcellbox=\box62
 \extrarowheight=\dimen172
-\NC@list=\toks28
+\NC@list=\toks27
 \extratabsurround=\skip55
 \backup@length=\skip56
-\ar@cellbox=\box66
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
-Package: amsmath 2021/04/20 v2.17j AMS math features
+\ar@cellbox=\box63
+)
+
+LaTeX3 Info: Defining command \qty (pdfstring context) with sig. 'omm' on line
+(LaTeX3)     8442.
+
+
+LaTeX3 Info: Defining command \ang (pdfstring context) with sig. 'm' on line
+(LaTeX3)     8443.
+
+
+LaTeX3 Info: Defining command \num (pdfstring context) with sig. 'om' on line
+(LaTeX3)     8444.
+
+
+LaTeX3 Info: Defining command \unit (pdfstring context) with sig. 'om' on line
+(LaTeX3)     8445.
+
+
+LaTeX3 Info: Defining command \numlist (pdfstring context) with sig. 'om' on
+(LaTeX3)     line 8452.
+
+
+LaTeX3 Info: Defining command \qtylist (pdfstring context) with sig. 'omm' on
+(LaTeX3)     line 8459.
+
+
+LaTeX3 Info: Defining command \numproduct (pdfstring context) with sig. 'om'
+(LaTeX3)     on line 8460.
+
+
+LaTeX3 Info: Defining command \qtyproduct (pdfstring context) with sig. 'omm'
+(LaTeX3)     on line 8461.
+
+
+LaTeX3 Info: Defining command \numrange (pdfstring context) with sig. 'omm' on
+(LaTeX3)     line 8463.
+
+
+LaTeX3 Info: Defining command \qtyrange (pdfstring context) with sig. 'ommm'
+(LaTeX3)     on line 8465.
+
+
+LaTeX3 Info: Defining command \si (pdfstring context) with sig. 'om' on line
+(LaTeX3)     8466.
+
+
+LaTeX3 Info: Defining command \SI (pdfstring context) with sig. 'omO{}m' on
+(LaTeX3)     line 8467.
+
+
+LaTeX3 Info: Defining command \SIlist (pdfstring context) with sig. 'omm' on
+(LaTeX3)     line 8474.
+
+
+LaTeX3 Info: Defining command \SIrange (pdfstring context) with sig. 'ommm' on
+(LaTeX3)     line 8476.
+
+
+LaTeX3 Info: Defining command \DeclareBinaryPrefix with sig. '+mmm' on line
+(LaTeX3)     8575.
+
+
+LaTeX3 Info: Defining command \DeclareSIPrePower with sig. '+mm' on line 8580.
+
+
+LaTeX3 Info: Defining command \DeclareSIPostPower with sig. '+mm' on line
+(LaTeX3)     8585.
+
+
+LaTeX3 Info: Defining command \si with sig. 'O{}>{\TrimSpaces }m' on line
+(LaTeX3)     8595.
+
+
+LaTeX3 Info: Defining command \SI with sig. 'O{}mo>{\TrimSpaces }m' on line
+(LaTeX3)     8610.
+
+
+LaTeX3 Info: Defining command \SIlist with sig. 'O{}>{\SplitList
+(LaTeX3)     {;}}m>{\TrimSpaces }m' on line 8620.
+
+
+LaTeX3 Info: Defining command \SIrange with sig. 'O{}mm>{\TrimSpaces }m' on
+(LaTeX3)     line 8629.
+
+
+LaTeX3 Info: Defining command \SendSettingsToPgf with sig. '' on line 8819.
+
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/09/23 v2.17i AMS math features
 \@mathmargin=\skip57
 
 For additional information on amsmath, use the `?' option.
-(C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen173
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count308
+\inf@bad=\count305
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count309
-\leftroot@=\count310
+\uproot@=\count306
+\leftroot@=\count307
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count311
-\DOTSCASE@=\count312
+\classnum@=\count308
+\DOTSCASE@=\count309
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box67
-\strutbox@=\box68
+\Mathstrutbox@=\box64
+\strutbox@=\box65
 \big@size=\dimen174
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count313
-\c@MaxMatrixCols=\count314
+\macc@depth=\count310
+\c@MaxMatrixCols=\count311
 \dotsspace@=\muskip17
-\c@parentequation=\count315
-\dspbrk@lvl=\count316
-\tag@help=\toks29
-\row@=\count317
-\column@=\count318
-\maxfields@=\count319
-\andhelp@=\toks30
+\c@parentequation=\count312
+\dspbrk@lvl=\count313
+\tag@help=\toks28
+\row@=\count314
+\column@=\count315
+\maxfields@=\count316
+\andhelp@=\toks29
 \eqnshift@=\dimen175
 \alignsep@=\dimen176
 \tagshift@=\dimen177
 \tagwidth@=\dimen178
 \totwidth@=\dimen179
 \lineht@=\dimen180
-\@envbody=\toks31
+\@envbody=\toks30
 \multlinegap=\skip58
 \multlinetaggap=\skip59
-\mathdisplay@stack=\toks32
+\mathdisplay@stack=\toks31
 LaTeX Info: Redefining \[ on input line 2923.
 LaTeX Info: Redefining \] on input line 2924.
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/multirow\multirow.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip60
-\multirow@cntb=\count320
+\multirow@cntb=\count317
 \multirow@dima=\skip61
 \bigstrutjot=\dimen181
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.sty (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.sty (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common.tex
-\pgfutil@everybye=\toks33
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks32
 \pgfutil@tempdima=\dimen182
 \pgfutil@tempdimb=\dimen183
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-common-lists.tex)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil-latex.def
-\pgfutil@abb=\box69
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.code.tex (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
-Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box66
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2020/12/27 v3.1.8b (3.1.8b)
 ))
-Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.sty (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.sty (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys.code.tex
-Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks34
-\pgfkeys@temptoks=\toks35
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks36
+Package: pgf 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks33
+\pgfkeys@temptoks=\toks34
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
+\pgfkeys@tmptoks=\toks35
 ))
 \pgf@x=\dimen184
 \pgf@y=\dimen185
@@ -489,41 +641,41 @@ Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@yd=\dimen193
 \w@pgf@writea=\write4
 \r@pgf@reada=\read4
-\c@pgf@counta=\count321
-\c@pgf@countb=\count322
-\c@pgf@countc=\count323
-\c@pgf@countd=\count324
-\t@pgf@toka=\toks37
-\t@pgf@tokb=\toks38
-\t@pgf@tokc=\toks39
-\pgf@sys@id@count=\count325
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.cfg
-File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
+\c@pgf@counta=\count318
+\c@pgf@countb=\count319
+\c@pgf@countc=\count320
+\c@pgf@countd=\count321
+\t@pgf@toka=\toks36
+\t@pgf@tokb=\toks37
+\t@pgf@tokc=\toks38
+\pgf@sys@id@count=\count322
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2020/12/27 v3.1.8b (3.1.8b)
 )
 Driver file for pgf: pgfsys-pdftex.def
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-pdftex.def
-File: pgfsys-pdftex.def 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsys-common-pdf.def
-File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
-))) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsyssoftpath.code.tex
-File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count326
-\pgfsyssoftpath@bigbuffer@items=\count327
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsysprotocol.code.tex
-File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcore.code.tex
-Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.code.tex (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.code.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparser.code.tex
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2020/12/27 v3.1.8b (3.1.8b)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfsyssoftpath@smallbuffer@items=\count323
+\pgfsyssoftpath@bigbuffer@items=\count324
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
 \pgfmath@dimen=\dimen194
-\pgfmath@count=\count328
-\pgfmath@box=\box70
-\pgfmath@toks=\toks40
-\pgfmath@stack@operand=\toks41
-\pgfmath@stack@operation=\toks42
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.code.tex (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.basic.code.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.trigonometric.code.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.random.code.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.comparison.code.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.base.code.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.round.code.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.misc.code.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunctions.integerarithmetics.code.tex))) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count329
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.tex) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepoints.code.tex
-File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+\pgfmath@count=\count325
+\pgfmath@box=\box67
+\pgfmath@toks=\toks39
+\pgfmath@stack@operand=\toks40
+\pgfmath@stack@operation=\toks41
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count326
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@picminx=\dimen195
 \pgf@picmaxx=\dimen196
 \pgf@picminy=\dimen197
@@ -538,78 +690,78 @@ File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@yy=\dimen262
 \pgf@zx=\dimen263
 \pgf@zy=\dimen264
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathconstruct.code.tex
-File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@path@lastx=\dimen265
 \pgf@path@lasty=\dimen266
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathusage.code.tex
-File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@shorten@end@additional=\dimen267
 \pgf@shorten@start@additional=\dimen268
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorescopes.code.tex
-File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfpic=\box71
-\pgf@hbox=\box72
-\pgf@layerbox@main=\box73
-\pgf@picture@serial@count=\count330
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoregraphicstate.code.tex
-File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfpic=\box68
+\pgf@hbox=\box69
+\pgf@layerbox@main=\box70
+\pgf@picture@serial@count=\count327
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgflinewidth=\dimen269
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransformations.code.tex
-File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@pt@x=\dimen270
 \pgf@pt@y=\dimen271
 \pgf@pt@temp=\dimen272
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorequick.code.tex
-File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreobjects.code.tex
-File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepathprocessing.code.tex
-File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorearrows.code.tex
-File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgfarrowsep=\dimen273
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreshade.code.tex
-File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@max=\dimen274
-\pgf@sys@shading@range@num=\count331
-\pgf@shadingcount=\count332
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreimage.code.tex
-File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoreexternal.code.tex
-File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfexternal@startupbox=\box74
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorelayers.code.tex
-File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcoretransparency.code.tex
-File: pgfcoretransparency.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorepatterns.code.tex
-File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcorerdf.code.tex
-File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-))) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleshapes.code.tex
-File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfnodeparttextbox=\box75
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmoduleplot.code.tex
-File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-0-65.sty
-Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
+\pgf@sys@shading@range@num=\count328
+\pgf@shadingcount=\count329
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfexternal@startupbox=\box71
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfnodeparttextbox=\box72
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2020/12/27 v3.1.8b (3.1.8b)
 \pgf@nodesepstart=\dimen275
 \pgf@nodesepend=\dimen276
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfcomp-version-1-18.sty
-Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.sty (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.sty (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys.code.tex)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.code.tex
-Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code.tex)
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2020/12/27 v3.1.8b (3.1.8b)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
 \pgffor@iter=\dimen277
 \pgffor@skip=\dimen278
-\pgffor@stack=\toks43
-\pgffor@toks=\toks44
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz\tikz.code.tex
-Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryplothandlers.code.tex
-File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count333
+\pgffor@stack=\toks42
+\pgffor@toks=\toks43
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgf@plot@mark@count=\count330
 \pgfplotmarksize=\dimen279
 )
 \tikz@lastx=\dimen280
@@ -620,91 +772,91 @@ File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \tikz@lastmovetoy=\dimen285
 \tikzleveldistance=\dimen286
 \tikzsiblingdistance=\dimen287
-\tikz@figbox=\box76
-\tikz@figbox@bg=\box77
-\tikz@tempbox=\box78
-\tikz@tempbox@bg=\box79
-\tikztreelevel=\count334
-\tikznumberofchildren=\count335
-\tikznumberofcurrentchild=\count336
-\tikz@fig@count=\count337
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodulematrix.code.tex
-File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count338
-\pgfmatrixcurrentcolumn=\count339
-\pgf@matrix@numberofcolumns=\count340
+\tikz@figbox=\box73
+\tikz@figbox@bg=\box74
+\tikz@tempbox=\box75
+\tikz@tempbox@bg=\box76
+\tikztreelevel=\count331
+\tikznumberofchildren=\count332
+\tikznumberofcurrentchild=\count333
+\tikz@fig@count=\count334
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfmatrixcurrentrow=\count335
+\pgfmatrixcurrentcolumn=\count336
+\pgf@matrix@numberofcolumns=\count337
 )
-\tikz@expandcount=\count341
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarytopaths.code.tex
-File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-))) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/tools\xspace.sty
+\tikz@expandcount=\count338
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+))) (/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
 Package: xspace 2014/10/28 v1.13 Space after command names (DPC,MH)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypositioning.code.tex
-File: tikzlibrarypositioning.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarychains.code.tex
-File: tikzlibrarychains.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryfit.code.tex
-File: tikzlibraryfit.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.code.tex
-File: tikzlibraryshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.geometric.code.tex
-File: tikzlibraryshapes.geometric.code.tex 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.geometric.code.tex
-File: pgflibraryshapes.geometric.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.misc.code.tex
-File: tikzlibraryshapes.misc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.misc.code.tex
-File: pgflibraryshapes.misc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.symbols.code.tex
-File: tikzlibraryshapes.symbols.code.tex 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.symbols.code.tex
-File: pgflibraryshapes.symbols.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.arrows.code.tex
-File: tikzlibraryshapes.arrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.arrows.code.tex
-File: pgflibraryshapes.arrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.callouts.code.tex (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.callouts.code.tex)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryshapes.multipart.code.tex
-File: tikzlibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries/shapes\pgflibraryshapes.multipart.code.tex
-File: pgflibraryshapes.multipart.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfnodepartlowerbox=\box80
-\pgfnodeparttwobox=\box81
-\pgfnodepartthreebox=\box82
-\pgfnodepartfourbox=\box83
-\pgfnodeparttwentybox=\box84
-\pgfnodepartnineteenbox=\box85
-\pgfnodeparteighteenbox=\box86
-\pgfnodepartseventeenbox=\box87
-\pgfnodepartsixteenbox=\box88
-\pgfnodepartfifteenbox=\box89
-\pgfnodepartfourteenbox=\box90
-\pgfnodepartthirteenbox=\box91
-\pgfnodeparttwelvebox=\box92
-\pgfnodepartelevenbox=\box93
-\pgfnodeparttenbox=\box94
-\pgfnodepartninebox=\box95
-\pgfnodeparteightbox=\box96
-\pgfnodepartsevenbox=\box97
-\pgfnodepartsixbox=\box98
-\pgfnodepartfivebox=\box99
-))) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarycalc.code.tex
-File: tikzlibrarycalc.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibraryarrows.code.tex
-File: tikzlibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibraryarrows.code.tex
-File: pgflibraryarrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarychains.code.tex
+File: tikzlibrarychains.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfit.code.tex
+File: tikzlibraryfit.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.code.tex
+File: tikzlibraryshapes.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.misc.code.tex
+File: tikzlibraryshapes.misc.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.misc.code.tex
+File: pgflibraryshapes.misc.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.symbols.code.tex
+File: tikzlibraryshapes.symbols.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.symbols.code.tex
+File: pgflibraryshapes.symbols.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.arrows.code.tex
+File: tikzlibraryshapes.arrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.arrows.code.tex
+File: pgflibraryshapes.arrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.callouts.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.callouts.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.multipart.code.tex
+File: tikzlibraryshapes.multipart.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.multipart.code.tex
+File: pgflibraryshapes.multipart.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\pgfnodepartlowerbox=\box77
+\pgfnodeparttwobox=\box78
+\pgfnodepartthreebox=\box79
+\pgfnodepartfourbox=\box80
+\pgfnodeparttwentybox=\box81
+\pgfnodepartnineteenbox=\box82
+\pgfnodeparteighteenbox=\box83
+\pgfnodepartseventeenbox=\box84
+\pgfnodepartsixteenbox=\box85
+\pgfnodepartfifteenbox=\box86
+\pgfnodepartfourteenbox=\box87
+\pgfnodepartthirteenbox=\box88
+\pgfnodeparttwelvebox=\box89
+\pgfnodepartelevenbox=\box90
+\pgfnodeparttenbox=\box91
+\pgfnodepartninebox=\box92
+\pgfnodeparteightbox=\box93
+\pgfnodepartsevenbox=\box94
+\pgfnodepartsixbox=\box95
+\pgfnodepartfivebox=\box96
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryarrows.code.tex
+File: tikzlibraryarrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.code.tex
+File: pgflibraryarrows.code.tex 2020/12/27 v3.1.8b (3.1.8b)
 \arrowsize=\dimen288
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarypatterns.code.tex
-File: tikzlibrarypatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibrarypatterns.code.tex
-File: pgflibrarypatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer/libraries\tikzlibraryexternal.code.tex (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzexternalshared.code.tex)) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries/graphs\tikzlibrarygraphs.code.tex
-File: tikzlibrarygraphs.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\tikz@lib@auto@number=\count342
-\tikz@qnode@count=\count343
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tikz/libraries\tikzlibrarymatrix.code.tex
-File: tikzlibrarymatrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-) (thesis.aux)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypatterns.code.tex
+File: tikzlibrarypatterns.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibrarypatterns.code.tex
+File: pgflibrarypatterns.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/libraries/tikzlibraryexternal.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzexternalshared.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/graphs/tikzlibrarygraphs.code.tex
+File: tikzlibrarygraphs.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+\tikz@lib@auto@number=\count339
+\tikz@qnode@count=\count340
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarymatrix.code.tex
+File: tikzlibrarymatrix.code.tex 2020/12/27 v3.1.8b (3.1.8b)
+) (./thesis.aux)
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 76.
@@ -725,24 +877,24 @@ LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
 LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 76.
 LaTeX Font Info:    ... okay on input line 76.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count344
+\scratchcounter=\count341
 \scratchdimen=\dimen289
-\scratchbox=\box100
-\nofMPsegments=\count345
-\nofMParguments=\count346
-\everyMPshowfont=\toks45
-\MPscratchCnt=\count347
+\scratchbox=\box97
+\nofMPsegments=\count342
+\nofMParguments=\count343
+\everyMPshowfont=\toks44
+\MPscratchCnt=\count344
 \MPscratchDim=\dimen290
-\MPnumerator=\count348
-\makeMPintoPDFobject=\count349
-\everyMPtoPDFconversion=\toks46
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+\MPnumerator=\count345
+\makeMPintoPDFobject=\count346
+\everyMPtoPDFconversion=\toks45
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+ (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 LaTeX Info: Redefining \it@ocap on input line 76.
 LaTeX Info: Redefining \it@ccap on input line 76.
@@ -792,39 +944,40 @@ italian.ldf    on input line 76.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 Package hyperref Info: Link coloring OFF on input line 76.
-(C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/refcount/refcount.sty
 Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
-) (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+) (/usr/share/texlive/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count350
+\c@section@level=\count347
 )
 LaTeX Info: Redefining \ref on input line 76.
 LaTeX Info: Redefining \pageref on input line 76.
 LaTeX Info: Redefining \nameref on input line 76.
- (thesis.out) (thesis.out)
+ (./thesis.out) (./thesis.out)
 \@outlinefile=\write5
 \openout5 = `thesis.out'.
 
-\c@lstlisting=\count351
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/pdflscape\pdflscape.sty
+\c@lstlisting=\count348
+ (/usr/share/texlive/texmf-dist/tex/latex/pdflscape/pdflscape.sty
 Package: pdflscape 2019/12/05 v0.12 Display of landscape pages in PDF (HO)
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/graphics\lscape.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
 Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
 )
 Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
 )
 Package translations Info: no dictionary file `translations-basic-dictionary-italian.trsl' found. on input line 76.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/translations/dicts\translations-basic-dictionary-english.trsl
+ (/usr/share/texlive/texmf-dist/tex/latex/translations/translations-basic-dictionary-english.trsl
 File: translations-basic-dictionary-english.trsl (english translation file `translations-basic-dictionary')
 )
+Package translations Info: loading dictionary `translations-basic-dictionary' for `english'. on input line 76.
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 77.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/psnfss\ot1phv.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
-<bannerdmif_italian.PNG, id=85, 1081.03876pt x 104.7915pt>
+<bannerdmif_italian.PNG, id=86, 1081.03876pt x 104.7915pt>
 File: bannerdmif_italian.PNG Graphic file (type png)
 <use bannerdmif_italian.PNG>
 Package pdftex.def Info: bannerdmif_italian.PNG  used on input line 77.
@@ -840,15 +993,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--77
 
  <./bannerdmif_italian.PNG>]
 LaTeX Font Info:    Trying to load font information for U+msa on input line 77.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Trying to load font information for U+msb on input line 77.
- (C:\Users\alvis\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [2] [3
 
-] [4] (thesis.toc)
+] [4] (./thesis.toc)
 \tf@toc=\write6
 \openout6 = `thesis.toc'.
 
@@ -875,11 +1028,11 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.4.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.337 
       ] [10pdfTeX warning (ext4): destination with the same identifier (name{figure.4.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.349 
       ] [11]
 Underfull \vbox (badness 1448) has occurred while \output is active []
@@ -893,7 +1046,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ] [18] [19] [20]
 Capitolo 6.
-<graphs/total bytes.png, id=277, 462.528pt x 346.896pt>
+<graphs/total bytes.png, id=279, 462.528pt x 346.896pt>
 File: graphs/total bytes.png Graphic file (type png)
 <use graphs/total bytes.png>
 Package pdftex.def Info: graphs/total bytes.png  used on input line 584.
@@ -905,12 +1058,12 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <9> not available
 [21
 
 ]
-<graphs/total packets.png, id=287, 462.528pt x 346.896pt>
+<graphs/total packets.png, id=290, 462.528pt x 346.896pt>
 File: graphs/total packets.png Graphic file (type png)
 <use graphs/total packets.png>
 Package pdftex.def Info: graphs/total packets.png  used on input line 634.
 (pdftex.def)             Requested size: 345.0644pt x 258.81099pt.
-<graphs/logs_bytes ratio.png, id=291, 462.528pt x 346.896pt>
+<graphs/logs_bytes ratio.png, id=294, 462.528pt x 346.896pt>
 File: graphs/logs_bytes ratio.png Graphic file (type png)
 <use graphs/logs_bytes ratio.png>
 Package pdftex.def Info: graphs/logs_bytes ratio.png  used on input line 649.
@@ -920,43 +1073,43 @@ Underfull \vbox (badness 1997) has occurred while \output is active []
 
  [22pdfTeX warning (ext4): destination with the same identifier (name{figure.6.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.660 C
        ome già visto nella Sezione~\ref{setting}, il corpo dei è una seria... <./graphs/total bytes.png>]
-<graphs/logs_packets ratio.png, id=304, 462.528pt x 346.896pt>
+<graphs/logs_packets ratio.png, id=307, 462.528pt x 346.896pt>
 File: graphs/logs_packets ratio.png Graphic file (type png)
 <use graphs/logs_packets ratio.png>
 Package pdftex.def Info: graphs/logs_packets ratio.png  used on input line 667.
 (pdftex.def)             Requested size: 345.0644pt x 258.81099pt.
-<graphs/bytes per packet.png, id=306, 462.528pt x 346.896pt>
+<graphs/bytes per packet.png, id=309, 462.528pt x 346.896pt>
 File: graphs/bytes per packet.png Graphic file (type png)
 <use graphs/bytes per packet.png>
 Package pdftex.def Info: graphs/bytes per packet.png  used on input line 684.
 (pdftex.def)             Requested size: 345.0644pt x 258.81099pt.
  [23pdfTeX warning (ext4): destination with the same identifier (name{figure.6.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.694 N
        otiamo che come il numero di pacchetti per transizione, anche la dime... <./graphs/total packets.png>] [24pdfTeX warning (ext4): destination with the same identifier (name{figure.6.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.710 
        <./graphs/logs_bytes ratio.png>] [25pdfTeX warning (ext4): destination with the same identifier (name{figure.6.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.730 \chapter
               {Altri grafici}\label{appendix:grafici} <./graphs/logs_packets ratio.png>] [26pdfTeX warning (ext4): destination with the same identifier (name{figure.6.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.730 \chapter
               {Altri grafici}\label{appendix:grafici} <./graphs/bytes per packet.png>]
 Appendice A.
-<graphs/received bytes.png, id=339, 462.528pt x 346.896pt>
+<graphs/received bytes.png, id=342, 462.528pt x 346.896pt>
 File: graphs/received bytes.png Graphic file (type png)
 <use graphs/received bytes.png>
 Package pdftex.def Info: graphs/received bytes.png  used on input line 733.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/received packets.png, id=340, 462.528pt x 346.896pt>
+<graphs/received packets.png, id=343, 462.528pt x 346.896pt>
 File: graphs/received packets.png Graphic file (type png)
 <use graphs/received packets.png>
 Package pdftex.def Info: graphs/received packets.png  used on input line 739.
@@ -968,15 +1121,15 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
 pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.1}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.743 
        <./graphs/received bytes.png>]
-<graphs/sent bytes.png, id=347, 462.528pt x 346.896pt>
+<graphs/sent bytes.png, id=350, 462.528pt x 346.896pt>
 File: graphs/sent bytes.png Graphic file (type png)
 <use graphs/sent bytes.png>
 Package pdftex.def Info: graphs/sent bytes.png  used on input line 745.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/sent packets.png, id=348, 462.528pt x 346.896pt>
+<graphs/sent packets.png, id=351, 462.528pt x 346.896pt>
 File: graphs/sent packets.png Graphic file (type png)
 <use graphs/sent packets.png>
 Package pdftex.def Info: graphs/sent packets.png  used on input line 751.
@@ -986,19 +1139,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [28pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.2}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.755 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.3}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.755 
        <./graphs/received packets.png> <./graphs/sent bytes.png>]
-<graphs/sent bytes per seconds.png, id=357, 462.528pt x 346.896pt>
+<graphs/sent bytes per seconds.png, id=360, 462.528pt x 346.896pt>
 File: graphs/sent bytes per seconds.png Graphic file (type png)
 <use graphs/sent bytes per seconds.png>
 Package pdftex.def Info: graphs/sent bytes per seconds.png  used on input line 757.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/sent packets per seconds.png, id=358, 462.528pt x 346.896pt>
+<graphs/sent packets per seconds.png, id=361, 462.528pt x 346.896pt>
 File: graphs/sent packets per seconds.png Graphic file (type png)
 <use graphs/sent packets per seconds.png>
 Package pdftex.def Info: graphs/sent packets per seconds.png  used on input line 763.
@@ -1008,19 +1161,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [29pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.4}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.767 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.5}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.767 
        <./graphs/sent packets.png> <./graphs/sent bytes per seconds.png>]
-<graphs/received bytes per seconds.png, id=367, 462.528pt x 346.896pt>
+<graphs/received bytes per seconds.png, id=370, 462.528pt x 346.896pt>
 File: graphs/received bytes per seconds.png Graphic file (type png)
 <use graphs/received bytes per seconds.png>
 Package pdftex.def Info: graphs/received bytes per seconds.png  used on input line 769.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/received packets per seconds.png, id=368, 462.528pt x 346.896pt>
+<graphs/received packets per seconds.png, id=371, 462.528pt x 346.896pt>
 File: graphs/received packets per seconds.png Graphic file (type png)
 <use graphs/received packets per seconds.png>
 Package pdftex.def Info: graphs/received packets per seconds.png  used on input line 775.
@@ -1030,19 +1183,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.6}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.779 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.7}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.779 
        <./graphs/sent packets per seconds.png> <./graphs/received bytes per seconds.png>]
-<graphs/bytes ratio.png, id=377, 462.528pt x 346.896pt>
+<graphs/bytes ratio.png, id=380, 462.528pt x 346.896pt>
 File: graphs/bytes ratio.png Graphic file (type png)
 <use graphs/bytes ratio.png>
 Package pdftex.def Info: graphs/bytes ratio.png  used on input line 781.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/packets ratio.png, id=378, 462.528pt x 346.896pt>
+<graphs/packets ratio.png, id=381, 462.528pt x 346.896pt>
 File: graphs/packets ratio.png Graphic file (type png)
 <use graphs/packets ratio.png>
 Package pdftex.def Info: graphs/packets ratio.png  used on input line 787.
@@ -1052,19 +1205,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [31pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.8}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.791 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.9}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.791 
        <./graphs/received packets per seconds.png> <./graphs/bytes ratio.png>]
-<graphs/total bytes per seconds.png, id=388, 462.528pt x 346.896pt>
+<graphs/total bytes per seconds.png, id=391, 462.528pt x 346.896pt>
 File: graphs/total bytes per seconds.png Graphic file (type png)
 <use graphs/total bytes per seconds.png>
 Package pdftex.def Info: graphs/total bytes per seconds.png  used on input line 793.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/total packets per seconds.png, id=389, 462.528pt x 346.896pt>
+<graphs/total packets per seconds.png, id=392, 462.528pt x 346.896pt>
 File: graphs/total packets per seconds.png Graphic file (type png)
 <use graphs/total packets per seconds.png>
 Package pdftex.def Info: graphs/total packets per seconds.png  used on input line 799.
@@ -1074,19 +1227,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.10}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.803 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.11}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.803 
        <./graphs/packets ratio.png> <./graphs/total bytes per seconds.png>]
-<graphs/logs_expected bytes.png, id=397, 462.528pt x 346.896pt>
+<graphs/logs_expected bytes.png, id=400, 462.528pt x 346.896pt>
 File: graphs/logs_expected bytes.png Graphic file (type png)
 <use graphs/logs_expected bytes.png>
 Package pdftex.def Info: graphs/logs_expected bytes.png  used on input line 805.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/logs_actual bytes.png, id=398, 462.528pt x 346.896pt>
+<graphs/logs_actual bytes.png, id=401, 462.528pt x 346.896pt>
 File: graphs/logs_actual bytes.png Graphic file (type png)
 <use graphs/logs_actual bytes.png>
 Package pdftex.def Info: graphs/logs_actual bytes.png  used on input line 811.
@@ -1096,19 +1249,19 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [33pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.12}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.815 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.13}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.815 
        <./graphs/total packets per seconds.png> <./graphs/logs_expected bytes.png>]
-<graphs/logs_expected packets.png, id=407, 462.528pt x 346.896pt>
+<graphs/logs_expected packets.png, id=410, 462.528pt x 346.896pt>
 File: graphs/logs_expected packets.png Graphic file (type png)
 <use graphs/logs_expected packets.png>
 Package pdftex.def Info: graphs/logs_expected packets.png  used on input line 817.
 (pdftex.def)             Requested size: 387.61043pt x 290.70782pt.
-<graphs/logs_actual packets.png, id=408, 462.528pt x 346.896pt>
+<graphs/logs_actual packets.png, id=411, 462.528pt x 346.896pt>
 File: graphs/logs_actual packets.png Graphic file (type png)
 <use graphs/logs_actual packets.png>
 Package pdftex.def Info: graphs/logs_actual packets.png  used on input line 823.
@@ -1118,34 +1271,35 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [34pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.14}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.827 
       pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.15}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.827 
        <./graphs/logs_actual bytes.png> <./graphs/logs_expected packets.png>] [35pdfTeX warning (ext4): destination with the same identifier (name{figure.Alph1.16}) has been already used, duplicate ignored
 <argument> ...shipout:D \box_use:N \l_shipout_box 
-                                                  \__shipout_drop_firstpage_...
+                                                  
 l.829 \backmatter
-                  <./graphs/logs_actual packets.png>] [36] (thesis.bbl) [37
+                  <./graphs/logs_actual packets.png>] [36] (./thesis.bbl) [37
 
-] (thesis.aux)
+] (./thesis.aux)
 Package rerunfilecheck Info: File `thesis.out' has not changed.
 (rerunfilecheck)             Checksum: 7BD349F5AE19C53B1B4754CEA7139218;1203.
  ) 
 Here is how much of TeX's memory you used:
- 35418 strings out of 478927
- 712825 string characters out of 2852534
- 1051716 words of memory out of 3000000
- 52515 multiletter control sequences out of 15000+600000
+ 35262 strings out of 478862
+ 700737 string characters out of 5858944
+ 1047858 words of memory out of 6000000
+ 52140 multiletter control sequences out of 15000+600000
  427425 words of font info for 84 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 84i,24n,83p,988b,2367s stack positions out of 5000i,500n,10000p,200000b,80000s
- <C:\Users\alvis\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1095.pk>{C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmtt9.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvb8a.pfb><C:/Users/alvis/AppData/Local/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on thesis.pdf (43 pages, 1638374 bytes).
+ 1137 hyphenation exceptions out of 8191
+ 84i,24n,83p,950b,2366s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on thesis.pdf (43 pages, 1596743 bytes).
 PDF statistics:
- 536 PDF objects out of 1000 (max. 8388607)
+ 542 PDF objects out of 1000 (max. 8388607)
+ 410 compressed objects within 5 object streams
  110 named destinations out of 1000 (max. 500000)
  287 words of extra memory for PDF output out of 10000 (max. 10000000)
 
